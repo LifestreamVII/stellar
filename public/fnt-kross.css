@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-HeavyItalic.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk Book';
+    src: url('type/kross/KrossNeueGrotesk-BookItalic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-LightItalic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk Book';
+    src: url('type/kross/KrossNeueGrotesk-Book.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-ThinItalic.woff2') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-Heavy.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('type/kross/KrossNeueGrotesk-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}

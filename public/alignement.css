@@ -1,0 +1,25 @@
+.horizontal-align-relative{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.vertical-align-relative{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.align-center{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.align-left{
+    text-align: left;
+    margin-left: initial;
+    margin-right: auto;
+}
+.align-right{
+    text-align: right;
+    margin-left: auto;
+    margin-right: initial;
+}
