@@ -14,24 +14,23 @@ const PORT = 28073;
 // localhost HOST
 const HOST = "0.0.0.0";
 
+app.use(function (req, res, next) {
+    if (req.path === '/stellar') app.set('views', './views');
+    else app.set("views", path.join(__dirname, "views/nano"));
+    next()
+});
+
+app.get('/stellar/', (req, res) => {
+    res.render('index', { title: app.get('title'), message: 'Hello there!' });
+})
+
 app.get('/', (req, res) => {
     res.render('index', { title: app.get('title'), message: 'Hello there!' });
 })
 
+
 app.get('/watermelon', (req, res) => {
-
-    //middleware
-    if (req.path.substr(-1) == '/' && req.path.length > 1) {
-        const query = req.url.slice(req.path.length);
-        res.redirect(301, req.path.slice(0, -1) + query);
-     } else {
-        // all good
-     }
-
-   app.use(express.static("watermelon/"));
-   res.sendFile('index.html', {
-     root: 'watermelon/'
-   });
+	res.redirect('https://flb.na-no.pro/');
 })
 
 app.get('/map', (req, res) => {
@@ -67,8 +66,9 @@ function openMapWithJSON(query){
 // App Config.
     app.set('title', 'Stellar');
     app.get('title');
-    app.set("views", path.join(__dirname, "views/"));
+    app.set("views", path.join(__dirname, "views/nano"));
     app.set("view engine", "pug");
+    // Express Static Middleware - Resources (CSS/JS/Images/Fonts)
     app.use(express.static('./public'));
 
 // App Listen
