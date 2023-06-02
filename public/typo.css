@@ -11,6 +11,7 @@ h1{
     font-weight: 900;
     letter-spacing: -1px;
     text-align: center;
+    text-shadow: 4px 3px 14px #0000005e;
 
 }
 h2{
@@ -91,6 +92,10 @@ a{
     font-size: 50px!important;
 }
 
+.fs-xtra{
+    font-size: 70px!important;
+}
+
 .fs-45{
     font-size: 45px!important;
 }
@@ -118,4 +123,28 @@ a{
 
 .fw-ultrabold{
     font-weight: 900!important;
+}
+
+.lh-none{
+    line-height: 0px;
+}
+
+.lh-m{
+    line-height: 5px;
+}
+
+.lh-r{
+    line-height: 12px;
+}
+
+.lh-l{
+    line-height: 18px;
+}
+
+.lh-xl{
+    line-height: 25px;
+}
+
+.lh-xxl{
+    line-height: 50px;
 }

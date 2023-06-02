@@ -4,5 +4,5 @@
     max-height: calc(100% - 70px);
     min-height: 360px;
     margin: 0;
-    background: linear-gradient(90deg, rgba(2,0,36,0.23853291316526615) 0%, rgba(0,136,193,1) 100%);
+    background: radial-gradient(29.66% 52.65% at 33.95% 50%, rgba(48, 119, 220, 0.1131) 0.01%, rgba(1, 2, 5, 0.0318399) 99.99%, rgba(0, 0, 0, 0.029) 100%);
 }

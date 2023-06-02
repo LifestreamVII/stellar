@@ -1,0 +1,14 @@
+//- carousel.pug
+
+mixin carousel(items)
+  .carousel-wrapper
+    .carousel-group
+      each item in items
+        .carousel
+          .carousel-inner
+            img(src=item.image)
+            .carousel-info
+              .heading
+                h3 Image 1
+              .description
+                p Description 1
