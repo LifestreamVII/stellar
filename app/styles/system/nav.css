@@ -1,0 +1,111 @@
+.navbar{
+    position: fixed;
+    z-index: var(--z-index-navbar);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 8px 0;
+    height: var(--size-navbar-h);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--g-nav);
+}
+
+.navbar a, a.alt {
+    font-family: Kross Neue Grotesk;
+    font-size: 0.85em;
+    font-weight: 900;
+    margin: 0 20px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--c-white);
+    transition: color 0.07s ease-out;
+}
+
+.navbar a:hover, a.alt:hover{
+    color: var(--c-stellar);
+}
+
+.stellar-logo{
+    width: 65px;
+    height: 76px;
+    display: block;
+    background-image: var(--img-logo);
+    background-size: 100%;
+    background-position: center;
+}
+
+.navbar a.navbar__logo--sm{
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-image: var(--img-logo);
+    background-size: 100%;
+    background-position: center;
+}
+
+footer.footer{
+    border-top: solid 1px #3078dc23;
+    min-height: 10em;
+    color: var(--c-white);
+    background: var(--g-bg);
+    backdrop-filter: blur(7px);
+    padding: 3% 1% 0 0;
+}
+
+footer.footer .content{
+    padding: 1% 3% 5% 2%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+footer.footer .content > .logo{
+    align-self: baseline;
+    flex: 1;
+}
+
+footer.footer .content > .logo a{
+    margin: 0 auto;
+}
+
+footer.footer .content > .links{
+    flex: 4;
+    padding-left: 20px;
+    border-left: solid 1px var(--c-stellar);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    align-items: flex-start;
+    gap: 6em;
+}
+
+footer.footer .content > .links > div {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: flex-start;
+}
+
+footer.footer .content > .links > div h3 {
+    margin-top: 0;
+}
+
+footer.footer .content > .links > div a{
+    text-align: left;
+    margin: 15px 0;
+}
+
+footer.footer .additional{
+    border-top: solid 1px #3078dc23;
+    padding: 5px 5%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
