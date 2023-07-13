@@ -10,12 +10,12 @@ import {
 } from "@remix-run/react";
 
 import base from "~/styles/system/main.css";
-import centra from "~/styles/fonts/centra.css";
 import grid from "~/styles/system/grid.css";
+import centra from "~/styles/fonts/centra.css";
 import kross from "~/styles/fonts/kross.css";
 import stellar from "~/styles/system/partir.css";
 import nav from "~/styles/system/navapp.css";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 
 export default function App() {
   return (

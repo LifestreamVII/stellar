@@ -120,7 +120,7 @@
     }
     
     .u__fs__large, .u__fs__h2{
-        font-size: 27px;
+        font-size: 27px!important;
     }
     
     .u__fs__extreme, .u__fs__captionxl{
@@ -128,11 +128,11 @@
     }
 
     .u__fs__h1{
-        font-size: var(--size-h1-fs);
+        font-size: var(--size-h1-fs)!important;
     }
 
     .u__fs__h3{
-        font-size: 23px;
+        font-size: 23px!important;
     }
 
     .u__disp--block{
@@ -141,6 +141,12 @@
     
     .u__disp--flex{
         display: flex!important;
+        align-items: center;
+    }
+
+    .u__disp--grid{
+        display: grid!important;
+        align-items: center;
     }
 
     .u__disp--in{
@@ -322,6 +328,10 @@
     .ml-s {
         margin-left:20px;
     }
+
+    .ml-es {
+        margin-left:8px;
+    }
     
     .mr-s {
         margin-right:20px;
@@ -335,7 +345,7 @@
         margin-top:10px;
     }
     .mb-none {
-        margin-bottom:0px;
+        margin-bottom:0px!important;
     }
     .mt-none {
         margin-top:0px;
