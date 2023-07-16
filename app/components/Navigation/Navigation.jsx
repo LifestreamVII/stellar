@@ -1,10 +1,9 @@
 import { NavLink } from "@remix-run/react";
 import {
-    FaDelicious,
-    FaShoppingCart,
-    FaWallet,
-    FaChartLine,
-    FaRegClock,
+    FaHome,
+    FaEnvelopeOpenText,
+    FaGlobeAmericas,
+    FaQuestion,
     FaCog,
     FaSignOutAlt,
   } from "react-icons/fa";
@@ -14,17 +13,16 @@ function Navigation() {
             <aside>
                 <nav>
                     <menu>
-                        <ul>
-                            <li>
+                        <ul className="topMenu">
+                            <li className="logo">
                                 <NavLink to="/" className="navbar__logo--sm" title="Logo"></NavLink>
                             </li>
                         </ul>
-                        <ul id='mainMenu'>
-                            <Icon icon={<FaDelicious />} />
-                            <Icon icon={<FaShoppingCart />} />
-                            <Icon icon={<FaWallet />} />
-                            <Icon icon={<FaChartLine />} />
-                            <Icon icon={<FaRegClock />} />
+                        <ul className='mainMenu'>
+                            <Icon icon={<FaHome />} />
+                            <Icon icon={<FaEnvelopeOpenText />} />
+                            <Icon icon={<FaGlobeAmericas />} />
+                            <Icon icon={<FaQuestion />} />
                         </ul>
                         <ul className="lastMenu">
                             <Icon icon={<FaCog />} />

@@ -2,64 +2,70 @@ menu {
     width: 100px;
     z-index: 2;
     height: 100%;
-    background: var(--g-nav-hov);
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    justify-content: space-between;
+    padding: 0;
     position: fixed;
     top: 0;
+    margin: 0;
   }
   
   menu ul {
-    padding-top: 30px;
+    background: #071b327d;
+    backdrop-filter: blur(0.7px);
+    border-radius: var(--bor-radius);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    border: solid 1px #8c8a952b;
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin: 0!important;
     align-items: center;
   }
   
   menu ul li {
     list-style: none;
-    margin: 20px 0;
+    margin: 0.5em 0;
     position: relative;
     color: #8c8a95;
     width: 100%;
     text-align: center;
   }
   
-  menu ul li a {
+  menu ul li a:not(.navbar__logo--sm) {
     font-size: 24px;
     color: #8c8a95;
     text-decoration: none;
     transition: all 0.3s;
   }
   
-  menu ul li a::before {
+  menu ul li a:not(.navbar__logo--sm)::before {
     position: absolute;
     content: "";
     bottom: 5px;
-    left: 20px;
+    left: 34px;
     width: 0px;
     height: 2px;
     background: var(--c-stellar);
   }
   
-  menu ul li:hover a::before {
+  menu ul li:hover a:not(.navbar__logo--sm)::before {
+    width: 30px;
+    transition: all 0.3s;
+  }
+  
+  menu ul li.active a:not(.navbar__logo--sm)::before {
     width: 20px;
     transition: all 0.3s;
   }
   
-  menu ul li.active a::before {
-    width: 20px;
-    transition: all 0.3s;
-  }
-  
-  menu ul li.active a {
+  menu ul li.active a:not(.navbar__logo--sm) {
     color: var(--c-stellar)
   }
   
-  menu ul li:hover a {
+  menu ul li:hover a:not(.navbar__logo--sm) {
     color: var(--c-stellar);
   }
   
@@ -76,7 +82,8 @@ menu {
 a.navbar__logo--sm{
     display: block;
     width: 48px;
-    height: 48px;
+    height: 52px;
+    margin: 0 auto;
     background-image: var(--img-logo);
     background-size: 100%;
     background-position: center;
