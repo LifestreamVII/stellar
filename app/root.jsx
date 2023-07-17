@@ -15,6 +15,7 @@ import centra from "~/styles/fonts/centra.css";
 import kross from "~/styles/fonts/kross.css";
 import stellar from "~/styles/system/partir.css";
 import nav from "~/styles/system/navapp.css";
+import tooltip from "~/styles/system/tooltip.css";
 import Navigation from "./components/Navigation/Navigation";
 
 export default function App() {
@@ -45,6 +46,7 @@ export function links() {
     {rel: "stylesheet", href: kross},
     {rel: "stylesheet", href: grid},
     {rel: "stylesheet", href: nav},
+    {rel: "stylesheet", href: tooltip},
     {rel: "stylesheet", href: stellar},
   ]
 }
