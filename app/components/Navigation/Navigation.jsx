@@ -21,16 +21,26 @@ function Navigation() {
                             </li>
                         </ul>
                         <ul className='mainMenu'>
-                            <Tooltip content="tooltip" position="right">
+                            <Tooltip content="Home" position="right">
                                 <Icon title="Home" icon={<FaHome />} />
                             </Tooltip>
-                            <Icon title="Messages" icon={<FaEnvelopeOpenText />} />
-                            <Icon title="Communities" icon={<FaGlobeAmericas />} />
-                            <Icon title="Help" icon={<FaQuestion />} />
+                            <Tooltip content="Messages" position="right">
+                                <Icon title="Messages" icon={<FaEnvelopeOpenText />} />
+                            </Tooltip>
+                            <Tooltip content="Communities" position="right">
+                                <Icon title="Communities" icon={<FaGlobeAmericas />} />
+                            </Tooltip>
+                            <Tooltip content="Help" position="right">
+                                <Icon title="Help" icon={<FaQuestion />} />
+                            </Tooltip>
                         </ul>
                         <ul className="lastMenu">
-                            <Icon title="Settings" icon={<FaCog />} />
-                            <Icon title="Sign Out" icon={<FaSignOutAlt />} />
+                            <Tooltip content="Settings" position="right">
+                                <Icon title="Settings" icon={<FaCog />} />
+                            </Tooltip>
+                            <Tooltip content="Logout" position="right">
+                                <Icon title="Sign Out" icon={<FaSignOutAlt />} />
+                            </Tooltip>
                         </ul>
                     </menu>
                 </nav>

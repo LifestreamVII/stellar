@@ -45,7 +45,7 @@ menu {
     position: absolute;
     content: "";
     bottom: 5px;
-    left: 34px;
+    left: 6px;
     width: 0px;
     height: 2px;
     background: var(--c-stellar);

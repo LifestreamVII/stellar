@@ -2,6 +2,8 @@
 	 align-items: center;
 	 background-color: #040005;
 	 border-radius: 8px;
+	 margin-top:1.2em;
+	 animation: fadeInAnimation 0.2s linear;
 	 display: flex;
 	 justify-content: center;
 	 padding: 5px;
@@ -9,6 +11,16 @@
 	 white-space: normal;
 	 z-index: 100;
 }
+
+@keyframes fadeInAnimation {
+	0% {
+	  opacity: 0;
+	}
+	100% {
+	  opacity: 1;
+	}
+  }
+
  .tooltip-wrapper {
 	 align-items: center;
 	 display: flex;

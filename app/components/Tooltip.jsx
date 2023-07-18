@@ -17,7 +17,7 @@ const Tooltip = ({
         </div>
        {isHovered && (
           <div
-            className={`tooltip-${position}`}
+            className={`tooltip tooltip-${position}`}
           >
             <div className="tooltip-content">{content}</div>
           </div>
