@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const News = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className="carousel">
+    <div className={isHovered ? "expanded carousel" : "carousel"}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
         <div className="background">
           <img src="https://www.supercars.net/blog/wp-content/uploads/2020/09/wallpaperflare.com_wallpaper-1-1.jpg" alt="" srcset="" />
         </div>
@@ -40,6 +44,7 @@ const News = () => {
                 <p>Community created by x.</p>
               </div>
             </div>
+            <div className='details'><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos tempore officiis explicabo cupiditate ea similique aperiam repellendus eius quibusdam, quasi, vel sed! Ab earum excepturi rerum aperiam optio adipisci modi.</p></div>
             <div className="carousel-position">
               <ul>
                 <li></li>

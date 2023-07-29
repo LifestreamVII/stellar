@@ -48,7 +48,9 @@
   .carousel .info-wrapper {
     position: absolute;
     width: 100%;
+    transition: all 0.3s ease;
     /* height: 100%; */
+    top: 80px;
     bottom: 20px;
     padding: 0px 20px 0 20px;
     z-index: 1;
@@ -94,6 +96,9 @@
   .carousel .info-wrapper .top-wrapper .play-btn {
     height: 60px;
     width: 60px;
+    visibility: hidden;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+    opacity: 0;
     padding: 0;
     margin-top: auto;
   }
@@ -116,6 +121,7 @@
   }
   .masked-background {
     width: 100%;
+    transition: height 0.25s ease;
     height: 175px;
     position: absolute;
     bottom: 0;
@@ -176,3 +182,39 @@
     margin: 0;
   }
   
+
+  .expanded .masked-background{
+    height: 345px;
+  }
+
+  .expanded .info-wrapper{
+    bottom: 0;
+    top: 10px;
+  }
+
+  .info-wrapper .details{
+    visibility: hidden;
+    transition: all 0.3s;
+    animation: fadeInAnimation 0.2s ease;
+    display: none;
+  }
+
+  .expanded .info-wrapper .details{
+    visibility: visible;
+    display: block;
+  }
+  
+  .expanded .info-wrapper .top-wrapper .play-btn {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+    }
