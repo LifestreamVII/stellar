@@ -41,6 +41,7 @@
         --g-nav-hov: linear-gradient(0deg,#005eb11d 3.37%, #006dcc00 87.74%);
 
         --sh-default: 0px 4px 9px 1px rgb(0 0 0 / 9%);
+        --sh-default-text: 4px 3px 8px #00000061;
         --sh-div: 0px 4px 15px rgb(0 0 0 / 5%);
         --sh-button: 0px 4px 6px rgb(0 0 0 / 5%);
 
@@ -273,6 +274,10 @@
 
     .u__sh--default{
         box-shadow: var(--sh-default);
+    }
+
+    .u__sh--default--text{
+        text-shadow: var(--sh-default-text);
     }
 
     .u__sh--div{

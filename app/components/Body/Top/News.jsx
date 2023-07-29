@@ -6,6 +6,7 @@ const News = () => {
         <div className="background">
           <img src="https://www.supercars.net/blog/wp-content/uploads/2020/09/wallpaperflare.com_wallpaper-1-1.jpg" alt="" srcset="" />
         </div>
+        <div className='masked-background'></div>
         <div className='more-options'>
           <span>...</span>
         </div>
@@ -27,7 +28,7 @@ const News = () => {
             <div className='info-data'>
               <div className="title-stats">
                 <div className="title">
-                  <span className='captionxl'>s/Phonk</span>
+                  <span className='captionxl u__sh--default--text'>s/Phonk</span>
                 </div>
                 <div className="stats">
                   <i></i><span>236 streams</span>
