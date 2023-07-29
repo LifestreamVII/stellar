@@ -4,7 +4,7 @@ const News = () => {
   return (
     <div className="carousel">
         <div className="background">
-          <img src="" alt="" srcset="" />
+          <img src="https://www.supercars.net/blog/wp-content/uploads/2020/09/wallpaperflare.com_wallpaper-1-1.jpg" alt="" srcset="" />
         </div>
         <div className='more-options'>
           <span>...</span>
@@ -16,7 +16,7 @@ const News = () => {
                 <p>Lorem Ipsum</p>
               </div>
               <div className='thumbnail-image'>
-                <img src="" alt="" srcset="" />
+                <img src="https://img.freepik.com/premium-photo/modern-cars-are-studio-room_37416-14.jpg?w=2000" alt="" srcset="" />
               </div>
             </div>
             <div className='play-btn'>
@@ -27,7 +27,7 @@ const News = () => {
             <div className='info-data'>
               <div className="title-stats">
                 <div className="title">
-                  <span>s/Phonk</span>
+                  <span className='captionxl'>s/Phonk</span>
                 </div>
                 <div className="stats">
                   <i></i><span>236 streams</span>

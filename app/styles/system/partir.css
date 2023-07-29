@@ -110,29 +110,29 @@
     }
 
     .u__fs__small{
-        font-size: 14px;
+        font-size: 14px!important;
     }
     
     .u__fs__normal{
-        font-size: 16px;
+        font-size: 16px!important;
+    }
+    
+    .u__fs__extreme, .u__fs__captionxl{
+      font-size: var(--size-captionxl-fs);
+    }
+    
+    .u__fs__h1{
+      font-size: var(--size-h1-fs)!important;
     }
     
     .u__fs__medium, .u__fs__h4{
-        font-size: 19px;
+        font-size: 19px!important;
     }
     
     .u__fs__large, .u__fs__h2{
         font-size: 27px!important;
     }
     
-    .u__fs__extreme, .u__fs__captionxl{
-        font-size: var(--size-captionxl-fs);
-    }
-
-    .u__fs__h1{
-        font-size: var(--size-h1-fs)!important;
-    }
-
     .u__fs__h3{
         font-size: 23px!important;
     }

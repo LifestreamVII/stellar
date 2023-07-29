@@ -1,4 +1,5 @@
-.carousel{
+/* app/styles/top/news.css */
+.carousel {
     border-radius: 10px;
     background: var(--g-nav);
     width: 100%;
@@ -7,32 +8,28 @@
     box-shadow: var(--sh-default);
     position: relative;
     z-index: 1;
-}
-
-.carousel .background{
+  }
+  .carousel .background {
     position: absolute;
     z-index: 0;
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
-}
-
-.carousel .background img {
+  }
+  .carousel .background img {
     object-fit: cover;
     width: 100%;
     height: 100%;
     border-radius: 10px;
     visibility: hidden;
     border: 0px;
-}
-
-.carousel .background img[src*="http"],
-.carousel .background img[src*="https"] {
+  }
+  .carousel .background img[src*=http],
+  .carousel .background img[src*=https] {
     visibility: visible;
-}
-
-.carousel .more-options{
+  }
+  .carousel .more-options {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -41,70 +38,107 @@
     border: solid 2px white;
     border-radius: 10px;
     cursor: pointer;
-}
-
-.carousel .more-options span{
+  }
+  .carousel .more-options span {
     line-height: 14px;
     font-size: 22px;
-    margin: 0 0 61% 0;
+    margin: 0 0 61%;
     display: block;
-}
-
-.carousel .info-wrapper{
-    position: relative;
+  }
+  .carousel .info-wrapper {
+    position: absolute;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    bottom: 20px;
+    padding: 0px 20px 0 20px;
     z-index: 1;
-}
-
-.carousel .info-wrapper .top-wrapper{
+  }
+  .carousel .info-wrapper .top-wrapper {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: 19%;
-}
-
-.carousel .info-wrapper .top-wrapper .thumbnail{
+    margin-bottom: 2%;
+  }
+  .carousel .info-wrapper .top-wrapper .thumbnail {
     width: 20%;
-    aspect-ratio: 1/1;
-    border: solid 2px var(--c-stellar);
-}
-
-.carousel .info-wrapper .top-wrapper .thumbnail{
-    width: 20%;
+    min-width: 180px;
     position: relative;
     aspect-ratio: 1/1;
     border: solid 2px var(--c-stellar);
-}
-
-.carousel .info-wrapper .top-wrapper .thumbnail .thumbnail-caption{
+  }
+  .carousel .info-wrapper .top-wrapper .thumbnail-image,
+  .carousel .info-wrapper .top-wrapper .thumbnail-image img{
+    width: 100%;
+    height: 100%;
+  }
+  .carousel .info-wrapper .top-wrapper .thumbnail-image img{
+    object-fit: cover;
+    border: 0px;
+  }
+  .carousel .info-wrapper .top-wrapper .thumbnail .thumbnail-caption {
     position: absolute;
     right: 0;
     top: 0;
     height: 100%;
-    width: 12%;
+    width: 10%;
     background-color: var(--c-stellar);
-}
-
-.carousel .info-wrapper .top-wrapper .thumbnail .thumbnail-caption p{
+  }
+  .carousel .info-wrapper .top-wrapper .thumbnail .thumbnail-caption p {
     writing-mode: vertical-lr;
     text-align: center;
+    text-transform: uppercase;
     margin: 0 auto;
     height: inherit;
-}
-
-.carousel .info-wrapper .top-wrapper .play-btn{
+  }
+  .carousel .info-wrapper .top-wrapper .play-btn {
     height: 60px;
     width: 60px;
     padding: 0;
-}
-
-.carousel .info-wrapper .top-wrapper .play-btn button{
+    margin-top: auto;
+  }
+  .carousel .info-wrapper .top-wrapper .play-btn button {
     height: 100%;
     width: 100%;
     min-width: 0;
+    margin: 0;
     min-height: 0;
-    border-radius: 50%;  
+    border-radius: 50%;
     padding: 0;
-}
+  }
+  .carousel .info-wrapper .bottom-wrapper .info-data .title-stats .title span {
+    font-size: 1.4em;
+  }
+  .bottom-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  .carousel-position ul li {
+    list-style: none;
+  }
+  .info-data {
+    display: grid;
+  }
+  .title-stats {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+  .stats {
+    color: gray;
+    text-align: center;
+    font-size: .75em;
+    max-width: 180px;
+    border-left: solid 2px gray;
+    display: grid;
+    align-content: center;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  .description p {
+    margin: 0;
+  }
+  
