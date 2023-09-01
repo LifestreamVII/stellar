@@ -215,6 +215,19 @@ header {
     right: 1px;
     border: 1px solid var(--theme-bg);
     top: -2px;
+    animation: glowingFade 1.5s infinite;
+}
+
+@keyframes glowingFade {
+  0% {
+    box-shadow: 0 0 5px rgba(236, 82, 82, 0.7), 0 0 20px rgba(236, 82, 82, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(236, 82, 82, 0.9), 0 0 30px rgba(236, 82, 82, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(236, 82, 82, 0.7), 0 0 20px rgba(236, 82, 82, 0.7);
+  }
 }
 
 @media screen and (max-width: 575px) {

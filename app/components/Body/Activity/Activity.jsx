@@ -5,9 +5,9 @@ const Activity = () => {
     const elements = [
         {
           comimg: `image-1.jpg`,
-          albumcover: `image-2.jpg`,
-          artist: "John Smith",
-          title: "Guitar Serenade"
+          albumcover: `https://lh3.googleusercontent.com/facm7LdEYqnroofy1KyCFmMze3AxbMlwAcSp7JXXZmWIILJk_cQFbeIkHDYx7zLiENZQ2acu0fwcyA5o=w544-h544-l90-rj`,
+          artist: "Nobuo Uematsu",
+          title: "Descendant of Shinobi"
         },
         {
           comimg: `image-3.jpg`,
