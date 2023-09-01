@@ -192,6 +192,10 @@
         justify-content: left!important;
     }
 
+    .u__flex--0{
+      flex: 0;
+    }
+
     .u__brd--radius{
         border-radius: var(--b-radius);
     }

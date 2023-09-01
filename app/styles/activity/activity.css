@@ -43,8 +43,9 @@
 
 .horizontal-scroller .single{
   border-radius: 8px;
-  background-color: gray;
+  background: transparent;
   position: relative;
+  cursor: pointer;
   aspect-ratio: 1/1;
   width: auto;
   height: 200px;
@@ -129,6 +130,7 @@
 .single .album-cover{
   position: absolute;
   top: 0;
+  padding: 1.6px;
   left: 0;
   width: 100%;
   z-index: 0;
@@ -200,4 +202,97 @@
   transform: scale(1.1);
   transition: 0.4s;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.bg-single-blue {
+  position: relative;
+}
+
+.bg-single-blue::before {
+  position: absolute;
+  inset: -1.6px;
+  content: "";
+  z-index: -1;
+  border-radius: 7px;
+}
+
+.bg-single-blue::before {
+  background: var(--g-blue-stroke);
+}
+
+.card {
+  min-width: 250px;
+  border: 0;
+  margin-inline: auto;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.35s ease-in-out;
+}
+
+.card .strokesvg,
+.card .fillsvg,
+.card h4{
+  transition: all 0.2s ease-in-out;
+}
+
+.container-card {
+  position: relative;
+  border: 2px solid transparent;
+  /* background: var(--g-bg); */
+  background: radial-gradient(circle at 16% 97.2%, rgb(48 119 220 / 26%) 20%, rgb(0 128 255 / 43%) 15.9%, rgb(77 128 255 / 29%) 15.9%, rgb(43 103 226 / 24%) 23.4%, rgb(19, 30, 37) 34%, rgb(19, 30, 37) 61%);
+  background-clip: padding-box;
+  border-radius: 45px;
+  padding: 8px 20px;
+}
+.container-card img {
+  margin-bottom: 32px;
+}
+
+.bg-green-box,
+.bg-white-box,
+.bg-yellow-box,
+.bg-blue-box {
+  position: relative;
+}
+
+.bg-green-box::after,
+.bg-white-box::after,
+.bg-yellow-box::after,
+.bg-blue-box::after {
+  position: absolute;
+  inset: -2px;
+  content: "";
+  z-index: -1;
+  border-radius: 45px;
+}
+
+.bg-white-box::after {
+  background: var(--g-blue-stroke)
+}
+
+.gradient-cards {
+  display: grid;
+  float: left;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+@media screen and (max-width: 991px) {
+  .gradient-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card:hover .fillsvg{
+  fill: var(--c-stellar);
+}
+.card:hover .strokesvg{
+  stroke: var(--c-stellar);
+}
+
+.card:hover{
+  transform: scale(1.1);
+}
+
+.card:hover h4{
+  color: var(--c-stellar);
 }
