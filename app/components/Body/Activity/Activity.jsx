@@ -58,16 +58,103 @@ const Activity = () => {
           title: "Cityscape Serenade"
         }
       ];
+
+      const elements2 = [
+        {
+            comimg: `image-11.jpg`,
+            albumcover: `image-12.jpg`,
+            artist: "Olivia Turner",
+            title: "Moonlight Sonata"
+          },
+          {
+            comimg: `image-13.jpg`,
+            albumcover: `image-14.jpg`,
+            artist: "Daniel Carter",
+            title: "Rhythms of Nature"
+          },
+          {
+            comimg: `image-15.jpg`,
+            albumcover: `image-16.jpg`,
+            artist: "Grace Adams",
+            title: "Enchanted Melodies"
+          },
+          {
+            comimg: `image-17.jpg`,
+            albumcover: `image-18.jpg`,
+            artist: "Liam Robinson",
+            title: "Cityscape Serenade"
+          }
+      ];
       
       
 
   return (
     <div>
-        <div className="row mb-xl">
+        <div className='border-separation'></div>
+
+        <div className="row mt-xl mb-l">
             <div className="u__align--left col-12">
                 <h1 className="captionxl u__align--left u__fs__h1 mb-none">Welcome back</h1>
                 <p>Resume where you left off.</p>
-                <div className="gradient-cards">
+                <div className="main-container">
+                    <div className='horizontal-scroller'>
+                        <div className='content scrollbar-hidden'>
+                        {elements2.map((el, index) => {
+                            return (
+                            <div className='single'>
+                                <div className='single-info'>
+                                    <div className='single-charas'>
+                                        <div className='single-charas-content'>
+                                            <div className='community-icon'>
+                                                <div className='community-icon-circle'>
+                                                    <img src={el.comimg} alt="" srcset="" />
+                                                </div>
+                                            </div>
+                                            <div className='single-artist u__fs__small u__c--gray'>
+                                                <span>{el.artist}</span>
+                                            </div>
+                                            <div className='single-title u__fs__h4 mt-none'>
+                                                <span>{el.title}</span>
+                                            </div>
+                                            <div className='single-stats'>
+                                                <div className='single-stats-listens'>
+                                                    <span>200 listens</span>
+                                                </div>
+                                                <span>|</span>
+                                                <div className='single-stats-date'>
+                                                    <span>2 days ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='typeof'>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="0 0 24 24" version="1.1">
+                                        <title>album_fill</title>
+                                        <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g id="Media" transform="translate(0.000000, -48.000000)" fill-rule="nonzero">
+                                                <g id="album_fill" transform="translate(0.000000, 48.000000)">
+                                                    <path d="M24,0 L24,24 L0,24 L0,0 L24,0 Z M12.5934901,23.257841 L12.5819402,23.2595131 L12.5108777,23.2950439 L12.4918791,23.2987469 L12.4918791,23.2987469 L12.4767152,23.2950439 L12.4056548,23.2595131 C12.3958229,23.2563662 12.3870493,23.2590235 12.3821421,23.2649074 L12.3780323,23.275831 L12.360941,23.7031097 L12.3658947,23.7234994 L12.3769048,23.7357139 L12.4804777,23.8096931 L12.4953491,23.8136134 L12.4953491,23.8136134 L12.5071152,23.8096931 L12.6106902,23.7357139 L12.6232938,23.7196733 L12.6232938,23.7196733 L12.6266527,23.7031097 L12.609561,23.275831 C12.6075724,23.2657013 12.6010112,23.2592993 12.5934901,23.257841 L12.5934901,23.257841 Z M12.8583906,23.1452862 L12.8445485,23.1473072 L12.6598443,23.2396597 L12.6498822,23.2499052 L12.6498822,23.2499052 L12.6471943,23.2611114 L12.6650943,23.6906389 L12.6699349,23.7034178 L12.6699349,23.7034178 L12.678386,23.7104931 L12.8793402,23.8032389 C12.8914285,23.8068999 12.9022333,23.8029875 12.9078286,23.7952264 L12.9118235,23.7811639 L12.8776777,23.1665331 C12.8752882,23.1545897 12.8674102,23.1470016 12.8583906,23.1452862 L12.8583906,23.1452862 Z M12.1430473,23.1473072 C12.1332178,23.1423925 12.1221763,23.1452606 12.1156365,23.1525954 L12.1099173,23.1665331 L12.0757714,23.7811639 C12.0751323,23.7926639 12.0828099,23.8018602 12.0926481,23.8045676 L12.108256,23.8032389 L12.3092106,23.7104931 L12.3186497,23.7024347 L12.3186497,23.7024347 L12.3225043,23.6906389 L12.340401,23.2611114 L12.337245,23.2485176 L12.337245,23.2485176 L12.3277531,23.2396597 L12.1430473,23.1473072 Z" id="MingCute" fill-rule="nonzero">
+
+                                    </path>
+                                                    <path d="M12,2 C17.5228,2 22,6.47715 22,12 C22,17.5228 17.5228,22 12,22 C6.47715,22 2,17.5228 2,12 C2,6.47715 6.47715,2 12,2 Z M12,10 C10.8954,10 10,10.8954 10,12 C10,13.1046 10.8954,14 12,14 C13.1046,14 14,13.1046 14,12 C14,10.8954 13.1046,10 12,10 Z M11.4402,6.50675 C11.2562,5.98603 10.6849,5.71311 10.1642,5.89715 C8.58138,6.45658 7.26199,7.56735 6.43449,8.99786 C6.15794,9.47592 6.32131,10.0876 6.79937,10.3642 C7.27743,10.6407 7.88916,10.4774 8.1657,9.99931 C8.75788,8.97561 9.70239,8.18161 10.8306,7.78283 C11.3514,7.59879 11.6243,7.02746 11.4402,6.50675 Z" id="形状" fill="white">
+
+                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                </svg>
+                                </div>
+                                <div className='album-cover bg-single-blue'>
+                                    <img src={el.albumcover} alt="" srcset="" />
+                                </div>
+                            </div>
+                            )
+                        })}
+                        </div>
+                    </div>
+                </div>
+                <div className="gradient-cards mt-m">
 
                 <div class="card">
                     <div class="container-card bg-white-box u__disp--flex">
@@ -172,6 +259,8 @@ const Activity = () => {
             </div>
         </div>
         </div>
+        <div className='border-separation'></div>
+
         <div className="row mt-xl mb-m">
             <div className='u__align--left col-8'>
                 <div class="selectable-tags-group">
@@ -240,6 +329,11 @@ const Activity = () => {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div className='typeof'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.3187 2.50498C13.0514 2.35716 11.8489 3.10033 11.4144 4.29989C11.3165 4.57023 11.2821 4.86251 11.266 5.16888C11.2539 5.40001 11.2509 5.67552 11.2503 6L11.25 6.45499C11.25 6.4598 11.25 6.4646 11.25 6.46938V14.5359C10.4003 13.7384 9.25721 13.25 8 13.25C5.37665 13.25 3.25 15.3766 3.25 18C3.25 20.6234 5.37665 22.75 8 22.75C10.6234 22.75 12.75 20.6234 12.75 18V9.21059C12.8548 9.26646 12.9683 9.32316 13.0927 9.38527L15.8002 10.739C16.2185 10.9481 16.5589 11.1183 16.8378 11.2399C17.119 11.3625 17.3958 11.4625 17.6814 11.4958C18.9486 11.6436 20.1511 10.9004 20.5856 9.70089C20.6836 9.43055 20.7179 9.13826 20.7341 8.83189C20.75 8.52806 20.75 8.14752 20.75 7.67988L20.7501 7.59705C20.7502 7.2493 20.7503 6.97726 20.701 6.71946C20.574 6.05585 20.2071 5.46223 19.6704 5.05185C19.4618 4.89242 19.2185 4.77088 18.9074 4.6155L16.1999 3.26179C15.7816 3.05264 15.4412 2.88244 15.1623 2.76086C14.8811 2.63826 14.6043 2.53829 14.3187 2.50498Z" fill="white"/>
+                                </svg>
                                 </div>
                                 <div className='album-cover bg-single-blue'>
                                     <img src={el.albumcover} alt="" srcset="" />
