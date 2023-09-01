@@ -261,6 +261,12 @@ const Activity = () => {
         </div>
         <div className='border-separation'></div>
 
+        <div className="row mt-xl mb-l">
+            <div className="u__align--left col-12">
+                <h1 className="captionxl u__align--left u__fs__h1 mb-none">Made for you</h1>
+                <p>Lorem ipsum dolor.</p>
+            </div>
+        </div>
         <div className="row mt-xl mb-m">
             <div className='u__align--left col-8'>
                 <div class="selectable-tags-group">
