@@ -63,10 +63,43 @@ const Activity = () => {
 
   return (
     <div>
+        <div className='row mt-m mb-l'>
+            <div className='u__align--left col-8'>
+                <div class="selectable-tags-group">
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Chill</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>New</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Moody</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Popular</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Dark</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Happy</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Future</span>
+					</a>
+					<a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Space</span>
+					</a>
+					<a class="tag pl-m pr-m" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+						<span>Dreamy</span>
+					</a>
+				</div>
+            </div>
+        </div>
         <div className="row">
             <div className="u__align--left col-12">
-                <h1 className="captionxl u__fs__h1 mb-none">Featured Now</h1>
-                <p>This section has just been updated.</p>
+                <h1 className="captionxl u__align--left u__fs__h1 mb-none">Featured Now</h1>
+                <p>Check out the most streamed content this week in s/PHONK.</p>
                 <div className="main-container">
                     <div className='horizontal-scroller'>
                         <div className='content scrollbar-hidden'>
@@ -110,10 +143,11 @@ const Activity = () => {
                 </div>
             </div>
         </div>
+        <div className='border-separation'></div>
         <div className="row mt-xl">
             <div className="u__align--left col-12">
-                <h1 className="captionxl u__fs__h1 mb-none">Discover</h1>
-                <p>This section has just been updated.</p>
+                <h1 className="captionxl u__align--left u__fs__h1 mb-none">Discover</h1>
+                <p>Those just dropped. We thought you might like.</p>
                 <div className="main-container">
                     <div className='horizontal-scroller'>
                         <div className='content scrollbar-hidden'>
@@ -157,6 +191,7 @@ const Activity = () => {
                 </div>
             </div>
         </div>
+        <div className='border-separation'></div>
         <div className="row">
             <div className="col-10 u__disp--flex u__flex--left">
             </div>

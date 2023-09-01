@@ -344,6 +344,10 @@
         margin-right:20px;
     }
 
+    .mr-es {
+        margin-right:10px;
+    }
+
     .mb-m {
       margin-bottom:30px;
     }
@@ -898,4 +902,32 @@
     div.buttons > button
     {
         /*  */
+    }
+    div.border-separation{
+      width: 100%;
+      height: 1.4px;
+      background-color: #ffffff15;
+    }
+    .selectable-tags-group{
+
+    }
+    .selectable-tags-group .tag{
+      background: transparent;
+      border: solid 2px var(--c-stellar);
+      min-width: 80px;
+      border-radius: 7px;
+      display: inline-block;
+      padding: 7px 14px;
+      font-weight: 500;
+      font-size: 14px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background .3s ease-in-out;
+    }
+    .selectable-tags-group .tag span{
+      font-size: 14px;
+      color: white;
+      font-weight: 500;
     }
