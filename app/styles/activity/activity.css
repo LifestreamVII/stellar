@@ -305,10 +305,6 @@
   stroke: var(--c-stellar);
 }
 
-.card:hover{
-  transform: scale(1.1);
-}
-
 .card:hover h4{
   color: var(--c-stellar);
 }

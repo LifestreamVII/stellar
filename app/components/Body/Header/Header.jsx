@@ -8,9 +8,15 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header>
+    <header className=''>
           <div className="search-bar">
             <input className="mb-none u__disp--block" type="search" id="search" name="search" placeholder="Search" />
+          </div>
+          <div className='links'>
+            <a href="http://" target="_blank" rel="noopener noreferrer">Feed</a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">Artists</a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">Explore</a>
+            <a href="http://" target="_blank" rel="noopener noreferrer">Topics</a>
           </div>
           <div className="user-settings">
               <img className="user-img" src="https://pbs.twimg.com/profile_images/1602122338480291843/Ozz0uM6A_400x400.jpg" alt=""/>
