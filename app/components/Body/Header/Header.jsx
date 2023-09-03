@@ -14,7 +14,12 @@ const Header = () => {
           </div>
           <details className='commu-list' role="list">
             <summary aria-haspopup="listbox"><img className="commu-img" src="https://pbs.twimg.com/profile_images/1602122338480291843/Ozz0uM6A_400x400.jpg" alt=""/><span>s/PHONK</span></summary>
-            <h1>Hello</h1>
+            <ul>
+              <span className='u__fs__small h5'>My communities</span>
+              <li><img className="commu-img" src="https://pbs.twimg.com/profile_images/1602122338480291843/Ozz0uM6A_400x400.jpg" alt=""/><span>s/LoFi</span></li>
+              <li><img className="commu-img" src="https://pbs.twimg.com/profile_images/1602122338480291843/Ozz0uM6A_400x400.jpg" alt=""/><span>s/FutureBass</span></li>
+              <li><img className="commu-img" src="https://pbs.twimg.com/profile_images/1602122338480291843/Ozz0uM6A_400x400.jpg" alt=""/><span>s/DnB</span></li>
+            </ul>
           </details>
           <div className='links'>
             <a href="http://" target="_blank" rel="noopener noreferrer">Feed</a>

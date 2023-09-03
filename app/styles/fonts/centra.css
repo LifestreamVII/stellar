@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Black.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-BlackItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-BlackItalic.woff') format('woff');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Bold.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Bold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-BoldItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-BoldItalic.woff') format('woff');
   font-weight: 600;
   font-style: italic;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Book.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Book.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-BookItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-BookItalic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Extrabold.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Extrabold.woff') format('woff');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-ExtraboldItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-ExtraboldItalic.woff') format('woff');
   font-weight: 800;
   font-style: italic;
   font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Hairline.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Hairline.woff') format('woff');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-HairlineItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-HairlineItalic.woff') format('woff');
   font-weight: 100;
   font-style: italic;
   font-display: swap;
@@ -80,7 +80,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Light.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -88,7 +88,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-LightItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-LightItalic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -96,7 +96,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Medium.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -104,7 +104,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-MediumItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-MediumItalic.woff') format('woff');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -112,7 +112,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-Thin.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-Thin.woff') format('woff');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -120,7 +120,7 @@
 
 @font-face {
   font-family: 'CentraNo1';
-  src: url('../../fonts/centra/CentraNo1-ThinItalic.woff') format('woff');
+  src: url('~/fonts/centra/CentraNo1-ThinItalic.woff') format('woff');
   font-weight: 200;
   font-style: italic;
   font-display: swap;

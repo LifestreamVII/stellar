@@ -16,7 +16,9 @@ import kross from "~/styles/fonts/kross.css";
 import stellar from "~/styles/system/partir.css";
 import nav from "~/styles/system/navapp.css";
 import tooltip from "~/styles/system/tooltip.css";
+import play from "~/styles/system/player.css";
 import Navigation from "./components/Navigation/Navigation";
+import Player from "~/components/Player.jsx";
 
 export default function App() {
   return (
@@ -27,13 +29,15 @@ export default function App() {
         <Meta />
         <Links />
       </head>
+      <Navigation/>
       <body>
-        <Navigation/>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
+      <Player></Player>
+
     </html>
   );
 }
@@ -46,6 +50,7 @@ export function links() {
     {rel: "stylesheet", href: kross},
     {rel: "stylesheet", href: grid},
     {rel: "stylesheet", href: nav},
+    {rel: "stylesheet", href: play},
     {rel: "stylesheet", href: tooltip},
     {rel: "stylesheet", href: stellar},
   ]

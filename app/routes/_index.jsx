@@ -24,7 +24,7 @@ export function links() {
 export default function Index() {
   return (
     <div className="container">
-        <Body/>
+        <Body className="appbody"/>
     </div>
   );
 }
