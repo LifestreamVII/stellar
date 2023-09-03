@@ -12,6 +12,10 @@ const Header = () => {
           <div className="search-bar">
             <input className="mb-none u__disp--block" type="search" id="search" name="search" placeholder="Search" />
           </div>
+          <details className='commu-list' role="list">
+            <summary aria-haspopup="listbox"><img className="commu-img" src="https://pbs.twimg.com/profile_images/1602122338480291843/Ozz0uM6A_400x400.jpg" alt=""/><span>s/PHONK</span></summary>
+            <h1>Hello</h1>
+          </details>
           <div className='links'>
             <a href="http://" target="_blank" rel="noopener noreferrer">Feed</a>
             <a href="http://" target="_blank" rel="noopener noreferrer">Artists</a>
