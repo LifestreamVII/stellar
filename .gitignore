@@ -4,3 +4,10 @@ node_modules
 /build
 /public/build
 .env
+.DS_Store
+.eslintrc.js
+app/.DS_Store
+app/firebase.client.ts
+app/styles/.DS_Store
+firebase-account.json
+package-lock.json
