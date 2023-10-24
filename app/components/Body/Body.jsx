@@ -7,12 +7,12 @@ const Body = () => {
   return (
     <div className="mainContent">
         <div className="bottom flex">
+            <Activity/>
             <div className="row mb-xl">
                 <div className="col-10">
                     <News/>
                 </div>
             </div>
-            <Activity/>
         </div>
     </div>
   )

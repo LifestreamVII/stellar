@@ -11,3 +11,6 @@ app/firebase.client.ts
 app/styles/.DS_Store
 firebase-account.json
 package-lock.json
+code.js
+package-lock.json
+.DS_Store

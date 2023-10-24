@@ -1,0 +1,59 @@
+.container-fluid.profile{
+    /* background:  */
+    --background: url("http://google.com");
+    background: linear-gradient(0deg, #154eadf5 0%, #071b3e96 105%), var(--background);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 80px 0 0 0!important;
+    border-bottom: solid 1px white;
+}
+
+.profile-info{
+    position: relative;
+    bottom: 0;
+    transform: translateY(50%);
+    padding: 20px 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    left: 0;
+}
+
+.profile-picture{
+    width: 15%;
+    position: relative;
+    margin: auto 0;
+    min-width: 250px;
+    max-width: 320px;
+    background: var(--c-stellar);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: solid 4px white;
+}
+
+.profile-picture > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.profile-info > .profile-name{
+    margin-left: 15px;
+}
+
+.profile-info > .profile-name *{
+    text-align: left;
+}
+
+.profile-stats {
+    margin-left: auto;
+}
+
+.profile-quote{
+    position: absolute;
+    top: 18%;
+}
