@@ -27,11 +27,11 @@ import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { auth } from "~/firebase.client";
 import { onAuthStateChanged } from "firebase/auth";
-import { verifyUser } from "~/guard/guard";
+import { checkUser } from "~/guard/guard";
 
 
 export const loader: LoaderFunction = async ({ request }) => {
-  let user = await verifyUser(request);
+  let user = await checkUser(request);
   if (user) {
     return user;
   } else {

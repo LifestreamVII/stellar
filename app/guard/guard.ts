@@ -34,6 +34,28 @@ async function verifyUser(request: Request) {
     }
 }
 
+async function checkUser(request: Request) {
+  const jwt = await session.parse(request.headers.get("Cookie"));
+
+  if (jwt) {    
+    try {
+      const user = await serverAuth.verifySessionCookie(jwt);
+      
+      if (user.uid){
+        return user;
+      }
+            
+    } catch (e: any) {
+      // Invalid JWT or any other Err
+      console.error(e);
+      throw json({ message: "Forbidden" }, { status: 403 });
+    }
+  }
+
+  return null;
+
+}
+
 function requireHTTPS(request: Request) {
   let url = new URL(request.url);
   if (url.protocol === "https:") return;
@@ -41,4 +63,4 @@ function requireHTTPS(request: Request) {
   throw redirect(url.toString());
 }
   
-export {verifyUserRole, verifyUser, requireHTTPS}
+export {checkUser, verifyUserRole, verifyUser, requireHTTPS}
