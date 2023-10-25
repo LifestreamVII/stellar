@@ -62,7 +62,7 @@ export default function App() {
       </head>
       {loading === false ? (
         <body>
-          <Navigation />
+          <Navigation user={user ? true : false} />
           <div>
             <Header user={user ?? null} />
           </div>
