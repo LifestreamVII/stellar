@@ -20,3 +20,102 @@
     gap: 2rem;
     align-items: flex-start;
 }
+
+/* Welcome screen */
+
+body{
+  background: linear-gradient(rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.0) 20%, rgba(0, 0, 0, 1.0) 100% ), url("/backw-s.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.welcome-container {
+  background: var(--g-block);
+  padding: 50px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border: solid 1px #82828221;
+  box-shadow: -19px -7px 82px #000000a3;
+}
+
+.logo {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.input-group input{
+  border-radius: 12px;
+  background: var(--g-nav-hov);
+  border: solid 1px #295381cc;
+  height: 50px;
+  font-size: 17px;
+}
+
+.input-group input::placeholder{
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 600;
+  color: #ffffff54;
+}
+
+.input-group-prepend-text {
+    background-color: #4e5d94;
+    color: #fff;
+    border: none;
+}
+
+.input-group-text {
+    background-color: #4e5d94;
+    color: #fff;
+    border: none;
+}
+
+.login-btn {
+    background-color: #4e5d94;
+    color: #fff;
+    border: none;
+}
+
+.left-content {
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  border: solid 1px #005dc33d;
+  background: #020f1ca1;
+}
+
+.left-content h1 {
+    font-size: 32px;
+    margin-top: 20px;
+}
+
+.spotify-icon {
+    font-size: 80px;
+    color: #1DB954;
+}
+
+.spotify-description {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.img-container {
+    text-align: center;
+}
+
+.img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.actions{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -2,7 +2,21 @@ import Body from "~/components/Body/Body.jsx";
 import body from "~/styles/system/body.css";
 import top from "~/styles/top/news.css";
 import activity from "~/styles/activity/activity.css";
+import { useOutletContext } from "@remix-run/react";
+import { LoaderFunction } from "@remix-run/node";
+import { verifyUser } from "~/guard/guard";
+import { redirect } from "@remix-run/node";
 
+export const loader: LoaderFunction = async ({ request }) => {
+  try {
+    let user = await verifyUser(request);
+    // code here will only run if user is signed in
+    return user;
+  }
+  catch (e) {
+    return redirect("/login");
+  }
+};
 
 export const meta = () => {
   return [
@@ -20,9 +34,17 @@ export function links() {
 }
 
 export default function Index() {
+  const user = useOutletContext();
+
   return (
     <div className="container">
-      <Body />
+      {
+        user ? (
+          <Body />
+        ) : (
+          ""
+        )
+      }
     </div>
   );
 }

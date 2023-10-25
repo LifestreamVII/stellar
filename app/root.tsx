@@ -66,7 +66,7 @@ export default function App() {
           <div>
             <Header user={user ?? null} />
           </div>
-          <Outlet />
+          <Outlet context={user ?? null} />
           <ScrollRestoration />
           <Scripts />
           <LiveReload />
