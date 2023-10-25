@@ -1,0 +1,75 @@
+.registerBlock {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  margin: 12% auto;
+  border-radius: 10px;
+  background-image: linear-gradient(rgba(2, 22, 47, 0.5125),rgba(2, 22, 47, 0.5125)), radial-gradient(circle, rgba(0, 81, 146, 0.50625) 0%,rgba(0, 81, 146, 0) 100%);
+  border: 3px solid rgba(255, 255, 255, 0.0663);
+  padding: 20px 32px;
+}
+
+.registerHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1.5px var(--c-dgray-alpha);
+  flex-flow: row wrap;
+  margin: 20px 0;
+  margin-bottom: 40px;
+}
+
+.logo{
+  width: 200px;
+}
+
+.registerHeader > .text{
+  text-align: right;
+  flex-basis: 240px;
+}
+@media screen and (max-width: 785px) { 
+  .registerHeader > .text > p{ text-align: left; margin: 0;}
+}
+
+
+.registerForm{
+  gap: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin:  40px 30px;
+}
+
+.registerForm > .form {
+  flex: 1;
+  flex-basis: 160px;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: column;
+  margin-left: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registerForm > .form > input{
+  padding: 10px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.registerForm > .description{
+  flex: 1.6;
+  flex-basis: 240px;
+  margin-right: auto;
+  flex-basis: 200px;
+  padding-left: 20px;
+  border-left: solid 2px var(--c-stellar);
+}
+
+.registerForm > .description > .actions{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}

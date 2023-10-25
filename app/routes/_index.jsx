@@ -13,16 +13,16 @@ export const meta = () => {
 
 export function links() {
   return [
-    {rel: "stylesheet", href: body},
-    {rel: "stylesheet", href: top},
-    {rel: "stylesheet", href: activity},
+    { rel: "stylesheet", href: body },
+    { rel: "stylesheet", href: top },
+    { rel: "stylesheet", href: activity },
   ]
 }
 
 export default function Index() {
   return (
     <div className="container">
-        <Body/>
+      <Body />
     </div>
   );
 }

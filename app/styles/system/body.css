@@ -5,6 +5,16 @@
     margin: auto;
 }
 
+.modal-fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: #0000009c;
+  width: 100vw;
+  height: 100vh;
+}
+
 .bottom{
     margin-top:  2rem;
     gap: 2rem;

@@ -9,7 +9,9 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import { cssBundleHref } from "@remix-run/css-bundle";
+import type { LinksFunction } from "@remix-run/node";
 
 import base from "~/styles/system/main.css";
 import grid from "~/styles/system/grid.css";
@@ -59,37 +61,36 @@ export default function App() {
         <Links />
       </head>
       {loading === false ? (
-      <body>
-        <Navigation/>
-        <div>
-          <Header user={user ?? null}/>
-        </div>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
+        <body>
+          <Navigation />
+          <div>
+            <Header user={user ?? null} />
+          </div>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </body>
       ) : (
-      <body>
-        <Scripts />
-        <LiveReload />
-        <LoadingScreen />
-      </body>
+        <body>
+          <Scripts />
+          <LiveReload />
+          <LoadingScreen />
+        </body>
       )}
     </html>
   );
 }
 
-export function links() {
-  return [
-    {rel: "stylesheet", href: pico},
-    {rel: "stylesheet", href: base},
-    {rel: "stylesheet", href: centra},
-    {rel: "stylesheet", href: kross},
-    {rel: "stylesheet", href: grid},
-    {rel: "stylesheet", href: nav},
-    {rel: "stylesheet", href: header},
-    {rel: "stylesheet", href: tooltip},
-    {rel: "stylesheet", href: stellar},
-  ]
-}
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: cssBundleHref },
+  { rel: "stylesheet", href: pico },
+  { rel: "stylesheet", href: base },
+  { rel: "stylesheet", href: centra },
+  { rel: "stylesheet", href: kross },
+  { rel: "stylesheet", href: grid },
+  { rel: "stylesheet", href: nav },
+  { rel: "stylesheet", href: header },
+  { rel: "stylesheet", href: tooltip },
+  { rel: "stylesheet", href: stellar },
+]
