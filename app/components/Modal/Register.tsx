@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import css from "./register.module.css";
 
-const Register = () => {
+const Register = ({ closeRegister }) => {
   return (
     <div className='row '>
       <div className="col-12 col-md-6 p-none">
         <div className={css.registerBlock}>
+          <div>
+            <button onClick={closeRegister} className={css.closeBtn}>
+              <a className={css.close}></a>
+            </button>
+          </div>
           <div className={css.registerHeader}>
             <div className={css.logo}>
               <img src="stellar.png" alt="logo" />
