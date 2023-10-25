@@ -1,9 +1,12 @@
 import { auth as serverAuth } from "~/firebase.server";
 import { ActionFunction } from "@remix-run/node";
+import { LoaderFunction } from "@remix-run/node";
+import { checkUser } from "~/guard/guard";
 import { redirect } from "@remix-run/node";
 import { session } from "~/cookies";
 import { Welcome } from "~/components/Body/Welcome";
 import body from "~/styles/system/body.css";
+import background from "~/styles/system/backgrounds/login.css";
 
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData();
@@ -24,6 +27,22 @@ export const action: ActionFunction = async ({ request }) => {
   });
 };
 
+export const loader: LoaderFunction = async ({ request }) => {
+  try {
+    let user = await checkUser(request);
+    if (user) {
+      return redirect("/");
+    }
+    else {
+      return null;
+    }
+  }
+  catch (e) {
+    return null;
+  }
+};
+
+
 export default function Login() {
   return (
 
@@ -38,5 +57,6 @@ export default function Login() {
 export function links() {
   return [
     { rel: "stylesheet", href: body },
+    { rel: "stylesheet", href: background },
   ]
 }

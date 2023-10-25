@@ -23,14 +23,6 @@
 
 /* Welcome screen */
 
-body{
-  background: linear-gradient(rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.0) 20%, rgba(0, 0, 0, 1.0) 100% ), url("/backw-s.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-}
-
 .welcome-container {
   background: var(--g-block);
   padding: 50px;
