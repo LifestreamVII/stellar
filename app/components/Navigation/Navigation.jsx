@@ -1,6 +1,14 @@
 import { NavLink } from "@remix-run/react";
 import Tooltip from "~/components/Tooltip";
 
+import { Await } from "@remix-run/react";
+import { Suspense } from "react";
+
+import { useEffect, useState } from "react";
+
+import { getCommunities } from "~/scripts/useUser";
+import { getCommunity } from "~/scripts/useCommunity";
+
 import {
   FaHome,
   FaEnvelopeOpenText,
@@ -10,14 +18,47 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
-function Navigation(props) {
+const Navigation = (props) => {
+
+  const [communities, setCommunities] = useState([]);
+
+  const fetchCommunities = async () => {
+    console.log("fetching comms..............")
+    if (props.user) {
+      const communityIds = await getCommunities();
+      console.log(communityIds);
+      const communitiesData = await Promise.all(
+        communityIds.map((id) => getCommunity(id))
+      );
+      setCommunities(communitiesData);
+      console.log(communities);
+    }
+  };
+
+  useEffect(() => {
+    fetchCommunities();
+  }, []);
+
   return props.user ? (
     <aside>
       <nav>
         <menu>
           <ul className="topMenu">
-            <li className="logo">
-              <NavLink to="/" className="navbar__logo--sm" title="Logo" />
+            <li className="communities">
+              <details role="list">
+                <summary aria-haspopup="listbox"></summary>
+                <ul role="listbox">
+                  <Suspense fallback={<p>u smell</p>}>
+                    <Await resolve={communities}>
+                      {(communities) =>
+                        communities.map((community) => (
+                          <li key={community.id}><a>{community.displayName}</a></li>
+                        ))
+                      }
+                    </Await>
+                  </Suspense>
+                </ul>
+              </details>
             </li>
           </ul>
           <ul className='mainMenu'>

@@ -23,7 +23,7 @@ import header from "~/styles/system/nav.css";
 import tooltip from "~/styles/system/tooltip.css";
 import Navigation from "./components/Navigation/Navigation";
 import Header from "~/components/Body/Header/Header";
-import LoadingScreen from './loading'
+import SplashScreen from './splash'
 
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
@@ -75,7 +75,7 @@ export default function App() {
         <body>
           <Scripts />
           <LiveReload />
-          <LoadingScreen />
+          <SplashScreen />
         </body>
       )}
     </html>

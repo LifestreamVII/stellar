@@ -88,3 +88,32 @@ a.navbar__logo--sm{
     background-size: 100%;
     background-position: center;
 }
+
+
+li.communities {
+    width: 100%;
+    /* background: white; */
+}
+
+.communities > details {text-align: left;}
+
+.communities summary {
+    justify-content: center!important;
+    background: none;
+    background-color: none;
+    background: none!important;
+    border: solid 2px #ffffff29!important;
+    width: fit-content;
+    text-align: center!important;
+    margin: 0px auto!important;
+    padding: 5px 5px!important;
+    border-radius: 50%!important;
+}
+
+.communities > details > summary:after {
+    margin: auto auto;
+    margin: 21%;
+    aspect-ratio: 1/1;
+    width: 40px;
+    height: auto;
+}

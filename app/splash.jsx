@@ -1,4 +1,4 @@
-export default function LoadingScreen() {
+export default function SplashScreen() {
   return (
         <div className='splash'>
             <div class="splash-logo">
