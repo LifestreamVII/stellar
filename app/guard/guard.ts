@@ -1,59 +1,130 @@
-import { redirect, json } from "@remix-run/node";
+// ...............
+// Imports & Setup
+// ...............
+
+
+import { createCookieSessionStorage, redirect, json, Session } from '@remix-run/node';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import { collection, getDocs } from "firebase/firestore"; 
+import { auth as clientAuth, db } from '~/utils/firebase.config';
+import { getAuth } from 'firebase/auth';
 import { session } from "~/cookies";
 import { auth as serverAuth } from "~/firebase.server";
 
 
-async function verifyUserRole(request: Request, expectedRole: string) {
-  let user = null // somehow get the user
-  //if (user?.role === expectedRole) return user;
-  throw json({ message: "Forbidden" }, { status: 403 });
+// ...............
+// Session Setup
+// ...............
+
+// Retrieve the session secret from the environment variables
+const sessionSecret = 'some secret';
+
+// Throw an error if the session secret is not set
+if (!sessionSecret) {
+    throw new Error('SESSION_SECRET must be set');
 }
 
-async function verifyUser(request: Request) {
-  // Get the cookie value (JWT)
-  const jwt = await session.parse(request.headers.get("Cookie"));
+// Define the structure of the login data
+type Login = {
+    username: string;
+    password: string;
+}
 
-  // No JWT found...
-  if (!jwt) {
-    throw json({ message: "Forbidden" }, { status: 403 });
-  }
+// Define the structure of the Admin object
+type Admin = {
+    userId: string;
+}
 
+// Create session management functions using cookie storage
+let { getSession, commitSession, destroySession } = createCookieSessionStorage({
+  cookie: {
+    name: '__session',
+    //secure: true, // HTTPS Only
+    secure: false,
+    secrets: [sessionSecret],
+    sameSite: 'lax', // to help with CSRF
+    maxAge: 60 * 60 * 24 * 5, // 5 days
+    httpOnly: true,
+  },
+});
+
+// ..............................
+// Auth and User functions
+// ..............................
+
+// Function to get the user session from the request
+async function getUserSession(request: Request) {
+  return await getSession(request.headers.get('Cookie'));
+}
+
+async function checkSessionCookie(session: Session) {
   try {
-    const user = await serverAuth.verifySessionCookie(jwt);
-
-    if (!user.uid) {
-      throw json({ message: "Forbidden" }, { status: 403 });
-    }
-    else {
-      return user;
-    }
-  } catch (e: any) {
-    // Invalid JWT or any other Err
-    console.error(e);
-    throw json({ message: "Forbidden" }, { status: 403 });
+    const decodedIdToken = await serverAuth.verifySessionCookie(session.get('session') || '' );
+    return decodedIdToken;
+  } catch (e) {
+    console.log(e);
+    return { uid: undefined };
   }
+};
+
+async function requireAuth(request: Request, redirectTo = new URL(request.url).pathname) {
+  const session = await getSession(request.headers.get('Cookie'));
+  const { uid } = await checkSessionCookie(session);
+  if (!uid) {
+    const searchParams = new URLSearchParams([
+      ["redirectTo", redirectTo],
+    ]);
+    throw redirect(`/login?${searchParams}`);
+  }
+  return serverAuth.getUser(uid);
+};
+
+
+async function getUserId(request: Request) {
+  const session = await getSession(request.headers.get('Cookie'));
+  const { uid } = await checkSessionCookie(session);
+  if (!uid || typeof uid !== "string") return null;
+  return uid;
 }
 
-async function checkUser(request: Request) {
-  const jwt = await session.parse(request.headers.get("Cookie"));
+// Function to sign in a user with email and password
+async function signInUser({username, password}: Login) {
+  const { user } = await signInWithEmailAndPassword(
+    clientAuth,
+    username,
+    password
+  );
 
-  if (jwt) {
-    try {
-      const user = await serverAuth.verifySessionCookie(jwt);
+  const idToken = await user.getIdToken();
+  const expiresIn = 1000 * 60 * 60 * 24 * 7; // 1 week
+  const sessionCookie = await serverAuth.createSessionCookie(idToken, {
+    expiresIn,
+  });
+  return { sessionCookie, user };
+}
 
-      if (user.uid) {
-        return user;
-      }
+// Function to check if a user is an admin based on their user ID
+const userIsAdmin = async (userId: string): Promise<Boolean> => {
+  const admins = await getDocs(collection(db, "admins"));
+  return admins.docs.some((admin: any) => {
+      return admin.data().userId === userId;
+  });
+};
 
-    } catch (e: any) {
-      // Invalid JWT or any other Err
-      console.error(e);
-      throw json({ message: "Forbidden" }, { status: 403 });
-    }
+
+// Function to log out the user and destroy the session
+async function logout(request: Request) {
+  const session = await getUserSession(request);
+  try {
+      await signOut(clientAuth);
+      return redirect("/login", {
+          headers: {
+              "Set-Cookie": await destroySession(session),
+          },
+      });
+  } catch(error) {
+      console.log(error);
   }
-
-  return null;
-
 }
 
 function requireHTTPS(request: Request) {
@@ -63,4 +134,5 @@ function requireHTTPS(request: Request) {
   throw redirect(url.toString());
 }
 
-export { checkUser, verifyUserRole, verifyUser, requireHTTPS }
+
+export { requireHTTPS, getSession, getUserSession, signInUser, userIsAdmin, logout, requireAuth, getUserId, checkSessionCookie, commitSession }

@@ -12,6 +12,7 @@ import {
 import { useState, useEffect } from 'react'
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
+import { json, redirect } from '@remix-run/node';
 
 import base from "~/styles/system/main.css";
 import grid from "~/styles/system/grid.css";
@@ -27,25 +28,38 @@ import SplashScreen from './splash'
 
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { auth } from "~/firebase.client";
-import { onAuthStateChanged } from "firebase/auth";
-import { checkUser } from "~/guard/guard";
-
+import { getSession, checkSessionCookie, commitSession } from "./guard/guard";
+import { getCommunities } from "~/scripts/useUser";
+import { getCommunity } from "~/scripts/useCommunity";
 
 export const loader: LoaderFunction = async ({ request }) => {
-  let user = await checkUser(request);
-  if (user) {
-    return user;
-  } else {
-    return null;
+  const session = await getSession(request.headers.get('Cookie'));
+  const user = await checkSessionCookie(session);
+  const headers = {
+    'Set-Cookie': await commitSession(session)
+  };
+  if (typeof user === "object" && user.uid) {
+    const fetchCommunities = async () => {
+      console.log("fetching comms..............")
+      const communityIds = await getCommunities(user);
+      console.log(communityIds);
+      const communitiesData = await Promise.all(
+        communityIds.map((id) => getCommunity(id))
+      );
+      return communitiesData;
+    };
+    const communities = await fetchCommunities();
+    // return get user from db
+    return json({user, communities});
   }
+  return null;
 }
 
 export default function App() {
 
   const [loading, setLoading] = useState(false)
 
-  const user = useLoaderData<typeof loader>();
+  const {user, communities} = useLoaderData<typeof loader>();
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500)
@@ -62,7 +76,7 @@ export default function App() {
       </head>
       {loading === false ? (
         <body>
-          <Navigation user={user ? true : false} />
+          <Navigation user={user ? true : false} communities={communities ?? {}} />
           <div>
             <Header user={user ?? null} />
           </div>

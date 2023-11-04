@@ -1,4 +1,4 @@
-import { db } from "~/firebase.client";
+import { db } from "~/utils/firebase.config";
 import { doc, getDoc } from "firebase/firestore";
 
 async function getCommunity(communityId: string) {

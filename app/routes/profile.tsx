@@ -1,19 +1,21 @@
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { verifyUser } from "~/guard/guard";
+import { requireAuth } from "~/guard/guard";
 import profile from "~/styles/user/profile.css";
-
+import { json } from "@remix-run/node"; // or cloudflare/deno
 
 export const loader: LoaderFunction = async ({ request }) => {
-  let user = await verifyUser(request);
-  // code here will only run if user is signed in
-  return user;
-};
+  const user = await requireAuth(request);
+  //const userData = await getUser(uid);
+  return json({
+    user
+  })
+}
 
 export default function Profile() {
-  const data = useLoaderData<typeof loader>();
+  const {user: data} = useLoaderData<typeof loader>();
   return (
-    <div className="container-fluid profile" style={{ "--background": "url(" + data.picture ?? "https://pbs.twimg.com/media/FuNWEzlWcAEui0L.jpg" + ")" } as React.CSSProperties}>
+    <div className="container-fluid profile" style={{ "--background": "url(" + data.photoURL ?? "https://pbs.twimg.com/media/FuNWEzlWcAEui0L.jpg" + ")" } as React.CSSProperties}>
       <div className="row">
         <div className="profile-quote col-8 u__align--center">
           <h5><i>Inabakumori’s career started with “Secret Music” on February 22, 2016 and has posted twenty two songs since then</i></h5>
@@ -23,10 +25,10 @@ export default function Profile() {
         <div className="col-10">
           <div className="profile-info">
             <div className="profile-picture">
-              <img src={data.picture ?? "https://pbs.twimg.com/media/FuNWEzlWcAEui0L.jpg"} alt="" />
+              <img src={data.photoURL ?? "https://pbs.twimg.com/media/FuNWEzlWcAEui0L.jpg"} alt="" />
             </div>
             <div className="profile-name">
-              <h1 className="mb-none">{data.name ?? "NoName"}</h1>
+              <h1 className="mb-none">{data.displayName ?? "NoName"}</h1>
               <p>Regular account · Paris, France</p>
             </div>
             <div className="profile-stats mb-m">

@@ -6,8 +6,6 @@ import { Suspense } from "react";
 
 import { useEffect, useState } from "react";
 
-import { getCommunities } from "~/scripts/useUser";
-import { getCommunity } from "~/scripts/useCommunity";
 
 import {
   FaHome,
@@ -20,25 +18,6 @@ import {
 
 const Navigation = (props) => {
 
-  const [communities, setCommunities] = useState([]);
-
-  const fetchCommunities = async () => {
-    console.log("fetching comms..............")
-    if (props.user) {
-      const communityIds = await getCommunities();
-      console.log(communityIds);
-      const communitiesData = await Promise.all(
-        communityIds.map((id) => getCommunity(id))
-      );
-      setCommunities(communitiesData);
-      console.log(communities);
-    }
-  };
-
-  useEffect(() => {
-    fetchCommunities();
-  }, []);
-
   return props.user ? (
     <aside>
       <nav>
@@ -48,15 +27,11 @@ const Navigation = (props) => {
               <details role="list">
                 <summary aria-haspopup="listbox"></summary>
                 <ul role="listbox">
-                  <Suspense fallback={<p>u smell</p>}>
-                    <Await resolve={communities}>
-                      {(communities) =>
-                        communities.map((community) => (
-                          <li key={community.id}><a>{community.displayName}</a></li>
-                        ))
-                      }
-                    </Await>
-                  </Suspense>
+                    {                 
+                      props.communities.map((community) =>
+                        <li key={community.id}><a>{community.displayName}</a></li>
+                      )
+                    }
                 </ul>
               </details>
             </li>
