@@ -35,6 +35,9 @@ import { getCommunity } from "~/scripts/useCommunity";
 export const loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
   const user = await checkSessionCookie(session);
+  const headers = {
+    'Set-Cookie': await commitSession(session)
+  };
   if (typeof user === "object" && user.uid) {
     const fetchCommunities = async () => {
       console.log("fetching comms..............")
@@ -49,7 +52,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     // return get user from db
     return json({ user, communities });
   }
-  return null;
+  return json({ user, communities: [] });
 }
 
 export default function App() {
