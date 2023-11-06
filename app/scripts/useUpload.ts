@@ -1,38 +1,31 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { auth } from '~/utils/firebase.config';
+import { getUserId, userHasRole } from '~/guard/guard';
 
-// Define the structure of the user role
-type Role = {
-  SongUploader: boolean;
-  ImageUploader: boolean;
-  VideoUploader: boolean;
-};
-
-const userRoles: Record<string, Role> = {
-  "user1": { SongUploader: true, ImageUploader: false, VideoUploader: false },
-  "user2": { SongUploader: false, ImageUploader: true, VideoUploader: false },
-  "user3": { SongUploader: false, ImageUploader: false, VideoUploader: true },
-};
+type Usage = "song" | "image" | "video";
 
 const storage = getStorage();
 
-async function uploadFile(usage: string, file: File) {
-  const currentUserRole = userRoles[auth.currentUser.uid]; // Assume that current user is logged in Firebase Auth.
-  if (!currentUserRole) {
-    throw new Error("The current user does not have any roles.");
+export async function uploadFile(usage: Usage, file: File, request: Request) {
+  const uid = await getUserId(request);
+  if (!uid) {
+    throw new Error("No UID found");
   }
-  const allowedFileTypesPerUsage = {
+
+  const allowedFileTypesPerUsage: Record<Usage, string[]> = {
     "song": ["audio/mpeg", "audio/wav"],
     "image": ["image/jpeg", "image/png"],
     "video": ["video/mp4"],
   };
-  const maxFileSizePerUsage = {
+  const maxFileSizePerUsage: Record<Usage, number> = {
     "song": 5 * 1024 * 1024, // 5MB
     "image": 2 * 1024 * 1024, // 2MB
     "video": 50 * 1024 * 1024, // 50MB
   };
-  if (!currentUserRole[`${usage}Uploader`]) {
-    throw new Error(`Current user is not a ${usage} upload role.`);
+
+  const hasRole = await userHasRole(uid, `${usage}Uploader`);
+
+  if (!hasRole) {
+    throw new Error(`Current user does not have ${usage} upload role.`);
   }
   if (!allowedFileTypesPerUsage[usage].includes(file.type)) {
     throw new Error(`Input file type ${file.type} is not valid for usage '${usage}'. Required: ${allowedFileTypesPerUsage[usage].join(", ")}`);

@@ -1,7 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import {
-  getAuth
+  getAuth, Auth
 } from 'firebase/auth';
 import { getDatabase } from "firebase/database";
 
@@ -19,7 +19,7 @@ const firebaseConfig = {
 // Initialize Firebase
 let app;
 let db;
-let auth
+let auth: Auth;
 let rt;
 
 app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();

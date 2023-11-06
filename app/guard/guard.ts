@@ -103,12 +103,19 @@ async function signInUser({ username, password }: Login) {
   return { sessionCookie, user };
 }
 
-// Function to check if a user is an admin based on their user ID
-const userIsAdmin = async (userId: string): Promise<Boolean> => {
-  const admins = await getDocs(collection(db, "admins"));
-  return admins.docs.some((admin: any) => {
-    return admin.data().userId === userId;
-  });
+const userHasRole = async (userId: string | null, role: string): Promise<Boolean> => {
+  try {
+    if (!userId) return false;
+    const userRecord = await serverAuth.getUser(userId);
+    if (userRecord.customClaims && userRecord.customClaims['roles'] && userRecord.customClaims['roles'][role] === true) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 };
 
 
@@ -135,4 +142,4 @@ function requireHTTPS(request: Request) {
 }
 
 
-export { requireHTTPS, getSession, getUserSession, signInUser, userIsAdmin, logout, requireAuth, getUserId, checkSessionCookie, commitSession }
+export { requireHTTPS, getSession, getUserSession, signInUser, userHasRole, logout, requireAuth, getUserId, checkSessionCookie, commitSession }
