@@ -5,7 +5,7 @@
 
 import { createCookieSessionStorage, redirect, json, Session } from '@remix-run/node';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs } from "firebase/firestore";
 import { auth as clientAuth, db } from '~/utils/firebase.config';
 import { getAuth } from 'firebase/auth';
 import { session } from "~/cookies";
@@ -21,18 +21,18 @@ const sessionSecret = 'some secret';
 
 // Throw an error if the session secret is not set
 if (!sessionSecret) {
-    throw new Error('SESSION_SECRET must be set');
+  throw new Error('SESSION_SECRET must be set');
 }
 
 // Define the structure of the login data
 type Login = {
-    username: string;
-    password: string;
+  username: string;
+  password: string;
 }
 
 // Define the structure of the Admin object
 type Admin = {
-    userId: string;
+  userId: string;
 }
 
 // Create session management functions using cookie storage
@@ -59,7 +59,7 @@ async function getUserSession(request: Request) {
 
 async function checkSessionCookie(session: Session) {
   try {
-    const decodedIdToken = await serverAuth.verifySessionCookie(session.get('session') || '' );
+    const decodedIdToken = await serverAuth.verifySessionCookie(session.get('session') || '');
     return decodedIdToken;
   } catch (e) {
     console.log(e);
@@ -88,7 +88,7 @@ async function getUserId(request: Request) {
 }
 
 // Function to sign in a user with email and password
-async function signInUser({username, password}: Login) {
+async function signInUser({ username, password }: Login) {
   const { user } = await signInWithEmailAndPassword(
     clientAuth,
     username,
@@ -107,7 +107,7 @@ async function signInUser({username, password}: Login) {
 const userIsAdmin = async (userId: string): Promise<Boolean> => {
   const admins = await getDocs(collection(db, "admins"));
   return admins.docs.some((admin: any) => {
-      return admin.data().userId === userId;
+    return admin.data().userId === userId;
   });
 };
 
@@ -116,14 +116,14 @@ const userIsAdmin = async (userId: string): Promise<Boolean> => {
 async function logout(request: Request) {
   const session = await getUserSession(request);
   try {
-      await signOut(clientAuth);
-      return redirect("/login", {
-          headers: {
-              "Set-Cookie": await destroySession(session),
-          },
-      });
-  } catch(error) {
-      console.log(error);
+    await signOut(clientAuth);
+    return redirect("/login", {
+      headers: {
+        "Set-Cookie": await destroySession(session),
+      },
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 

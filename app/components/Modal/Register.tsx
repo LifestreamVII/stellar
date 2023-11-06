@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import css from "./register.module.css";
 
-const Register = ({ closeRegister }) => {
+type Props = {
+  closeRegister: Function;
+}
+
+const Register = ({ closeRegister }: Props) => {
   return (
     <div className='row '>
       <div className="col-12 col-md-6 p-none">
