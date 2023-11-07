@@ -1,11 +1,16 @@
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getUserId, userHasRole } from '~/guard/guard';
+import { auth } from '../firebase.server';
+import { storage } from '../utils/firebase.config'
 
 type Usage = "song" | "image" | "video";
 
-const storage = getStorage();
-
 export async function uploadFile(usage: Usage, file: File, request: Request) {
+
+  if (!file) {
+    throw new Error("No file found");
+  }
+
   const uid = await getUserId(request);
   if (!uid) {
     throw new Error("No UID found");
@@ -34,14 +39,14 @@ export async function uploadFile(usage: Usage, file: File, request: Request) {
     throw new Error(`Input file exceeds the maximum size (${maxFileSizePerUsage[usage] / 1024 / 1024}MB) for usage '${usage}'.`);
   }
   const storageRef = ref(storage, `${usage}/${file.name}`);
-  const uploadTask = uploadBytesResumable(storageRef, file);
-  uploadTask.on('state_changed', (snapshot) => {
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-  }, (error) => {
-    console.log('Upload failed with error: ' + error);
-  }, async () => {
-    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-    console.log('File available at', downloadURL);
-  });
+  console.log(file);
+  console.log(`Size: ${file.size}`);
+  console.log(`Type: ${file.type}`);
+  try {
+    uploadBytes(storageRef, new Uint8Array(await file.arrayBuffer()), { contentType: "audio/wav" }).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+    });
+  } catch (err) {
+    console.log(err);
+  }
 }

@@ -4,7 +4,7 @@ import {
   getAuth, Auth
 } from 'firebase/auth';
 import { getDatabase } from "firebase/database";
-
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -21,10 +21,12 @@ let app;
 let db;
 let auth: Auth;
 let rt;
+let storage;
 
 app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 db = getFirestore(app); // new
 auth = getAuth(app)
 rt = getDatabase(app)
+storage = getStorage(app)
 
-export { app, db, auth, rt };
+export { app, db, auth, rt, storage };

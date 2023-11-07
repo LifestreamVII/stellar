@@ -18,16 +18,30 @@ const Body = () => {
   }
 
   const fileInputRef = useRef(null);
-
   const onButtonClick = () => {
     if (fileInputRef.current) fileInputRef.current.click();
   };
-
+  const handleFileUpload = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const response = await fetch('/upload', { // update this to your uploading endpoint
+        method: 'POST',
+        body: formData
+      });
+      if (!response.ok) {
+        throw new Error('Reply from server was not ok');
+      }
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleFileChange = (event) => {
     const file = event.target.files[0];  // assuming single file selection
-    const usage = 'song';  // defined in task
     if (file) {
-      uploadFile(usage, file);
+      handleFileUpload(file);
     }
   };
 

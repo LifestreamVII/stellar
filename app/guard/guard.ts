@@ -107,7 +107,7 @@ const userHasRole = async (userId: string | null, role: string): Promise<Boolean
   try {
     if (!userId) return false;
     const userRecord = await serverAuth.getUser(userId);
-    if (userRecord.customClaims && userRecord.customClaims['roles'] && userRecord.customClaims['roles'][role] === true) {
+    if (userRecord.customClaims && userRecord.customClaims['role'] && userRecord.customClaims['role'][role] === true) {
       return true;
     } else {
       return false;
