@@ -29,10 +29,10 @@ const Body = () => {
         method: 'POST',
         body: formData
       });
-      if (!response.ok) {
-        throw new Error('Reply from server was not ok');
-      }
       const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error);
+      }
       console.log(result);
     } catch (err) {
       console.log(err);

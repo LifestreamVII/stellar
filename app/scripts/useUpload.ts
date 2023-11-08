@@ -1,4 +1,4 @@
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { getUserId, userHasRole } from '~/guard/guard';
 import { auth } from '../firebase.server';
 import { storage } from '../utils/firebase.config'
@@ -43,8 +43,15 @@ export async function uploadFile(usage: Usage, file: File, request: Request) {
   console.log(`Size: ${file.size}`);
   console.log(`Type: ${file.type}`);
   try {
-    uploadBytes(storageRef, new Uint8Array(await file.arrayBuffer()), { contentType: "audio/wav" }).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
+    const uploadTask = uploadBytesResumable(storageRef, new Uint8Array(await file.arrayBuffer()));
+    uploadTask.on('state_changed', (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+    }, (error) => {
+      console.log('Upload failed with error: ' + error);
+    }, async () => {
+      const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+      console.log('File available at', downloadURL);
     });
   } catch (err) {
     console.log(err);
