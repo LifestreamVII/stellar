@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import css from "~/styles/setup.css";
 
 export function links() {
@@ -7,7 +7,14 @@ export function links() {
   ]
 }
 
+
 const setup = () => {
+  const [selectedCard, setSelectedCard] = useState(2);
+  
+  const toggleSelected = (index) => {
+    setSelectedCard(selectedCard === index ? null : index);
+  };
+
   return (
     <div>
     <div className="container mt-l u__align--center">
@@ -16,21 +23,33 @@ const setup = () => {
     </div>
     <div className="card-scroll-container container-fluid u__align--center">
         {/* Repeat for each grid item */}
-        <div className="card">
+        <div 
+        key={1}
+        className={`card ${selectedCard === 1 ? 'selected' : ''}`}
+        onClick={() => toggleSelected(1)}
+        >
           <div className="stellar-icon-bg">
             <img src="https://placehold.co/200x200" alt="Music note icon with a vibrant gradient background" className="stellar-icon" />
           </div>
           <h2 className="stellar-subtitle">CREATE</h2>
           <p className="stellar-text">This is the right option for artists who want to register on the platform and upload their content.</p>
         </div>
-        <div className="card">
+        <div
+          key={2}
+          className={`card ${selectedCard === 2 ? 'selected' : ''}`}
+          onClick={() => toggleSelected(2)}
+        >
           <div className="stellar-icon-bg">
             <img src="https://placehold.co/200x200" alt="Music note icon with a vibrant gradient background" className="stellar-icon" />
           </div>
           <h2 className="stellar-subtitle">LISTENING</h2>
           <p className="stellar-text">If you don't plan on creating content on the platform and you only seek to support artists and listen to their music, this choice is best for you.</p>
         </div>
-        <div className="card">
+        <div
+            key={3}
+            className={`card ${selectedCard === 3 ? 'selected' : ''}`}
+            onClick={() => toggleSelected(3)}
+        >
           <div className="stellar-icon-bg">
             <img src="https://placehold.co/200x200" alt="Music note icon with a vibrant gradient background" className="stellar-icon" />
           </div>
