@@ -1,0 +1,88 @@
+.card-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 10vw; /* Padding to allow half cards on the sides */
+}
+.card {
+    display: inline-block;
+    width: 80vw; /* Large width for larger cards */
+    max-width: 520px;
+    height: 80vh; /* Maintain square aspect ratio */
+    max-height: 600px;
+    margin-right: 1rem;
+    padding: 2rem;
+    white-space: wrap;
+    vertical-align: top;
+    border-radius: 10px;
+    background: var(--g-block);
+    border: solid 1.2px var(--c-stellar);
+    box-shadow: var(--sh-default);
+    text-align: center;
+}
+
+  .stellar-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .stellar-description {
+    margin-bottom: 2rem;
+  }
+  
+  .stellar-icon-bg {
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+  }
+  
+  .stellar-icon {
+    border-radius: 0.75rem;
+  }
+  
+  .stellar-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+  
+  .stellar-text {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  
+  .stellar-more-info {
+    margin-top: 2rem;
+  }
+  
+  .stellar-link {
+    color: #60a5fa;
+    text-decoration: none;
+  }
+  
+  .stellar-link:hover {
+    color: #3b82f6;
+  }
+  
+  .stellar-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .stellar-nav-icon {
+    color: #60a5fa;
+  }
+  
+  .stellar-nav-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #60a5fa;
+    border-radius: 50%;
+    margin: 0 0.25rem;
+  }
+  
+  .stellar-nav-dot.active {
+    background-color: #ffffff;
+  }
+  
