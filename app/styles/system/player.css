@@ -55,7 +55,6 @@
     padding: 1.1rem;
     border-radius: 50%;
     display: flex;
-    transform: skew(8deg);
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -87,31 +86,79 @@
 
 .progress-circle {
     position: absolute;
-    top: -4px;
+    top: -6px;
     left: 50%;
-    background: rgb(11, 132, 255);
+    background: radial-gradient(#0b84ff 40%, white 50%, #0b84ff 65%);
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
+    box-shadow: #3077dc94 0px 0px 7px 2px;
+    width: 15px;
+    height: 15px;
 }
 
 .previous, .next {
     border: 1px solid rgba(80, 80, 80, 0.38);
     width: 12%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 18%, rgba(9, 25, 52, 0.7) 50%, rgba(0, 0, 0, 0.9) 82%) center center, url("https://i1.sndcdn.com/artworks-000185765449-jzw0x0-t500x500.jpg") black;
+    background: linear-gradient(to right, #000000e6 18%, #091934b3 50%, #000000e6 82%), url(https://i1.sndcdn.com/artworks-4M8Pdy26s3O4w2a8-9vYOyA-t500x500.jpg);
     z-index: 1;
     text-align: center;
+    margin-top: -17px;
 }
 
 .next {
     border-left: 2px solid rgba(255, 255, 255, 0.55);
-    padding: 13px 0 20px 0;
     height: 100%;
-    display: flex;
     transform: skew(-8deg);
-    justify-content: space-around;
-    margin-top: -20px;
+}
+
+.next h1,
+.previous h1{
+    font-size: 1.2em!important;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+.next .play-pause-btn
+{
+    transform: skew(8deg);
+}
+.previous .play-pause-btn{
+    transform: skew(-8deg);
+}
+
+.next h1{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.previous h1{
+    text-align: right;
+    margin-right: 10px;
+}
+
+.next-info{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.next-info, .previous-info{
+    font-size: 15px;
+    display: flex;
+    align-items: stretch;
     flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.next-info .text, .previous-info .text{
+    max-width: 128px; /* Set the maximum width */
+    overflow: hidden; /* Hide the text exceeding the maximum width */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display three dots (...) when text overflows */
+}
+
+.previous-info{
+    text-align: right;
+    margin-right: 10px;
 }
 
 .previous {
