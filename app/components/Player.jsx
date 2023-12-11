@@ -6,7 +6,7 @@ function Player() {
         <div class="cover-art"></div>
         <div className='player-info'>
           <div class="previous">
-              <h1 className="mb-none u__fs__normal">PREVIOUS</h1>
+              <h1 className="mb-none u__bold u__fs__normal">PREVIOUS</h1>
               <div className='mb-m'>
                 <span>Previous Track</span>
                 <span> · </span>
@@ -24,7 +24,7 @@ function Player() {
               </div>
           </div>
           <div class="next">
-              <h1 className="mb-none u__fs__normal">NEXT UP</h1>
+              <h1 className="mb-none u__bold u__fs__normal">NEXT UP</h1>
               <div className='mb-m'>
                 <span>Next Track</span>
                 <span> · </span>

@@ -1,110 +1,129 @@
-.player{
+.player {
     position: fixed;
     z-index: 99;
     bottom: 0px;
     max-height: 100px;
-    left: 0;
+    left: 0px;
     width: 100%;
     background: var(--g-bg);
 }
-.player-info{
+
+.player-info {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    flex-flow: row nowrap;
+    flex-flow: row;
 }
+
 .cover-art {
     position: absolute;
-    top: 0;
+    top: 0px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%);
     width: 30%;
     height: 100%;
     background-size: cover;
-    background-image: linear-gradient(to right, #010e19 15%, #0000 50%, #01080e 85%), url(https://i1.sndcdn.com/artworks-000185765449-jzw0x0-t500x500.jpg);
+    background-image: linear-gradient(to right, rgb(1, 14, 25) 15%, rgba(0, 0, 0, 0) 50%, rgb(1, 8, 14) 85%), url("https://i1.sndcdn.com/artworks-000185765449-jzw0x0-t500x500.jpg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     backdrop-filter: blur(10px);
     z-index: -1;
     opacity: 0.3;
 }
+
 .track-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 10;
 }
+
 .track-title {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
 }
+
 .artist-name {
     font-size: 1rem;
 }
+
 .play-pause-btn {
-    position: relative; /* Adding position relative for positioning the ::before pseudo-element */
+    position: relative;
     border: 1px solid white;
-    margin: 8px 0;
+    margin: 8px 0px;
     padding: 1.1rem;
     border-radius: 50%;
     display: flex;
+    transform: skew(8deg);
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
 
 .play-pause-btn::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 10px;
-    border-left: solid 2px white;
-    border-right: solid 2px white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
     height: 40%;
 }
 
 .progress-bar-container {
     position: absolute;
     top: 0px;
-    left: 0;
+    left: 0px;
     width: 100%;
     height: 2px;
-    background: #333;
+    background: rgb(51, 51, 51);
 }
+
 .progress-bar {
-    background: #0B84FF;
+    background: rgb(11, 132, 255);
     height: 100%;
     width: 50%;
 }
+
 .progress-circle {
     position: absolute;
     top: -4px;
     left: 50%;
-    background: #0B84FF;
+    background: rgb(11, 132, 255);
     border-radius: 50%;
     width: 12px;
     height: 12px;
 }
+
 .previous, .next {
-    border: solid 1px #50505061;
+    border: 1px solid rgba(80, 80, 80, 0.38);
     width: 12%;
-    background: black;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 18%, rgba(9, 25, 52, 0.7) 50%, rgba(0, 0, 0, 0.9) 82%) center center, url("https://i1.sndcdn.com/artworks-000185765449-jzw0x0-t500x500.jpg") black;
     z-index: 1;
     text-align: center;
-    background-image: linear-gradient(to right, #010e19 15%, #0000 50%, #01080e 85%), url(https://i1.sndcdn.com/artworks-000185765449-jzw0x0-t500x500.jpg);
 }
-.next{
-    border-left: solid 2px rgba(255, 255, 255, 0.548);
-    transform: skewX(-8deg) scale(1.08);
+
+.next {
+    border-left: 2px solid rgba(255, 255, 255, 0.55);
+    padding: 13px 0 20px 0;
+    height: 100%;
+    display: flex;
+    transform: skew(-8deg);
+    justify-content: space-around;
+    margin-top: -20px;
+    flex-flow: row nowrap;
 }
-.previous{
-    border-right: solid 2px rgba(255, 255, 255, 0.548);
-    transform: skewX(8deg) scale(1.08);
+
+.previous {
+    border-right: 2px solid rgba(255, 255, 255, 0.55);
+    transform: skew(8deg);
 }
+
 .previous .track-title, .next .track-title {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 700;
 }
+
 .previous .artist-name, .next .artist-name {
     font-size: 0.875rem;
 }
