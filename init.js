@@ -16,7 +16,7 @@ const HOST = "0.0.0.0";
 
 app.use(function (req, res, next) {
     if (req.path === '/stellar') app.set('views', './views');
-    else app.set("views", path.join(__dirname, "views/nano"));
+    else app.set("views", path.join(__dirname, "views"));
     next()
 });
 
@@ -66,7 +66,7 @@ function openMapWithJSON(query){
 // App Config.
     app.set('title', 'Stellar');
     app.get('title');
-    app.set("views", path.join(__dirname, "views/nano"));
+    app.set("views", path.join(__dirname, "views"));
     app.set("view engine", "pug");
     // Express Static Middleware - Resources (CSS/JS/Images/Fonts)
     app.use(express.static('./public'));
