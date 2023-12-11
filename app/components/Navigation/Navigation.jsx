@@ -14,6 +14,7 @@ import {
   FaQuestion,
   FaCog,
   FaSignOutAlt,
+  FaUpload,
 } from "react-icons/fa";
 
 const Navigation = (props) => {
@@ -42,6 +43,9 @@ const Navigation = (props) => {
             </Tooltip>
             <Tooltip content="Messages" position="right">
               <Icon title="Messages" icon={<FaEnvelopeOpenText />} />
+            </Tooltip>
+            <Tooltip content="Upload" position="right">
+              <Icon title="Upload" icon={<FaUpload />} />
             </Tooltip>
             <Tooltip content="Communities" position="right">
               <Icon title="Communities" icon={<FaGlobeAmericas />} />

@@ -28,6 +28,12 @@
           max-width: initial;
       }
   }
+  @media (min-width: 1600px) {
+      .container {
+          width:1480px;
+          max-width: initial;
+      }
+  }
     .container-fluid {
       width: 100%;
       padding: 0 15px;

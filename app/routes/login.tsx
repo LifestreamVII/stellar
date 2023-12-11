@@ -126,7 +126,7 @@ export default function Login() {
     <div className="mainContent">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 p-none">
+          <div className="col-12 col-md-5 p-none">
             <div className="left-content">
               <div className="spotify-icon">
                 <i className="fab fa-spotify"></i>
@@ -135,7 +135,7 @@ export default function Login() {
               <p className="spotify-description">Discover new music and enjoy your favorite tracks.</p>
             </div>
           </div>
-          <div className="col-12 col-md-6 p-none">
+          <div className="col-12 col-md-5 p-none">
             <div className="welcome-container">
               <div className="text-center logo">
                 <img src="stellar.png" alt="logo" />

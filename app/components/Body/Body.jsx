@@ -47,18 +47,6 @@ const Body = () => {
 
   return (
     <div className="mainContent">
-      <div>
-        <input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: 'none' }}
-          onChange={handleFileChange}
-        />
-        <button onClick={onButtonClick}>Upload Song</button>
-      </div>
-      <button className="openRegister" onClick={openRegister}>
-        Register
-      </button>
       {showRegister && (
         <div className="modal-fixed">
           <Register closeRegister={closeRegister}></Register>

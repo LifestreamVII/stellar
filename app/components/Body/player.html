@@ -1,0 +1,144 @@
+<html>
+<head>
+    <title>Full Width Audio Player</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            overflow: hidden;
+        }
+        #root {
+            width: 100vw;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            color: white;
+        }
+        .cover-art {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/1920x150');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .gradient-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 100%);
+            z-index: -1;
+        }
+        .track-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+        .track-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .artist-name {
+            font-size: 1rem;
+        }
+        .play-pause-btn {
+            border: 1px solid white;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .progress-bar-container {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #333;
+        }
+        .progress-bar {
+            background: #0B84FF;
+            height: 100%;
+            width: 50%;
+        }
+        .progress-circle {
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            background: #0B84FF;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+        .previous, .next {
+            width: 20%;
+            text-align: center;
+        }
+        .previous span, .next span {
+            display: block;
+        }
+        .previous .track-title, .next .track-title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .previous .artist-name, .next .artist-name {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="cover-art"></div>
+        <div class="gradient-mask"></div>
+        <div class="previous">
+            <span class="track-title">Previous Song Title</span>
+            <span class="artist-name">Previous Artist</span>
+        </div>
+        <div class="track-info">
+            <div class="track-title">Current Song Title</div>
+            <div class="artist-name">Current Artist</div>
+            <div class="play-pause-btn">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+        <div class="next">
+            <span class="track-title">Next Song Title</span>
+            <span class="artist-name">Next Artist</span>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+            <div class="progress-circle"></div>
+        </div>
+    </div>
+
+    <script type="text/babel">
+        function FullWidthAudioPlayer() {
+            return (
+                <div className="full-width-audio-player">
+                    {/* Content is already rendered in the HTML above */}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<FullWidthAudioPlayer />, document.getElementById('root'));
+    </script>
+</body>
+</html>

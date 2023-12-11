@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react'
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import { json, redirect } from '@remix-run/node';
+import Player from "~/components/Player";
 
 import base from "~/styles/system/main.css";
 import grid from "~/styles/system/grid.css";
@@ -20,6 +21,7 @@ import centra from "~/styles/fonts/centra.css";
 import kross from "~/styles/fonts/kross.css";
 import stellar from "~/styles/system/partir.css";
 import nav from "~/styles/system/navapp.css";
+import player from "~/styles/system/player.css";
 import header from "~/styles/system/nav.css";
 import tooltip from "~/styles/system/tooltip.css";
 import Navigation from "./components/Navigation/Navigation";
@@ -52,7 +54,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     // return get user from db
     return json({ user, communities });
   }
-  return json({ user, communities: [] });
+  return json({ user: {uid: null}, communities: [] });
 }
 
 export default function App() {
@@ -75,16 +77,19 @@ export default function App() {
         <Links />
       </head>
       {loading === false ? (
-        <body>
-          <Navigation user={user ? true : false} communities={communities ?? {}} />
-          <div>
-            <Header user={user ?? null} />
-          </div>
-          <Outlet context={user ?? null} />
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
-        </body>
+        <div>
+          <body>
+            <Navigation user={user.uid ? true : false} communities={communities ?? {}} />
+            <div>
+              <Header user={user.uid ? user : null} />
+            </div>
+            <Outlet context={user.uid ? user : null} />
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
+          </body>
+        <Player></Player>
+        </div>
       ) : (
         <body>
           <Scripts />
@@ -104,6 +109,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: kross },
   { rel: "stylesheet", href: grid },
   { rel: "stylesheet", href: nav },
+  { rel: "stylesheet", href: player },
   { rel: "stylesheet", href: header },
   { rel: "stylesheet", href: tooltip },
   { rel: "stylesheet", href: stellar },
