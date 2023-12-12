@@ -59,7 +59,7 @@ export const action: ActionFunction = async ({
   console.log(form.get("username"));
   console.log(form.get("password"));
   console.log(form.get("loginType"));
-  const loginType = form.get("loginType");
+  const loginType = "login";
   const username = form.get("username");
   const password = form.get("password");
   const redirectTo = validateUrl(
