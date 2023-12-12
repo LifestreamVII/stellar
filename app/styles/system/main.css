@@ -43,6 +43,27 @@ body{
     margin-top: 20px;
 }
 
+.upload-container {
+    border: dotted 2px var(--c-stellar);
+    background: var(--g-nav-hov);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+.upload-icon {
+    background-color: #1F2937; /* Even darker circle */
+    color: white;
+    padding: 0.6rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.upload-text {
+    color: #9CA3AF;
+    margin-top: 0.5rem;
+}
+
 @keyframes slideIn {
     0% {
         left: -40px;

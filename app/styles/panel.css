@@ -1,0 +1,136 @@
+.panel-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.profile-card {
+    background-color: #5E54A4;
+}
+.activity-card {
+    color: white;
+}
+.profile-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+.activity-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.activity-hours {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.activity-previous {
+    font-size: 0.875rem;
+}
+.ellipsis {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1rem;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+.button {
+    background: none;
+    border: none;
+    color: #A8A4D0;
+    padding: 5px;
+    cursor: pointer;
+}
+.button:focus {
+    outline: none;
+}
+.button:hover {
+    color: white;
+}
+.work { background: linear-gradient(to bottom right, #FF8C66, #FF3D68); }
+.play { background: linear-gradient(to bottom right, #56C2E6, #3178C6); }
+.study { background: linear-gradient(to bottom right, #FF5C7C, #FF3D68); }
+.exercise { background: linear-gradient(to bottom right, #4ACF81, #2CB67D); }
+.social { background: linear-gradient(to bottom right, #7536D3, #5E2A84); }
+.self-care { background: linear-gradient(to bottom right, #F1C65B, #FF8A5B); }
+
+
+.storage-container {
+    max-width: 800px;
+    color: white;
+    position: relative;
+    height: 100%;
+}
+.storage-card {
+    height: 100%;
+    border: solid 2px var(--c-stellar);
+    background: var(--g-nav-hov);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.storage-card .logo {
+    display: flex;
+    align-items: center;
+}
+.storage-card .logo img {
+    margin-right: 20px;
+}
+.storage-info {
+    text-align: right;
+}
+.storage-bar {
+    background-color: white;
+    border-radius: 10px;
+    height: 10px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+.storage-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 81.5%;
+    background-color: #3077DC;
+    border-radius: 10px;
+}
+.storage-amount {
+    display: flex;
+    justify-content: space-between;
+}
+.dialog-bubble {
+    background-color: #3077DC;
+    border-radius: 5px;
+    position: absolute;
+    right: 20px;
+    top: -35px;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+.dialog-bubble span {
+    font-size: 20px;
+    line-height: 1;
+    margin: 0;
+    padding: 8px 0;
+}
+.dialog-bubble .gb-left {
+    display: block;
+    font-size: 12px;
+    line-height: 1;
+}
