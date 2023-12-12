@@ -165,7 +165,7 @@ const Activity = () => {
                                 <h4 className='u__align--left ml-s mt-none mb-none'>History</h4>
                             </div>
                         </div>
-                        <div class="card">
+                        <a href="/panel" class="card">
                             <div class="container-card bg-white-box u__disp--flex">
                             <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="118" height="118" rx="24" fill="url(#paint0_linear_1366_4565)" fill-opacity="0.15" stroke="url(#paint1_radial_1366_4565)" stroke-width="2"></rect>
@@ -195,7 +195,7 @@ const Activity = () => {
                             </svg>
                                 <h4 className='u__align--left u__flex--0 ml-s mt-none mb-none'>Creator Panel</h4>
                             </div>
-                        </div>
+                        </a>
                     </div>
             <div className='horizontal-scroller'>
               <div className='content scrollbar-hidden'>
