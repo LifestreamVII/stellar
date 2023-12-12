@@ -142,12 +142,6 @@ export default function Login() {
               </div>
               <form action="" method="post" >
                 <div className="form-group">
-                  <input type="radio" name="loginType" value="login" onChange={() => setFormType("login")} defaultChecked={!actionData?.fields?.loginType || actionData?.fields?.loginType === "login"}/>
-                  <label>Login</label>
-                  <input type="radio" name="loginType" value="register" onChange={() => setFormType("register")} defaultChecked={actionData?.fields?.loginType === "register"}/>
-                  <label>Register</label>
-                </div>
-                <div className="form-group">
                   <div className="input-group">
                     <input type="email" name="username" className="form-control" placeholder="Username" defaultValue={actionData?.fields?.username} aria-invalid={Boolean(actionData?.fieldErrors?.username)} aria-errormessage={actionData?.fieldErrors?.username ? "username-error" : undefined}/>
                   </div>
