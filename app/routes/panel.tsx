@@ -3,8 +3,21 @@ import css from "~/styles/panel.css";
 import StatsCards from "~/components/StatsCards";
 import StorageInfo from "~/components/StorageInfo";
 import Upload from "~/components/Upload";
+import { auth } from '~/utils/firebase.config';
+import { LoaderFunction } from '@remix-run/node';
+import { requireAuth } from '~/guard/guard';
+import { useOutletContext } from '@remix-run/react';
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await requireAuth(request);
+  //const userData = await getUser(uid);
+  return user;
+}
+
 
 const panel = () => {
+  const user = useOutletContext();
+
   return (
     <div className='container'>
         <div className="mainContent mt-l">
@@ -23,7 +36,7 @@ const panel = () => {
             </div>
             <div className='row'>
               <div className='col-12'>
-                <StatsCards></StatsCards>
+                <StatsCards user={user ?? {}}></StatsCards>
               </div>
             </div>
         </div>

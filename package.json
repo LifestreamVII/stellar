@@ -8,6 +8,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@esbuild/darwin-x64": "^0.19.8",
     "@picocss/pico": "^1.5.10",
     "@remix-run/css-bundle": "^1.18.1",
     "@remix-run/node": "^1.18.1",

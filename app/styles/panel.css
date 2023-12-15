@@ -7,11 +7,20 @@
 .card {
     border-radius: 15px;
     padding: 20px;
+    border: solid 2px var(--c-stellar);
+    background: var(--g-nav-hov);
     position: relative;
     overflow: hidden;
 }
+.profile-name{
+    margin: 0.5em 0;
+    text-align: left;
+    text-transform: uppercase;
+    opacity: 0.4;
+    font-size: 1.7em;
+}
 .profile-card {
-    background-color: #5E54A4;
+    background: var(--g-block);
 }
 .activity-card {
     color: white;
@@ -57,12 +66,12 @@
 .button:hover {
     color: white;
 }
-.work { background: linear-gradient(to bottom right, #FF8C66, #FF3D68); }
+/* .work { background: linear-gradient(to bottom right, #FF8C66, #FF3D68); }
 .play { background: linear-gradient(to bottom right, #56C2E6, #3178C6); }
 .study { background: linear-gradient(to bottom right, #FF5C7C, #FF3D68); }
 .exercise { background: linear-gradient(to bottom right, #4ACF81, #2CB67D); }
 .social { background: linear-gradient(to bottom right, #7536D3, #5E2A84); }
-.self-care { background: linear-gradient(to bottom right, #F1C65B, #FF8A5B); }
+.self-care { background: linear-gradient(to bottom right, #F1C65B, #FF8A5B); } */
 
 
 .storage-container {

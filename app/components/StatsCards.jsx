@@ -1,34 +1,34 @@
 import React from 'react'
 
-const StatsCards = () => {
+const StatsCards = (props) => {
     const activities = [
-        { name: 'Work', hours: '32hrs', lastWeek: '36hrs', className: 'work' },
-        { name: 'Play', hours: '32hrs', lastWeek: '36hrs', className: 'play' },
-        { name: 'Study', hours: '32hrs', lastWeek: '36hrs', className: 'study' },
-        { name: 'Exercise', hours: '32hrs', lastWeek: '36hrs', className: 'exercise' },
-        { name: 'Social', hours: '32hrs', lastWeek: '36hrs', className: 'social' },
-        { name: 'Self Care', hours: '32hrs', lastWeek: '36hrs', className: 'self-care' },
+        { name: 'Streams', hours: '32 201', lastWeek: '', className: 'social' },
+        { name: 'Playlists', hours: '2', lastWeek: '', className: 'work' },
+        { name: 'Albums', hours: '20', lastWeek: '', className: 'play' },
+        { name: 'Songs', hours: '92', lastWeek: '12 GB', className: 'study' },
+        { name: 'Communities joined', hours: '20', lastWeek: '', className: 'exercise' },
     ];
 
   return (
     <div>
         <div className="panel-grid">
             <div className="card profile-card">
-                <img className="profile-image" src="https://placehold.co/100x100" alt="Profile picture of Jeremy Robson" />
-                <h5 className="profile-title">Report for</h5>
-                <h2 className="profile-name">Jeremy Robson</h2>
-                <div className="button-group">
-                    <button className="button">Daily</button>
-                    <button className="button">Weekly</button>
-                    <button className="button">Monthly</button>
-                </div>
+                <img className="profile-image" src={props.user.picture} alt="Profile picture of Jeremy Robson" />
+                <p className='u__fs__normal'>Welcome, {props.user.name}.</p>
+                <a className='u__fs__medium' href="/logout">Stats</a>
+                <br />
+                <a className='u__fs__medium' href="/logout">Privacy</a>
+                <br />
+                <a className='u__fs__medium' href="/logout">Account</a>
+                <br />
+                <a className='u__fs__medium' href="/logout">Sign out</a>
             </div>
             {activities.map((activity) => (
                 <div className={`card activity-card ${activity.className}`}>
                     <div className="ellipsis"><i className="fas fa-ellipsis-h"></i></div>
-                    <h3 className="activity-title">{activity.name}</h3>
-                    <p className="activity-hours">{activity.hours}</p>
-                    <p className="activity-previous">Last Week - {activity.lastWeek}</p>
+                    <h3 className="u__fs__normal">{activity.name}</h3>
+                    <p className='u__align--center u__bold u__fs__h1'>{activity.hours}</p>
+                    <p className="activity-previous">Storage used - {activity.lastWeek}</p>
                 </div>
             ))}
         </div>

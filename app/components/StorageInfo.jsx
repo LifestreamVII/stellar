@@ -5,7 +5,7 @@ const StorageInfo = () => {
     <div className="storage-container">
         <div className="storage-card">
             <div className="logo">
-                <img src="https://placehold.co/100x100" alt="Fylo logo" />
+                <img src="storage.png" width={100} height={100} alt="Fylo logo" />
                 <div>
                     <a href="#"><i className="fas fa-file-alt"></i></a>
                     <a href="#"><i className="fas fa-folder"></i></a>
