@@ -3,7 +3,7 @@ import { getUserId, userHasRole } from '~/guard/guard';
 import { auth } from '../firebase.server';
 import { storage } from '../utils/firebase.config'
 
-type Usage = "song" | "image" | "video";
+type Usage = "song" | "image" | "profile" | "video";
 
 export async function uploadFile(usage: Usage, file: File, request: Request) {
 
@@ -19,6 +19,7 @@ export async function uploadFile(usage: Usage, file: File, request: Request) {
   const allowedFileTypesPerUsage: Record<Usage, string[]> = {
     "song": ["audio/mpeg", "audio/wav"],
     "image": ["image/jpeg", "image/png"],
+    "profile": ["image/jpeg", "image/png"],
     "video": ["video/mp4"],
   };
   const maxFileSizePerUsage: Record<Usage, number> = {

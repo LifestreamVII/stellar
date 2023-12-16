@@ -9,7 +9,7 @@ export let action: ActionFunction = async ({ request }) => {
 };
 async function handleRequest(request: Request) {
   const formData = await request.formData();
-  const usage = 'song';  // this can be changed depending on your requirements
+  const usage = 'profile';  // this can be changed depending on your requirements
   const file = formData.get('file');
   if (file instanceof File) {
     try {

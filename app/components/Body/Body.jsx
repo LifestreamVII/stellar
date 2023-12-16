@@ -52,6 +52,13 @@ const Body = () => {
           <Register closeRegister={closeRegister}></Register>
         </div>
       )}
+             <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          onChange={handleFileChange}
+        />
+        <button onClick={onButtonClick}>Upload Song</button>
       <div className="bottom flex">
         <Activity />
         <div className="row mb-xl">
