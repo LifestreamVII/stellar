@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import css from "~/styles/panel.css";
 import StatsCards from "~/components/StatsCards";
 import StorageInfo from "~/components/StorageInfo";
@@ -7,6 +7,7 @@ import { auth } from '~/utils/firebase.config';
 import { LoaderFunction } from '@remix-run/node';
 import { requireAuth } from '~/guard/guard';
 import { useOutletContext } from '@remix-run/react';
+import usePlaylists from '~/scripts/usePlaylists';
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await requireAuth(request);
@@ -17,7 +18,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const panel = () => {
   const user = useOutletContext();
-
+  const { data:playlists, loading, error } = usePlaylists(user?.uid, 'owned');
+  console.log(playlists);
   return (
     <div className='container'>
         <div className="mainContent mt-l">

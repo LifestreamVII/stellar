@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import usePlaylists from '~/scripts/usePlaylists';
 
 const StatsCards = (props) => {
     const activities = [
