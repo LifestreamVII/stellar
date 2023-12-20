@@ -55,17 +55,17 @@ const Body = () => {
              <input
           type="file"
           ref={fileInputRef}
-          style={{ display: 'none' }}
           onChange={handleFileChange}
-        />
-        <button onClick={onButtonClick}>Upload Song</button>
+          style={{'display': 'none'}}
+          />
+        <button style={{'display': 'none'}} onClick={onButtonClick}>Upload Song</button>
       <div className="bottom flex">
-        <Activity />
         <div className="row mb-xl">
           <div className="col-10">
             <News />
           </div>
         </div>
+        <Activity />
       </div>
     </div>
   )

@@ -19,7 +19,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 const panel = () => {
   const user = useOutletContext();
   const { data:playlists, loading, error } = usePlaylists(user?.uid, 'owned');
-  console.log(playlists);
   return (
     <div className='container'>
         <div className="mainContent mt-l">
@@ -38,7 +37,7 @@ const panel = () => {
             </div>
             <div className='row'>
               <div className='col-12'>
-                <StatsCards user={user ?? {}}></StatsCards>
+                <StatsCards user={user ? {...user, playlists:[...playlists]} : {}}></StatsCards>
               </div>
             </div>
         </div>

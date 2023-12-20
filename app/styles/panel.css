@@ -1,6 +1,6 @@
 .panel-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
@@ -36,6 +36,7 @@
 }
 .activity-card {
     color: white;
+    aspect-ratio: 1/1;
 }
 .profile-image {
     width: 64px;
@@ -113,12 +114,12 @@
     text-align: right;
 }
 .storage-bar {
-    background-color: white;
     border-radius: 10px;
-    height: 10px;
+    height: 11px;
     width: 100%;
     margin: 10px 0;
     position: relative;
+    border: solid 1px var(--c-stellar);
 }
 .storage-bar::after {
     content: '';
