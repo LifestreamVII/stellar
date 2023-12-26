@@ -1,0 +1,16 @@
+.playlist-list{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playlist-item{
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
