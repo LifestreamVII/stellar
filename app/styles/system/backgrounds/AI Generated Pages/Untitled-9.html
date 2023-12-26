@@ -1,0 +1,68 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music App Landing Page</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script crossorigin defer src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin defer src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin defer src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="antialiased text-white bg-gradient-to-br from-gray-700 to-blue-900">
+<div id="app"></div>
+<script type="text/babel">
+function App() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <nav className="flex justify-between items-center px-4 py-3 bg-gradient-to-r from-gray-800 to-gray-900">
+        <div className="flex items-center space-x-4">
+          <div className="text-2xl font-bold">S</div>
+          <a href="#" className="px-2 py-1 text-sm">HOME</a>
+          <a href="#" className="px-2 py-1 text-sm">EXPLORE</a>
+          <a href="#" className="px-2 py-1 text-sm">FEATURES</a>
+          <a href="#" className="px-2 py-1 text-sm">SUPPORT</a>
+        </div>
+        <div>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded">OPEN APP</button>
+        </div>
+      </nav>
+      <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto flex">
+          <div className="flex-1">
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              <img src="https://placehold.co/80x80" alt="Album cover" className="rounded-lg shadow-lg" />
+              <img src="https://placehold.co/80x80" alt="Album cover" className="rounded-lg shadow-lg" />
+              <img src="https://placehold.co/80x80" alt="Album cover" className="rounded-lg shadow-lg" />
+              <img src="https://placehold.co/80x80" alt="Album cover" className="rounded-lg shadow-lg" />
+              <img src="https://placehold.co/80x80" alt="Album cover" className="rounded-lg shadow-lg" />
+            </div>
+            <h1 className="text-4xl font-bold mb-4">MUSIC <br />TO THE NEXT LEVEL.</h1>
+            <p className="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div className="flex space-x-4">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-6 rounded">DEMO</button>
+              <button className="border border-blue-600 hover:border-blue-700 text-blue-600 hover:text-blue-700 text-sm py-2 px-6 rounded">SIGN UP</button>
+            </div>
+          </div>
+          <div className="hidden md:flex flex-1 justify-center">
+            <div className="flex items-center">
+              <div className="grid grid-rows-3 grid-flow-col gap-4">
+                <div className="w-16 h-16 bg-blue-600 rounded-full"></div>
+                <div className="w-16 h-16 bg-blue-600 rounded-full"></div>
+                <div className="w-16 h-16 bg-blue-600 rounded-full"></div>
+                <div className="w-16 h-16 bg-blue-200 rounded-full"></div>
+                <div className="w-16 h-16 bg-blue-200 rounded-full"></div>
+                <div className="w-16 h-16 bg-blue-200 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
+</html>

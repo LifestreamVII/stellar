@@ -1,0 +1,76 @@
+
+Preview
+Code
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Component</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Initialize TailwindCSS
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'tab-active': 'white',
+            'tab-inactive': '#374151',
+            'tab-bg': '#111827',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-tab-bg min-h-screen flex items-center justify-center">
+  <div class="bg-tab-bg rounded-lg shadow-lg">
+    <div class="flex">
+      <a href="#" class="tab active">
+        <span>Tab 1</span>
+      </a>
+      <a href="#" class="tab">
+        <span>Tab 2</span>
+      </a>
+      <a href="#" class="tab">
+        <span>Tab 3</span>
+      </a>
+    </div>
+  </div>
+
+  <style>
+    .tab {
+      padding: 16px 24px;
+      background-color: #2D3748;
+      color: #fff;
+      text-align: center;
+      width: 100px;
+      cursor: pointer;
+      transition: background-color .3s ease;
+      border: none;
+      outline: none;
+      margin: 1px;
+    }
+    .tab.active, .tab:hover {
+      background-color: #4A5568;
+      opacity: 1;
+    }
+    .tab:not(:first-child) {
+      border-left: 1px solid #000;
+    }
+  </style>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.tab').forEach(node => {
+          node.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

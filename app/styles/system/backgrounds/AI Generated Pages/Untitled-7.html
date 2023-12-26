@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-blue-900 text-white">
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex justify-between items-center mb-4">
+            <div class="text-lg font-bold uppercase">Now Playing</div>
+        </div>
+        <div class="bg-blue-800 p-4 rounded-lg shadow-lg">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center">
+                    <button class="text-white text-2xl mr-4">
+                        <i class="fas fa-play-circle"></i>
+                    </button>
+                    <div>
+                        <div class="font-bold">Rayman</div>
+                        <div class="text-sm text-gray-300">Pissing in snow</div>
+                    </div>
+                </div>
+                <div class="text-sm">3:45</div>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-1.5">
+                <div class="bg-blue-400 h-1.5 rounded-full" style="width: 30%;"></div>
+            </div>
+        </div>
+        <div class="mt-6">
+            <div class="text-lg font-bold mb-2">Recommended</div>
+            <ul>
+                <li class="mb-1">Geoxor - Bloodlust</li>
+                <li class="mb-1">Geoxor - Lucid</li>
+                <li class="mb-1">Kotori - Icarian</li>
+                <li class="mb-1">Synthion - Voyage</li>
+                <li class="mb-1">Synthion - Submerge</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
