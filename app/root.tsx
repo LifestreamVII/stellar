@@ -21,6 +21,7 @@ import centra from "~/styles/fonts/centra.css";
 import kross from "~/styles/fonts/kross.css";
 import stellar from "~/styles/system/partir.css";
 import nav from "~/styles/system/navapp.css";
+import system from "~/styles/system/system.css";
 import player from "~/styles/system/player.css";
 import header from "~/styles/system/nav.css";
 import tooltip from "~/styles/system/tooltip.css";
@@ -77,19 +78,27 @@ export default function App() {
         <Links />
       </head>
       {loading === false ? (
-        <div>
-          <body>
-            <Navigation user={user.uid ? true : false} communities={communities ?? {}} />
-            <div>
-              <Header user={user.uid ? user : null} />
+        <body>
+          <div className="container">
+            <div className="sidebar">
+              <nav>
+                <Navigation user={user.uid ? true : false} communities={communities ?? {}} />
+                {/* <div>
+                  <Header user={user.uid ? user : null} />
+                </div> */}
+              </nav>
             </div>
-            <Outlet context={user.uid ? user : null} />
-            <ScrollRestoration />
-            <Scripts />
-            <LiveReload />
-          </body>
-        <Player></Player>
-        </div>
+            <div className="main-content">
+              <Outlet context={user.uid ? user : null} />
+              <ScrollRestoration />
+              <Scripts />
+              <LiveReload />
+            </div>
+            <div className="player">
+              <Player></Player>
+            </div>
+          </div>
+        </body>
       ) : (
         <body>
           <Scripts />
@@ -109,6 +118,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: kross },
   { rel: "stylesheet", href: grid },
   { rel: "stylesheet", href: nav },
+  { rel: "stylesheet", href: system },
   { rel: "stylesheet", href: player },
   { rel: "stylesheet", href: header },
   { rel: "stylesheet", href: tooltip },

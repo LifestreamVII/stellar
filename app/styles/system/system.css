@@ -1,19 +1,143 @@
+/* ====================== */
+/*      Default Rules     */
+/* ====================== */
+
+body, html {
+  font-family: "CentraNo1", sans-serif;
+  line-height: 1.5;
+  height: 100%;
+  display: flex;
+  background: var(--g-bg);
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 /* -------------------- */
 /*    Utility Classes   */
 /* -------------------- */
 
-.flex{
-    display: flex;
-    gap: var(--gap, 1rem);
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
 }
 
-.grid{
-    display: grid;
-    gap: var(--gap, 1rem);
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
 }
 
-.container{
-    padding-inline: 2em;
-    margin-inline: auto;
-    max-width: 80rem;
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  /* padding-inline: 2em; */
+  /* max-width: 80rem; */
+  background-color: var(--c-black);
+  padding: 0.5rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.sidebar {
+  flex: 0.25;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--c-stellar);
+}
+
+.main-content {
+  flex: 0.8;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1rem;
+  border-radius: 0.5rem;
+  padding-bottom: 6rem;
+}
+
+.player {
+  background-color: yellow;
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+}
+
+.container,
+.container-fluid {
+  margin-right: initial;
+  margin-left: initial;
+  max-width: initial;
+  padding-left: initial;
+}
+@media (min-width:576px) {
+  .container {
+    max-width: initial;
+  }
+}
+@media (min-width:768px) {
+  .container {
+    max-width: initial;
+  }
+}
+@media (min-width:992px) {
+  .container {
+    max-width: initial;
+  }
+}
+@media (min-width:1200px) {
+  .container {
+    max-width: initial;
+  }
 }

@@ -17,7 +17,7 @@ const setup = () => {
 
   return (
     <div>
-    <div className="container mt-l u__align--center">
+    <div className="mt-l u__align--center">
       <h1 className="stellar-title">What do you plan on using Stellar for ?</h1>
       <p className="stellar-description">This information will be used to offer you a more personalized experience and interface out of the box.</p>
     </div>

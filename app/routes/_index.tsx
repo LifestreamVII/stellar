@@ -32,7 +32,7 @@ export default function Index() {
   const user = useOutletContext();
 
   return (
-    <div className="container">
+    <div>
       {
         user ? (
           <Body />

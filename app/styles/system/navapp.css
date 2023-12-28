@@ -1,5 +1,6 @@
 menu {
-    width: 100px;
+    /* width: 100px; */
+    width: 100%;
     z-index: 0;
     height: 100%;
     display: flex;
@@ -7,8 +8,6 @@ menu {
     align-items: center;
     justify-content: space-between;
     padding: 0;
-    position: fixed;
-    top: 0;
     margin: 0;
   }
   

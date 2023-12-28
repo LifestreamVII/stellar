@@ -124,7 +124,7 @@ export default function Login() {
 
   return (
     <div className="mainContent">
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col-12 col-md-5 p-none">
             <div className="left-content">

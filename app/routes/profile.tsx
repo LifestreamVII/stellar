@@ -15,7 +15,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function Profile() {
   const {user: data} = useLoaderData<typeof loader>();
   return (
-    <div className="container-fluid profile" style={{ "--background": "url(" + data.photoURL ?? "https://pbs.twimg.com/media/FuNWEzlWcAEui0L.jpg" + ")" } as React.CSSProperties}>
+    <div className="profile" style={{ "--background": "url(" + data.photoURL ?? "https://pbs.twimg.com/media/FuNWEzlWcAEui0L.jpg" + ")" } as React.CSSProperties}>
       <div className="row">
         <div className="profile-quote col-8 u__align--center">
           <h5><i>Inabakumori’s career started with “Secret Music” on February 22, 2016 and has posted twenty two songs since then</i></h5>
