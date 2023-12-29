@@ -12,28 +12,19 @@ import {
   FaEnvelopeOpenText,
   FaGlobeAmericas,
   FaQuestion,
+  FaExpandAlt,
   FaCog,
   FaSignOutAlt,
   FaUpload,
 } from "react-icons/fa";
+
 
 const Navigation = (props) => {
 
   return props.user ? (
     <menu>
       <ul className="topMenu">
-        <li className="communities">
-          <details role="list">
-            <summary aria-haspopup="listbox"></summary>
-            <ul role="listbox">
-                {                 
-                  props.communities.map((community) =>
-                    <li key={community.id}><a>{community.displayName}</a></li>
-                  )
-                }
-            </ul>
-          </details>
-        </li>
+        <button onClick={props.expandNavbar} className="expand"><FaExpandAlt/></button>
       </ul>
       <ul className='mainMenu'>
         <Tooltip content="Home" position="right">
@@ -66,7 +57,11 @@ const Navigation = (props) => {
 
 const Icon = ({ icon, title }) => (
   <li>
-    <NavLink title={title} to="/">{icon}</NavLink>
+    <NavLink title={title} to="/">{icon}
+      <div className="menu-details">
+              <span>{title}</span>
+      </div>
+    </NavLink>
   </li>
 );
 

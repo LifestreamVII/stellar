@@ -1,16 +1,41 @@
 menu {
     /* width: 100px; */
-    width: 100%;
+    width: 82%;
     z-index: 0;
     height: 100%;
+    gap: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0;
     margin: 0;
   }
-  
+
+  nav {
+    justify-content: center;
+  }
+
+  menu .menu-details {
+    display: none;
+  }
+
+  menu .expand{
+    background: none;
+    margin: 0;
+  }
+
+  menu .topMenu{
+    max-width: 100px;
+  }
+
+  menu .topMenu button{
+    text-align: center;
+    width: 100%;
+    padding: 10px 5px;
+    min-width: 100%;
+  }
+
   menu ul {
     background: #071b327d;
     backdrop-filter: blur(0.7px);
@@ -115,4 +140,34 @@ li.communities {
     aspect-ratio: 1/1;
     width: 40px;
     height: auto;
+}
+
+.sidebar.expanded menu{
+  width: 100%;
+}
+
+.sidebar.expanded menu ul{
+  align-items: flex-start;
+  padding: 0 1rem;
+}
+
+.sidebar.expanded .topMenu{
+  align-self: flex-start;
+}
+
+.sidebar.expanded .tooltip-wrapper{
+  width: 100%;
+  justify-content: left;
+}
+
+.sidebar.expanded .tooltip-children,
+.sidebar.expanded .tooltip-children li,
+.sidebar.expanded .tooltip-children li a{
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar.expanded .menu-details {
+  display: inline;
+  margin-left: 8px;
 }

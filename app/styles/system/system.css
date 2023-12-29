@@ -90,14 +90,14 @@ select {
 }
 
 .sidebar {
-  flex: 0.25;
-  margin-right: 0.5rem;
+  flex: var(--sidebar-width);
+  margin: 0 0.5rem;
   border-radius: 0.5rem;
-  background-color: var(--c-stellar);
+  transition: flex 0.3s;
 }
 
 .main-content {
-  flex: 0.8;
+  flex: 0.94;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

@@ -61,13 +61,22 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function App() {
 
   const [loading, setLoading] = useState(false)
+  
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  const expandNavbar = () => {
+    setIsExpanded(!isExpanded);
+  }
+  
   const { user, communities } = useLoaderData<typeof loader>();
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500)
   }, [])
 
+  const sidebarStyle = {
+    flex: `var(${isExpanded ? '--sidebar-width-expanded' : '--sidebar-width'})`
+  };
 
   return (
     <html lang="en">
@@ -80,9 +89,9 @@ export default function App() {
       {loading === false ? (
         <body>
           <div className="container">
-            <div className="sidebar">
+            <div className={isExpanded ? 'sidebar expanded' : 'sidebar'} style={sidebarStyle}>
               <nav>
-                <Navigation user={user.uid ? true : false} communities={communities ?? {}} />
+                <Navigation user={user.uid ? true : false} expandNavbar={expandNavbar} />
                 {/* <div>
                   <Header user={user.uid ? user : null} />
                 </div> */}
