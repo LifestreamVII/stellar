@@ -167,7 +167,15 @@ li.communities {
   text-align: left;
 }
 
+.sidebar.expanded menu ul li:hover a:not(.navbar__logo--sm)::before {
+  width: 100%;
+}
+
 .sidebar.expanded .menu-details {
   display: inline;
   margin-left: 8px;
+}
+
+.sidebar.expanded .tooltip{
+  display: none;
 }
