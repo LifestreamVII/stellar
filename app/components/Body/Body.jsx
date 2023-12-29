@@ -59,12 +59,12 @@ const Body = () => {
           style={{'display': 'none'}}
           />
         <button style={{'display': 'none'}} onClick={onButtonClick}>Upload Song</button>
-      <div className="bottom flex">
-        <div className="row mb-xl">
-          <div className="col-10">
-            <News />
-          </div>
+      <div className='row mb-xl'>
+        <div className='col-9'>
+          <News />
         </div>
+      </div>
+      <div className="bottom">
         <Activity />
       </div>
     </div>

@@ -103,6 +103,7 @@ select {
   flex-direction: column;
   padding: 0rem 1rem;
   border-radius: 0.5rem;
+  background: url(/backw.png);
   padding-bottom: 6rem;
 }
 
@@ -110,6 +111,7 @@ select {
   background-color: yellow;
   position: fixed;
   bottom: 0;
+  display: none;
   height: 80px;
   width: 100%;
 }

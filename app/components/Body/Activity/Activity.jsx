@@ -94,7 +94,7 @@ const Activity = () => {
         <div className="u__align--left col-12">
           <h1 className="captionxl u__align--left u__fs__h1 mb-none">Welcome back</h1>
           <p>Resume where you left off.</p>
-          <div className="main-container">
+          <div className="">
           <div className="gradient-cards mt-m">
                         <div class="card">
                             <div class="container-card bg-white-box u__disp--flex">
@@ -279,7 +279,7 @@ const Activity = () => {
         <div className="u__align--left col-12">
           <h1 className="captionxl u__align--left u__fs__h1 mb-none">Featured Now</h1>
           <p>Check out the most streamed content this week in s/PHONK.</p>
-          <div className="main-container">
+          <div className="">
             <div className='horizontal-scroller'>
               <div className='content scrollbar-hidden'>
                 {elements.map((el, index) => {
@@ -332,7 +332,7 @@ const Activity = () => {
         <div className="u__align--left col-12">
           <h1 className="captionxl u__align--left u__fs__h1 mb-none">Discover</h1>
           <p>Those just dropped. We thought you might like.</p>
-          <div className="main-container">
+          <div className="">
             <div className='horizontal-scroller'>
               <div className='content scrollbar-hidden'>
                 {elements.map((el, index) => {

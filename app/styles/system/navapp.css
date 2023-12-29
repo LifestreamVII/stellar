@@ -3,17 +3,18 @@ menu {
     width: 82%;
     z-index: 0;
     height: 100%;
-    gap: 2em;
+    gap: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0;
     margin: 0;
   }
 
   nav {
-    justify-content: center;
+    justify-content: left;
+    height: 100%;
   }
 
   menu .menu-details {
@@ -51,7 +52,7 @@ menu {
   
   menu ul li {
     list-style: none;
-    margin: 0.5em 0;
+    margin: 0.2em 0;
     position: relative;
     color: #8c8a95;
     width: 100%;
@@ -148,11 +149,16 @@ li.communities {
 
 .sidebar.expanded menu ul{
   align-items: flex-start;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
+  padding: 0;
 }
 
 .sidebar.expanded .topMenu{
   align-self: flex-start;
+}
+
+.tooltip-wrapper{
+  justify-content: left;
 }
 
 .sidebar.expanded .tooltip-wrapper{
@@ -174,8 +180,28 @@ li.communities {
 .sidebar.expanded .menu-details {
   display: inline;
   margin-left: 8px;
+  vertical-align: middle;
 }
 
 .sidebar.expanded .tooltip{
   display: none;
+}
+
+.menu-submenu {
+  display: none;
+  max-height: 190px;
+  overflow-y: auto;
+  background: #0a121a;
+  padding: 10px 7px;
+}
+
+.menu-submenu a {
+  width: 100%;
+  background: #030a10;
+  margin: 3px 0;
+  padding: 10px 10px;
+}
+
+.sidebar.expanded .menu-submenu{
+  display: block;
 }
