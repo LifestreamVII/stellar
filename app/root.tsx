@@ -91,7 +91,7 @@ export default function App() {
           <div className="container">
             <div className={isExpanded ? 'sidebar expanded' : 'sidebar'} style={sidebarStyle}>
               <nav>
-                <Navigation user={user.uid ? true : false} expandNavbar={expandNavbar} />
+                <Navigation user={user.uid ? true : false} isExpanded={isExpanded} expandNavbar={expandNavbar} />
                 {/* <div>
                   <Header user={user.uid ? user : null} />
                 </div> */}

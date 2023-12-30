@@ -205,3 +205,35 @@ li.communities {
 .sidebar.expanded .menu-submenu{
   display: block;
 }
+
+.expand-button{
+    margin-right: 5px;
+    color: #8c8a95;
+    font-weight: bold;
+    font-size: 19px;
+    display: none;
+    text-decoration: none;
+}
+
+.sidebar.expanded .expand-button{
+  display: initial;
+}
+
+.expanded-menu{
+  background-color: #000102;
+  max-height: 8em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: none;
+}
+
+.sidebar.expanded .expanded-menu ul > li {
+  margin: 0;
+  padding: 12px 4px;
+}
+
+.sidebar.expanded .expanded-menu ul > li a {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

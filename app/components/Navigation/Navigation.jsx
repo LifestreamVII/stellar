@@ -1,5 +1,6 @@
 import { NavLink } from "@remix-run/react";
 import Tooltip from "~/components/Tooltip";
+import Expanded from '~/components/Navigation/Expanded';
 
 import { Await } from "@remix-run/react";
 import { Suspense } from "react";
@@ -21,6 +22,33 @@ import {
 
 const Navigation = (props) => {
 
+  const [expandedMenu, setExpandedMenu] = useState(null);
+
+  const expand = (menu) => {
+    if (menu === expandedMenu) setExpandedMenu("");
+    else setExpandedMenu(menu);
+  }
+
+  const Icon = ({ icon, title }) => (
+    <li>
+      {
+        props.isExpanded ? (
+        <NavLink title={title} onClick={()=>expand(title)}>{icon}
+          <div className="menu-details">
+                  <span>{title} ˅</span>
+          </div>
+        </NavLink>
+        ) : (
+        <NavLink title={title} to="/">{icon}
+          <div className="menu-details">
+                  <span>{title}</span>
+          </div>
+        </NavLink>
+        )
+      }
+    </li>
+  );
+
   return props.user ? (
     <menu>
       <ul className="topMenu">
@@ -32,9 +60,15 @@ const Navigation = (props) => {
         </Tooltip>
         <Tooltip content="Messages" position="right">
           <Icon title="Messages" icon={<FaEnvelopeOpenText />} />
+          { props.isExpanded && expandedMenu === "Messages" ? (
+            <Expanded menu="messages"></Expanded>
+          ) : ("") }
         </Tooltip>
         <Tooltip content="Upload" position="right">
           <Icon title="Upload" icon={<FaUpload />} />
+          { props.isExpanded && expandedMenu === "Upload" ? (
+            <Expanded menu="messages"></Expanded>
+          ) : ("") }
         </Tooltip>
         <Tooltip content="Communities" position="right">
           <Icon title="Communities" icon={<FaGlobeAmericas />} />
@@ -54,15 +88,5 @@ const Navigation = (props) => {
     </menu>
   ) : ""
 }
-
-const Icon = ({ icon, title }) => (
-  <li>
-    <NavLink title={title} to="/">{icon}
-      <div className="menu-details">
-              <span>{title}</span>
-      </div>
-    </NavLink>
-  </li>
-);
 
 export default Navigation
