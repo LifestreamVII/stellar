@@ -20,8 +20,7 @@ const panel = () => {
   const user = useOutletContext();
   const { data:playlists, loading, error } = usePlaylists(user?.uid, 'owned');
   return (
-    <div className='container'>
-        <div className="mainContent mt-l">
+        <div className="">
             <div className="row mb-l">
                 <div className="u__align--left col-12">
                     <h1 className="captionxl u__align--left u__fs__h1 mb-none">User Panel</h1>
@@ -41,7 +40,6 @@ const panel = () => {
               </div>
             </div>
         </div>
-    </div>
   )
 }
 

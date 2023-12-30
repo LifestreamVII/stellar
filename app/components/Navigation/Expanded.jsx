@@ -20,6 +20,21 @@ const Expanded = ({menu}) => {
                     title: "Sent"
                     },
                 ]
+            case "upload":
+                return [
+                    {
+                    link: "/panel",
+                    title: "User Panel"
+                    },
+                    {
+                    link: "",
+                    title: "Upload history"
+                    },
+                    {
+                    link: "",
+                    title: "Something here"
+                    },
+                ]
             case "help":
                 return [
                     {

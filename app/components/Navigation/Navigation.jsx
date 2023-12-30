@@ -29,17 +29,17 @@ const Navigation = (props) => {
     else setExpandedMenu(menu);
   }
 
-  const Icon = ({ icon, title }) => (
+  const Icon = ({ icon, title, link, expandable=false }) => (
     <li>
       {
-        props.isExpanded ? (
-        <NavLink title={title} onClick={()=>expand(title)}>{icon}
+        props.isExpanded && expandable ? (
+        <NavLink title={title} to="#" onClick={()=>expand(title)}>{icon}
           <div className="menu-details">
-                  <span>{title} ˅</span>
+                  <span>{title + (expandedMenu === title ? " ˅" : " >")}</span>
           </div>
         </NavLink>
         ) : (
-        <NavLink title={title} to="/">{icon}
+        <NavLink title={title} to={link}>{icon}
           <div className="menu-details">
                   <span>{title}</span>
           </div>
@@ -56,33 +56,33 @@ const Navigation = (props) => {
       </ul>
       <ul className='mainMenu'>
         <Tooltip content="Home" position="right">
-          <Icon title="Home" icon={<FaHome />} />
+          <Icon title="Home" link="/" icon={<FaHome />} />
         </Tooltip>
         <Tooltip content="Messages" position="right">
-          <Icon title="Messages" icon={<FaEnvelopeOpenText />} />
+          <Icon expandable title="Messages" link="/messages" icon={<FaEnvelopeOpenText />} />
           { props.isExpanded && expandedMenu === "Messages" ? (
             <Expanded menu="messages"></Expanded>
           ) : ("") }
         </Tooltip>
         <Tooltip content="Upload" position="right">
-          <Icon title="Upload" icon={<FaUpload />} />
+          <Icon expandable title="Upload" link="/panel" icon={<FaUpload />} />
           { props.isExpanded && expandedMenu === "Upload" ? (
-            <Expanded menu="messages"></Expanded>
+            <Expanded menu="upload"></Expanded>
           ) : ("") }
         </Tooltip>
         <Tooltip content="Communities" position="right">
-          <Icon title="Communities" icon={<FaGlobeAmericas />} />
+          <Icon title="Communities" link="/" icon={<FaGlobeAmericas />} />
         </Tooltip>
         <Tooltip content="Help" position="right">
-          <Icon title="Help" icon={<FaQuestion />} />
+          <Icon title="Help" link="/" icon={<FaQuestion />} />
         </Tooltip>
       </ul>
       <ul className="lastMenu">
         <Tooltip content="Settings" position="right">
-          <Icon title="Settings" icon={<FaCog />} />
+          <Icon title="Settings" link="/" icon={<FaCog />} />
         </Tooltip>
         <Tooltip content="Logout" position="right">
-          <Icon title="Sign Out" icon={<FaSignOutAlt />} />
+          <Icon title="Sign Out" link="/logout" icon={<FaSignOutAlt />} />
         </Tooltip>
       </ul>
     </menu>
