@@ -174,7 +174,7 @@ li.communities {
 }
 
 .sidebar.expanded menu ul li:hover a:not(.navbar__logo--sm)::before {
-  width: 100%;
+  width: 90%;
 }
 
 .sidebar.expanded .menu-details {

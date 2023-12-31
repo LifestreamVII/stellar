@@ -2,17 +2,69 @@ import React from 'react'
 
 const PlaylistList = ({ list }) => {
   return (
-    <div class="playlist-list mt-xl">
-      {list.map((item, index) => (
-        <div key={index} className="row playlist-item">
-            <div className='col-8'>
-                <img src={item.coverImageUrl} alt={item.displayName} width="100" height="100" className="album-cover" />
-                <div className="song-info">
-                    <h3 className="song-title">{item.displayName}</h3>
-                    <p className="artist-name">by mikudrip</p>
+    <div class="playlists-list mt-xl">
+      {list.map((item, index) =>
+      (
+        <div className="playlist-list-container mb-m">
+          <div class="playlist-list">
+            <div class="playlist-details">
+              <div class="playlist-details-main">
+                <img src={item.coverImageUrl}/>
+                <div>
+                  <h3 className="playlist-title mb-none">{item.displayName}</h3>
+                  <p class="mt-none">by mikudrip</p>
                 </div>
-                <span className="song-duration">Duration</span>
+              </div>
+              <div class="playlist-details-date">il y a 3 ans</div>
             </div>
+            <div class="playlist-content-list">
+              <div class="playlist-content-item">
+                <div class="playlist-content-item-details">
+                  <i class=""></i>
+                  <span>Ad・Lib</span>
+                </div>
+                <div>85.9K</div>
+              </div>
+              <div class="playlist-content-item">
+                <div class="playlist-content-item-details">
+                  <i class=""></i>
+                  <span>Ad・Lib</span>
+                </div>
+                <div>85.9K</div>
+              </div>
+              <div class="playlist-content-item">
+                <div class="playlist-content-item-details">
+                  <i class=""></i>
+                  <span>Ad・Lib</span>
+                </div>
+                <div>85.9K</div>
+              </div>
+              <div class="playlist-content-item">
+                <div class="playlist-content-item-details">
+                  <i class=""></i>
+                  <span>Ad・Lib</span>
+                </div>
+                <div>85.9K</div>
+              </div>
+              <div class="playlist-content-item">
+                <div class="playlist-content-item-details">
+                  <i class=""></i>
+                  <span>Ad・Lib</span>
+                </div>
+                <div>85.9K</div>
+              </div>
+              <div class="playlist-content-item">
+                <div class="playlist-content-item-details">
+                  <i class=""></i>
+                  <span>Ad・Lib</span>
+                </div>
+                <div>85.9K</div>
+              </div>
+            </div>
+            <div class="playlist-expand">
+              <a href="" className='u__fs__normal'>Show more...</a>
+            </div>
+          </div>
         </div>
       ))}
     </div>
