@@ -35,6 +35,21 @@ const Expanded = ({menu}) => {
                     title: "Something here"
                     },
                 ]
+            case "library":
+                return [
+                    {
+                    link: "/library",
+                    title: "My Library"
+                    },
+                    {
+                    link: "/playlists",
+                    title: "My Playlists"
+                    },
+                    {
+                    link: "",
+                    title: "Something here"
+                    },
+                ]
             case "help":
                 return [
                     {

@@ -17,6 +17,7 @@ import {
   FaCog,
   FaSignOutAlt,
   FaUpload,
+  FaReadme,
 } from "react-icons/fa";
 
 
@@ -73,8 +74,11 @@ const Navigation = (props) => {
         <Tooltip content="Communities" position="right">
           <Icon title="Communities" link="/" icon={<FaGlobeAmericas />} />
         </Tooltip>
-        <Tooltip content="Help" position="right">
-          <Icon title="Help" link="/" icon={<FaQuestion />} />
+        <Tooltip content="Library" position="right">
+          <Icon expandable title="Library" link="/library" icon={<FaReadme />} />
+          { props.isExpanded && expandedMenu === "Library" ? (
+            <Expanded menu="library"></Expanded>
+          ) : ("") }
         </Tooltip>
       </ul>
       <ul className="lastMenu">

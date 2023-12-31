@@ -1,7 +1,7 @@
 import React from 'react'
 import css from "~/styles/pl-list.css";
 import usePlaylists from '~/scripts/usePlaylists';
-import PlaylistList from "~/components/PlaylistList";
+import LibraryCard from "~/components/Library/LibraryCard";
 import { LoaderFunction } from '@remix-run/node';
 import { requireAuth } from '~/guard/guard';
 import { useOutletContext } from '@remix-run/react';
@@ -11,7 +11,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return user;
 }
 
-const Playlists = () => {
+const Library = () => {
     const user = useOutletContext();
     const { data:playlists, loading, error } = usePlaylists(user?.uid, 'owned');
 
@@ -19,11 +19,16 @@ const Playlists = () => {
         <div className='mainContent'>
             <div className="row">
                 <div className="u__align--left col-12">            
-                    <h1 className='captionxl u__align--left u__fs__h1 mb-none'>Playlists</h1>
-                    <p>Your playlists</p>
+                    <h1 className='captionxl u__align--left u__fs__h1 mb-none'>My Library</h1>
+                    <p>Your Library</p>
                 </div>
             </div>
-            <PlaylistList list={playlists}></PlaylistList>
+            <div className='library-container'>
+                <LibraryCard list="history"></LibraryCard>
+                <LibraryCard list="liked"></LibraryCard>
+                <LibraryCard list="albums"></LibraryCard>
+                <LibraryCard list="uploads"></LibraryCard>
+            </div>
         </div>
     )
 }
@@ -34,4 +39,4 @@ export function links() {
     ]
   }
 
-export default Playlists
+export default Library

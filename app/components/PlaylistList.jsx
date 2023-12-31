@@ -2,7 +2,7 @@ import React from 'react'
 
 const PlaylistList = ({ list }) => {
   return (
-    <div class="playlists-list mt-xl">
+    <div class="playlists-list mt-l">
       {list.map((item, index) =>
       (
         <div className="playlist-list-container mb-m">
