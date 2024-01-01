@@ -20,7 +20,7 @@
 
 .playlist-details{
     display: flex;
-    border-bottom: 1px solid #2d3748;
+    border-bottom: 1px solid #2c4b7f;
     align-items: center;
     padding: 1rem;
 }
@@ -48,7 +48,7 @@
     padding-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #2d3748;
+    border-bottom: 1px solid #2c4b7f;
 }
 
 .playlist-content-item-details{

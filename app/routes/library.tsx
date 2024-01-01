@@ -1,6 +1,6 @@
 import React from 'react'
 import css from "~/styles/pl-list.css";
-import usePlaylists from '~/scripts/usePlaylists';
+import useSongs from '~/scripts/useSongs';
 import LibraryCard from "~/components/Library/LibraryCard";
 import { LoaderFunction } from '@remix-run/node';
 import { requireAuth } from '~/guard/guard';
@@ -13,7 +13,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const Library = () => {
     const user = useOutletContext();
-    const { data:playlists, loading, error } = usePlaylists(user?.uid, 'owned');
+    const { data:songs, loading, error } = useSongs(user?.uid, 'owned');
+    const { data:favs } = useSongs(user?.uid, 'favorited');
 
     return (
         <div className='mainContent'>
@@ -24,10 +25,10 @@ const Library = () => {
                 </div>
             </div>
             <div className='library-container'>
-                <LibraryCard list="history"></LibraryCard>
-                <LibraryCard list="liked"></LibraryCard>
-                <LibraryCard list="albums"></LibraryCard>
-                <LibraryCard list="uploads"></LibraryCard>
+                <LibraryCard list="history" songs={[]}></LibraryCard>
+                <LibraryCard list="liked" songs={favs}></LibraryCard>
+                <LibraryCard list="albums" songs={[]}></LibraryCard>
+                <LibraryCard list="uploads" songs={songs}></LibraryCard>
             </div>
         </div>
     )
