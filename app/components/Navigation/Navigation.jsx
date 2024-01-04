@@ -18,6 +18,8 @@ import {
   FaSignOutAlt,
   FaUpload,
   FaReadme,
+  FaCloudDownloadAlt,
+  FaHistory,
 } from "react-icons/fa";
 
 
@@ -59,25 +61,16 @@ const Navigation = (props) => {
         <Tooltip content="Home" position="right">
           <Icon title="Home" link="/" icon={<FaHome />} />
         </Tooltip>
-        <Tooltip content="Messages" position="right">
-          <Icon expandable title="Messages" link="/messages" icon={<FaEnvelopeOpenText />} />
-          { props.isExpanded && expandedMenu === "Messages" ? (
-            <Expanded menu="messages"></Expanded>
+        <Tooltip content="Downloader" position="right">
+          <Icon expandable title="Downloader" link="/downloader" icon={<FaCloudDownloadAlt />} />
+          { props.isExpanded && expandedMenu === "Downloader" ? (
+            <Expanded menu="downloader"></Expanded>
           ) : ("") }
         </Tooltip>
-        <Tooltip content="Upload" position="right">
-          <Icon expandable title="Upload" link="/panel" icon={<FaUpload />} />
-          { props.isExpanded && expandedMenu === "Upload" ? (
-            <Expanded menu="upload"></Expanded>
-          ) : ("") }
-        </Tooltip>
-        <Tooltip content="Communities" position="right">
-          <Icon title="Communities" link="/" icon={<FaGlobeAmericas />} />
-        </Tooltip>
-        <Tooltip content="Library" position="right">
-          <Icon expandable title="Library" link="/library" icon={<FaReadme />} />
-          { props.isExpanded && expandedMenu === "Library" ? (
-            <Expanded menu="library"></Expanded>
+        <Tooltip content="History" position="right">
+          <Icon expandable title="History" link="/history" icon={<FaHistory />} />
+          { props.isExpanded && expandedMenu === "History" ? (
+            <Expanded menu="history"></Expanded>
           ) : ("") }
         </Tooltip>
       </ul>

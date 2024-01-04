@@ -131,8 +131,8 @@ export default function Login() {
               <div className="spotify-icon">
                 <i className="fab fa-spotify"></i>
               </div>
-              <h1 className='captionxl'>Welcome to Stellar</h1>
-              <p className="spotify-description">Discover new music and enjoy your favorite tracks.</p>
+              <h1 className='captionxl'>Spotify Downloader</h1>
+              <p className="spotify-description">This branch of the Stellar Project allows you to download MP3s from Spotify playlists.</p>
             </div>
           </div>
           <div className="col-12 col-md-5 p-none">
@@ -158,7 +158,6 @@ export default function Login() {
                 </div>
                 <div className="actions">
                   <button type="submit" className="mb-none">Login</button>
-                  <a href="/login">Create an account</a>
                 </div>
               </form>
             </div>

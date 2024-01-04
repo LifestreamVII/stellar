@@ -171,6 +171,14 @@
 -- Icons
 /* ======================= */
 
+    .u__wide{
+      padding: 26vh 0;
+      width: 90vw;
+      margin: 0 auto;
+      max-width: 1200px;
+      max-height: 100vh;
+    }
+
     .u__bold{
         font-weight: 600;
     }
@@ -219,6 +227,10 @@
 
     .u__disp--in{
         display: inline!important;
+    }
+
+    .u__disp--inblock{
+        display: inline-block!important;
     }
     
     .u__disp--hidden{

@@ -3,7 +3,7 @@
 // ...............
 
 
-import { createCookieSessionStorage, redirect, json, Session } from '@remix-run/node';
+import { createCookieSessionStorage, redirect, json, Session, createCookie } from '@remix-run/node';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import { collection, getDocs } from "firebase/firestore";
 import { auth as clientAuth, db } from '~/utils/firebase.config';
@@ -46,6 +46,11 @@ let { getSession, commitSession, destroySession } = createCookieSessionStorage({
     maxAge: 60 * 60 * 24 * 5, // 5 days
     httpOnly: true,
   },
+});
+
+const tokenCookie = createCookie("spotify-token", {
+  maxAge: 3600, // Set it according to your expires_in value
+  path: "/",
 });
 
 // ..............................
@@ -142,4 +147,4 @@ function requireHTTPS(request: Request) {
 }
 
 
-export { requireHTTPS, getSession, getUserSession, signInUser, userHasRole, logout, requireAuth, getUserId, checkSessionCookie, commitSession }
+export { requireHTTPS, getSession, getUserSession, signInUser, userHasRole, logout, requireAuth, getUserId, checkSessionCookie, commitSession, tokenCookie}

@@ -35,19 +35,19 @@ const Expanded = ({menu}) => {
                     title: "Something here"
                     },
                 ]
-            case "library":
+            case "downloader":
                 return [
                     {
-                    link: "/library",
-                    title: "My Library"
+                    link: "/downloader",
+                    title: "DL Playlists"
                     },
                     {
-                    link: "/playlists",
-                    title: "My Playlists"
+                    link: "/downloader#song",
+                    title: "DL Track"
                     },
                     {
-                    link: "",
-                    title: "Something here"
+                    link: "/downloader#nomad",
+                    title: "Nomad"
                     },
                 ]
             case "help":

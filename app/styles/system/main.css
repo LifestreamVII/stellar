@@ -20,6 +20,25 @@
     max-width: 450px;
 }
 
+.splash .status-text{
+    animation: text-in 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+.splash .status-text.change{
+    animation: text-out 1.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+.splash .status-wrapper {
+    width: 100%;
+    margin-top: -20px;
+    text-align: center;
+    min-height: 200px;
+}
+
+.splash .status-wrapper p{
+    min-height: 22px;
+}
+
 .spinner {
     width: 50px;
     height: 50px;
@@ -29,6 +48,43 @@
     animation: spin 1s linear infinite;
     margin-top: 20px;
 }
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand-fwd-top
+ * ----------------------------------------
+ */
+ @keyframes text-in {
+    0% {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+@keyframes text-out {
+    0% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    20% {
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateY(80px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(0px);
+    }
+  }
 
 .upload-container {
     border: dotted 2px var(--c-stellar);

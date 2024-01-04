@@ -5,8 +5,28 @@
     max-width: 900px;
 }
 
+.playlist-type-spotify{
+    position: absolute;
+    right: 0;
+    background-position: 640px top;
+    background-size: 40%;
+    opacity: 0.1;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png);
+}
+
 .playlist-title{
     text-align: left;
+    max-width: 70%;
+    overflow: hidden; /* Hide the text exceeding the maximum width */
+    text-overflow: ellipsis; /* Display three dots (...) when text overflows */
+}
+
+.playlist-list form{
+    margin: initial;
+    padding: 0.5rem 1rem;
 }
 
 .playlist-list {
@@ -19,6 +39,7 @@
 }
 
 .playlist-details{
+    position: relative;
     display: flex;
     border-bottom: 1px solid #2c4b7f;
     align-items: center;
@@ -33,14 +54,32 @@
 
 .playlist-content-list{
     font-size: 0.75rem;
-    overflow-y: auto;
     box-shadow: inset 0px 9px 20px 5px #0000006b;
     background-color: #0000005e;
-    max-height: 230px;
     /* min-height: 80%; */
 }
 
+.playlist-content-item:hover {
+    background: #4c71d11f;
+    border: solid 1px #ffffff4a;
+}
+
+.playlist-content-item .invisible{
+position: absolute;
+width: 100%;
+left: 0;
+top: 0;
+height: 100%;
+z-index: 0;
+background: none;
+outline: none;
+border: none;
+cursor: pointer;
+}
 .playlist-content-item{
+    position: relative;
+    cursor: pointer;
+    transition: background-color, border 0.2s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -53,6 +92,7 @@
 
 .playlist-content-item-details{
     display: flex;
+    z-index: 1;
     align-items: center;
 }
 
@@ -66,7 +106,12 @@
 .playlist-details-main img{
     width: 8rem;
     height: 8rem;
+    flex: 1;
     margin-right: 1rem;
+}
+
+.playlist-details-main-text {
+    flex: 4;
 }
 
 .playlist-details-main{
@@ -87,3 +132,55 @@
     width: 5rem;
     height: 5rem;
 }
+
+.download-indicator {
+    z-index: 1;
+    width: 42px;
+    max-width: 42px;
+  }
+  .download-indicator .load-bar {
+    background: #3a3a8dc9;
+    height: 6px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .download-indicator .load-bar .progress {
+    opacity: 1;
+    width: 0%;
+    background: #ffffff5e;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right:100%;
+    bottom:0;
+    left:0;
+    width:0;
+  }
+
+  .download-indicator .load-bar .progress.pending{
+    animation:borealisBar 0.7s cubic-bezier(0.71, 0.2, 1, 0.85) infinite;
+  }
+  
+  @keyframes borealisBar {
+    0% {
+      left:0%;
+      right:100%;
+      width:0%;
+    }
+    10% {
+      left:0%;
+      right:75%;
+      width:25%;
+    }
+    90% {
+      right:0%;
+      left:75%;
+      width:25%;
+    }
+    100% {
+      left:100%;
+      right:0%;
+      width:0%;
+    }
+  }

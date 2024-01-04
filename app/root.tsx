@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useFetcher,
 } from "@remix-run/react";
 
 import { useState, useEffect } from 'react'
@@ -14,6 +15,7 @@ import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import { json, redirect } from '@remix-run/node';
 import Player from "~/components/Player";
+import axios from 'axios';
 
 import base from "~/styles/system/main.css";
 import grid from "~/styles/system/grid.css";
@@ -88,6 +90,7 @@ export default function App() {
       </head>
       {loading === false ? (
         <body>
+          <SplashScreen></SplashScreen>
           <div className="container">
             <div className={isExpanded ? 'sidebar expanded' : 'sidebar'} style={sidebarStyle}>
               <nav>

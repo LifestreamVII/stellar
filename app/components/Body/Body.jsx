@@ -3,7 +3,6 @@ import body from "~/styles/system/body.css";
 import News from "~/components/Body/Top/News.jsx";
 import Activity from "~/components/Body/Activity/Activity.jsx";
 import Register from "~/components/Modal/Register.tsx";
-import { uploadFile } from '~/scripts/useUpload.ts';
 
 const Body = () => {
 
@@ -17,34 +16,6 @@ const Body = () => {
     setRegister(false);
   }
 
-  const fileInputRef = useRef(null);
-  const onButtonClick = () => {
-    if (fileInputRef.current) fileInputRef.current.click();
-  };
-  const handleFileUpload = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    try {
-      const response = await fetch('/upload', { // update this to your uploading endpoint
-        method: 'POST',
-        body: formData
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error);
-      }
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];  // assuming single file selection
-    if (file) {
-      handleFileUpload(file);
-    }
-  };
-
   return (
     <div className="mainContent">
       {showRegister && (
@@ -52,20 +23,16 @@ const Body = () => {
           <Register closeRegister={closeRegister}></Register>
         </div>
       )}
-             <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          style={{'display': 'none'}}
-          />
-        <button style={{'display': 'none'}} onClick={onButtonClick}>Upload Song</button>
-      <div className='row mb-xl'>
-        <div className='col-9'>
-          <News />
+      <div className="u__wide u__align--center">
+        <h1 className='mt-none mb-none'>Stellar MP3 Downloader</h1>
+        <div className='mt-l'>
+          <a href="http://" className='u__disp--inblock u__fs__medium'>
+            <button className='u__align--center mr-s'>Download Playlists</button>
+          </a>
+          <a href="http://" className='u__disp--inblock u__fs__medium'>
+            <button className='u__align--center'>ARL Config</button>
+          </a>
         </div>
-      </div>
-      <div className="bottom">
-        <Activity />
       </div>
     </div>
   )

@@ -114,6 +114,21 @@ select {
   margin: auto;
 }
 
+.loading-indicator{
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    padding: 10px 20px;
+    width: 250px;
+    background: #0e193157;
+    border: solid 2px #ffffff17;
+    border-radius: 16px;
+    flex-flow: row nowrap;
+    gap: 13px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .player {
   background-color: yellow;
   position: fixed;
