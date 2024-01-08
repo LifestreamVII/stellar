@@ -170,7 +170,7 @@ const PlaylistItem = ({item, index}) => {
         type="text"
         hidden
         name="artist"
-        value={item.track.name}
+        value={item.track.artists[0].name}
       />
       <input
         readOnly

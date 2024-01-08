@@ -10,7 +10,7 @@ export const loader = async ({ request }: any) => {
     let title = url.searchParams.get('title') || null;
     let album = url.searchParams.get('album')  || "";
     let artist = url.searchParams.get('artist') || null;
-    let duration = url.searchParams.get('duration') || null;
+    let duration = Math.floor(Number(url.searchParams.get('duration'))/1000) || null; // in seconds
 
     if (!title || !artist || !duration) throw new Error ("Invalid value(s)");
     
@@ -20,13 +20,16 @@ export const loader = async ({ request }: any) => {
     artist = artist.replace(/[\u0250-\ue007]/g, '').length > 3 ? artist.replace(/[\u0250-\ue007]/g, '') : artist;
 
     // Duration should be provided in seconds
-    const api_url = `https://api.deezer.com/search?q=artist:"${encodeURIComponent(artist)}"%20track:"${encodeURIComponent(title)}"%20dur_max:"${Math.floor(Number(duration) + 30)}"`;
+    const api_url = `https://api.deezer.com/search/track?q="${encodeURIComponent(artist)}"%20"${encodeURIComponent(title)}"%20"${album}}"`;
 
     const response = await axios.get(api_url);
 
     if (response.data && response.data.data) {
+      let song;
       if (response.data.data.length > 0) {
-        const song = response.data.data[0];
+        if (response.data.data.length > 1) {
+          song = response.data.data.filter((item:any) => Number(duration)-12 <= Number(item.duration) && Number(item.duration) <= Number(duration)+12)[0];
+        } else song = response.data.data[0];
         return json({ id: song.id });
       }
       return json({ error: "Song not found", code:69}, { status: 404 });

@@ -35,7 +35,7 @@ const useTests = () => {
       const token = axios.get("/token").then((response) => resolve(response.status === 200));
     });
   const checkARLToken = () =>
-    new Promise((resolve) => setTimeout(() => resolve(true), 5000));
+    new Promise((resolve) => setTimeout(() => resolve(true), 800));
   const checkHistory = () =>
     new Promise((resolve) => setTimeout(() => resolve(true), 600));
 
