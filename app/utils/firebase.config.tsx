@@ -7,13 +7,13 @@ import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-  measurementId: process.env.MEASUREMENT_ID
+  apiKey: "AIzaSyDMdRHTbCXcdIrULkn5OM6cYxQ2_EAzusQ",
+  authDomain: "stellar-imagine.firebaseapp.com",
+  projectId: "stellar-imagine",
+  storageBucket: "stellar-imagine.appspot.com",
+  messagingSenderId: "440776053738",
+  appId: "1:440776053738:web:916b1a3b92cb39c6135893",
+  measurementId: "G-XMPVEZGPVP"
 };
 
 // Initialize Firebase
