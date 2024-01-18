@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "stellar-imagine",
+  "private_key_id": "fbf0d2f2e4e87929f7edb9eb12b0897ef2f368cb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDsFLN0apC2/506\nE8RTWSjjpT7TkFoyEguqmEFT45zXsl5IAlfnMIXH/EQN2bhUvob1WVt8V/rGzIsV\nUD4R2X8/m5Vf6K4DqAW0qCuBogdHWLiGCMuOu4U6nzGunvtWSIynvGboPUGenS84\nMcffdn/GtAac8oJMJGkeKaUybe4GgrspHaJ1jyJ9F/j0RX+5q+n/nojXYTP9pXjz\nYsoEVGIKxEtcb/gA+0grDwUNjG+q1ll6MEkyTy0fmJokt0erKgNfkBplcMEPEmf7\nldxXhMIB4twQ7UjIrSTiapvf2mMCwPMj3z8b/yBeh/RgWmBOjVSvdSSHej9aka1i\nisdTx6U9AgMBAAECggEAKj3oAFAjFcN2EBLCYcGF2fnS3IsrQGNPOBanNcn34fZ1\n/T+CGAlsHqUKTkojO/KddmAnSP/7DMBDsKwbdxkqNijyGOeq31ecsb8Xjcn+sGr1\nFXKUbbUq+RrMCnlC8qTnmgnRhgOT7rwkW1M49siew2CqAEI6Q0KOlomQGA5odTxu\nIdaOa++VCzeQ/Lacslif3oLpfio9acmvzSVxZZx0WfyQTI8VrbXvtswPqnTPEaDD\nbndUj9VvqF+TpIFLhusUpgfmJjQl6qkaCxeCcRUCleffBwvzu0uA7Wav6mXBkTHz\nIwsbHe5J5LD/H1idcktcalKjdlP5gSC63zQmlWvK1wKBgQD4/wZ7CCHOG/9Tta1l\n5b1Xje6Iz319lvsgCDyf2rCodVTHLGK9lqYo3hQQ1eIUrbIq7jW7er2JhS5kgNZi\nWfVGdNPqqa3uOuXQlHPH0S1yGDwXhJxngIxFWVhOPcmGuDas754CimSe76kukn6Y\nIjYnl7wgsSOfBKoKjP0ttpR62wKBgQDyuKzBZqM4OMh6XM5R4/h6g7PoYuLyW+aO\nFJb2yE9LdYVMH4+bp5Zl9lPUD2YfVliV6TwOe6dv+i6RMnfmPYi1g4oXbvQVFC6V\noV2quCY4w0ulpfTu4IOLQmQ3fqQ4Rtbkt+litN+X4vgk7L56fWy3+hBz0c9Sc5yP\nQ6VVurT/xwKBgEitX33fxMY9Q8xyNfeNFDQPGHXUYmObAxe5b8CU+4VgIeu01+lQ\npJU/JQo487FndZ60QvjC/bm7Juxs8qZobYAwL37KIhtsE5JLEnRbaPFpg3i121UW\nn1rKlkzYGg95i3P0yOEi9fWyLGaMmejb64So9F9ydNxAZ0WHG4sRRMuLAoGBAKyl\nX3xRnVeoTDF9QeRN27iJZbauX+80H1KAosD2yjBKb34uFOAK3Je6FvaH3YP8zxYS\nyH0kx3yG4Ai3dUF4E33JCriQW12C9X/JP+7m/YjyoSQ6X3ZqjCbKGq6+jeDZwpD9\noCxtq31GHGtnWjWWcXaLkJhRbL6hLYNaAohwPb6RAoGBANpgVzkMduWKaXooI/Kq\nCl3Mnvdd3uLVMuP/W1g/+B9HSnjzcnzq0BKmZhXvqNaNooteU5mhW5vAJaulob8+\ntHooGyX98nZw856DKCmdRix8kKUw9ZwSXcaG82yX9Pox+tlunfoqQCvl5n/RkzPn\nHCRowBTDiy3bvkP2jCGvAyCD\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ii417@stellar-imagine.iam.gserviceaccount.com",
+  "client_id": "111166389553139580680",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ii417%40stellar-imagine.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
