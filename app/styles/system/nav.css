@@ -4,7 +4,6 @@
     z-index: 0;
     top: 0px;
     right: 0;
-    width: calc(100% - 100px);
     background-color: #ffffff07;
     border-bottom: solid 1px var(--c-dgray);
     padding: 14px 0;
@@ -141,7 +140,6 @@ header {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    padding: 15px;
     position: fixed;
     z-index: 9;
     top: 0px;
@@ -154,8 +152,8 @@ header {
     backdrop-filter: saturate(180%) blur(20px);
     background-color: var(--nav-background-color);
     box-shadow: 0 1px 0 var(--nav-border-color);
-    right: 0;
-    width: calc(100% - 100px);
+    left: 0;
+    width: 100%;
 }
 
 .search-bar {
@@ -185,8 +183,10 @@ header {
 
 .user-settings {
     display: flex;
+    justify-content: right;
     align-items: center;
     padding-left: 20px;
+    width: auto;
     flex-shrink: 0;
     margin-left: auto;
 }
@@ -285,4 +285,47 @@ header a:hover, a.alt:hover{
     .header {
         padding: 10px;
     }
+}
+
+.tabs-bar{
+    display: flex;
+    background-color: #00000054;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top: solid 1px #ffffff1f;
+    padding-top: 0.5rem;
+    justify-content: left;
+    gap: 4%;
+    padding-bottom: 0.5rem;
+}
+
+.tabs-bar .tab{
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: all 0.2s ease-in-out;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.tabs-bar .tab img{
+    border-radius: 0.25rem;
+
+}
+
+header > div,
+header > div > div{
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header > div > div {
+    padding: 5px 15px;
+}
+
+.tabs-bar .tab span{
+    margin: 0;
 }
