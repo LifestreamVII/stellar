@@ -101,9 +101,7 @@ export default function App() {
               <Scripts />
               <LiveReload />
             </div>
-            <div className="player">
-              <Player></Player>
-            </div>
+            <Player></Player>
           </div>
         </body>
       ) : (
