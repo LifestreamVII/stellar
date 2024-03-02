@@ -6,12 +6,10 @@ export default function Header(props) {
   function TabsBar() {
       return (
           <div className="tabs-bar">
-              <Tab text="All" image="https://placehold.co/20x20" active />
-              <Tab text="Following" image="https://placehold.co/20x20" />
-              <Tab text="Popular" image="https://placehold.co/20x20" />
-              <Tab text="New" image="https://placehold.co/20x20" />
-              <Tab text="Your Posts" image="https://placehold.co/20x20" />
-              <Tab text="Saved" image="https://placehold.co/20x20" />
+              <Tab text="s/VOCALOID" image="https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png" active />
+              <Tab text="s/lr001" image="https://placehold.co/20x20" />
+              <Tab text="s/Atmos" image="https://placehold.co/20x20" />
+              <Tab text="s/Phonk" image="https://placehold.co/20x20" />
           </div>
       );
   }
@@ -19,7 +17,7 @@ export default function Header(props) {
   function Tab({ text, image, active }) {
       return (
           <div className={`tab flex items-center space-x-2 px-4 py-2 tab ${active ? 'tab-active' : ''}`}>
-              <img src={image} alt={`${text} icon placeholder`} />
+              <img src={image} width={24} height={24} alt={`${text} icon placeholder`} />
               <span>{text}</span>
           </div>
       );
