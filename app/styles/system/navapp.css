@@ -170,6 +170,7 @@ li.communities {
 .sidebar.expanded .tooltip-children li a{
   width: 100%;
   text-align: left;
+  white-space: nowrap;
 }
 
 .sidebar.expanded menu ul li:hover a:not(.navbar__logo--sm)::before {
