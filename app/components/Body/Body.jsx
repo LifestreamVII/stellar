@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import body from "~/styles/system/body.css";
 import Activity from "~/components/Body/Activity/Activity.jsx";
 import Register from "~/components/Modal/Register.tsx";
+import { NavLink } from '@remix-run/react';
 
 const Body = () => {
 
@@ -25,12 +26,9 @@ const Body = () => {
       <div className="u__wide u__align--center">
         <h1 className='mt-none mb-none'>Stellar MP3 Downloader</h1>
         <div className='mt-l'>
-          <a href="http://" className='u__disp--inblock u__fs__medium'>
+          <NavLink className='u__disp--inblock u__fs__medium' to="/downloader">
             <button className='u__align--center mr-s'>Download Playlists</button>
-          </a>
-          <a href="http://" className='u__disp--inblock u__fs__medium'>
-            <button className='u__align--center'>ARL Config</button>
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

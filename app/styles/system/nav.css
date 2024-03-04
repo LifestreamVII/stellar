@@ -124,7 +124,10 @@ footer.footer .additional{
 }
 
 #search{
-    background: var(--g-blue-input);
+    background: #0000006b;
+    border: solid 2px #4c4c4c96;
+    color: white;
+    box-shadow: inset -4px 0px 12px 5px #327be21f;
 }
 
 #search::placeholder{

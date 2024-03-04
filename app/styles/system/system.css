@@ -90,7 +90,7 @@ select {
   width: 100%;
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: .28fr 2fr .2fr;
+  grid-template-rows: .20fr 2fr;
   grid-column-gap: 0px;
   min-height: 100vh;
   grid-row-gap: 0px;
