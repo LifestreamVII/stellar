@@ -1,5 +1,4 @@
 .player {
-    position: fixed;
     z-index: 99;
     bottom: 0px;
     max-height: 100px;

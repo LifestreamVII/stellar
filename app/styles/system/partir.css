@@ -116,6 +116,11 @@
     figure,
     picture {
         margin: 0; 
+        color: var(--c-white);
+    }
+
+    hr{
+      border-top: solid 1px #ffffff15;
     }
 
     *,
@@ -604,10 +609,11 @@
     }
 
     h3, .h3{
-        font-style: normal;
-        font-weight: 700;
-        font-size: 23px;
-        line-height: 28px;
+        font-style: italic;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 14px;
+        text-transform: uppercase;
     }
 
     h4, .h4{
@@ -618,10 +624,10 @@
     }
 
     h5, .h5{
-        font-style: normal;
-        font-weight: 900;
-        font-size: 17px;
-        line-height: 20px;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 19px;
+        line-height: 23px;
     }
 
     p, .paragraph, span{

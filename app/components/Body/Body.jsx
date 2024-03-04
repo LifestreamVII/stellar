@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import body from "~/styles/system/body.css";
-import News from "~/components/Body/Top/News.jsx";
 import Activity from "~/components/Body/Activity/Activity.jsx";
 import Register from "~/components/Modal/Register.tsx";
 
@@ -17,7 +16,7 @@ const Body = () => {
   }
 
   return (
-    <div className="mainContent">
+    <div className="">
       {showRegister && (
         <div className="modal-fixed">
           <Register closeRegister={closeRegister}></Register>

@@ -1,6 +1,5 @@
 menu {
-    /* width: 100px; */
-    width: 82%;
+    width: 100%;
     z-index: 0;
     height: 100%;
     gap: 1em;
@@ -8,7 +7,7 @@ menu {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
+    padding: 0 8px;
     margin: 0;
   }
 
@@ -171,6 +170,7 @@ li.communities {
 .sidebar.expanded .tooltip-children li a{
   width: 100%;
   text-align: left;
+  white-space: nowrap;
 }
 
 .sidebar.expanded menu ul li:hover a:not(.navbar__logo--sm)::before {

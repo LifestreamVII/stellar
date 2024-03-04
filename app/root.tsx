@@ -92,23 +92,21 @@ export default function App() {
         <body>
           <SplashScreen></SplashScreen>
           <div className="container">
+            <Header user={user.uid ? user : null} />
             <div className={isExpanded ? 'sidebar expanded' : 'sidebar'} style={sidebarStyle}>
               <nav>
                 <Navigation user={user.uid ? true : false} isExpanded={isExpanded} expandNavbar={expandNavbar} />
-                {/* <div>
-                  <Header user={user.uid ? user : null} />
-                </div> */}
               </nav>
             </div>
             <div className="main-content">
-              <Outlet context={user.uid ? user : null} />
+              <div className="mainContent">
+                <Outlet context={user.uid ? user : null} />
+              </div>
               <ScrollRestoration />
               <Scripts />
               <LiveReload />
             </div>
-            <div className="player">
-              <Player></Player>
-            </div>
+            <Player></Player>
           </div>
         </body>
       ) : (
