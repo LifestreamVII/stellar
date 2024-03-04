@@ -6,10 +6,10 @@ export default function Header(props) {
   function TabsBar() {
       return (
           <div className="tabs-bar">
-              <Tab text="s/VOCALOID" image="https://cdn.icon-icons.com/icons2/2620/PNG/512/among_us_player_red_icon_156942.png" active />
-              <Tab text="s/lr001" image="https://placehold.co/20x20" />
-              <Tab text="s/Atmos" image="https://placehold.co/20x20" />
-              <Tab text="s/Phonk" image="https://placehold.co/20x20" />
+              <Tab text="Spotify" image="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/1982px-Spotify_icon.svg.png" active />
+              <Tab text="YouTube" image="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" />
+              <Tab text="SoundCloud" image="https://cdn-icons-png.flaticon.com/512/145/145809.png" />
+              <Tab text="Bandcamp" image="https://cdn.iconscout.com/icon/free/png-256/free-bandcamp-3521298-2944717.png" />
           </div>
       );
   }
