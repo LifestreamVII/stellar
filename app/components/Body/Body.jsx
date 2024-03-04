@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import body from "~/styles/system/body.css";
-import News from "~/components/Body/Top/News.jsx";
 import Activity from "~/components/Body/Activity/Activity.jsx";
 import Register from "~/components/Modal/Register.tsx";
 import { uploadFile } from '~/scripts/useUpload.ts';
@@ -45,21 +44,8 @@ const Body = () => {
     }
   };
 
-// .parent {
-// display: grid;
-// grid-template-columns: 0.4fr repeat(2, 1fr);
-// grid-template-rows: 0.3fr 1fr 0.3fr;
-// grid-column-gap: 0px;
-// grid-row-gap: 0px;
-// }
-
-// .div1 { grid-area: 1 / 1 / 4 / 2; }
-// .div2 { grid-area: 1 / 2 / 2 / 4; }
-// .div3 { grid-area: 2 / 2 / 3 / 4; }
-// .div4 { grid-area: 3 / 2 / 4 / 4; }
-
   return (
-    <div className="mainContent">
+    <div className="">
       {showRegister && (
         <div className="modal-fixed">
           <Register closeRegister={closeRegister}></Register>
@@ -72,12 +58,7 @@ const Body = () => {
           style={{'display': 'none'}}
           />
         <button style={{'display': 'none'}} onClick={onButtonClick}>Upload Song</button>
-      <div className='row mb-xl'>
-        <div className='col-9'>
-          <News />
-        </div>
-      </div>
-      <div className="bottom">
+      <div>
         <Activity />
       </div>
     </div>

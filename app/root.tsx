@@ -96,7 +96,9 @@ export default function App() {
               </nav>
             </div>
             <div className="main-content">
-              <Outlet context={user.uid ? user : null} />
+              <div className="mainContent">
+                <Outlet context={user.uid ? user : null} />
+              </div>
               <ScrollRestoration />
               <Scripts />
               <LiveReload />

@@ -90,7 +90,7 @@ select {
   width: 100%;
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: .32fr 2fr .2fr;
+  grid-template-rows: .28fr 2fr .2fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -121,14 +121,14 @@ select {
   grid-area: 2 / 2 / 3 / 3;
   padding: 0rem 1rem;
   border-radius: 0.5rem;
-  background: url(/backw.png);
+  /* background: url(/backw.png); */
   padding-bottom: 6rem;
 }
 
 .mainContent{
   width: 100%;
   height: 100%;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   margin: auto;
 }
 

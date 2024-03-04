@@ -1,0 +1,94 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation and Tabs Bar</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .tab {
+            transition: all 0.2s ease-in-out;
+        }
+        .tab:hover {
+            background-color: #2D2F36;
+            transform: translateY(-2px);
+        }
+        .tab-active {
+            background-color: #4F7FFF;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        function App() {
+            return (
+                <div className="bg-[#0D0F12]">
+                    <div className="flex items-center justify-between px-4 py-2">
+                        <div className="flex items-center space-x-4">
+                            <div className="flex items-center bg-[#1A1C23] px-2 py-1 rounded">
+                                <span className="text-[#4F7FFF] text-sm">SEARCH</span>
+                                <input type="text" placeholder="Search" className="bg-transparent text-white placeholder-white outline-none px-2 py-1 text-sm" />
+                                <button className="text-white">
+                                    <i className="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <NavItem text="FEED" />
+                            <NavItem text="ARTISTS" />
+                            <NavItem text="EXPLORE" />
+                        </div>
+                        <NavItem text="mikudrip" icon="fas fa-chevron-down" profile />
+                    </div>
+                    <TabsBar />
+                </div>
+            );
+        }
+
+        function NavItem({ text, icon, profile }) {
+            return (
+                <div className={`flex items-center ${profile ? 'space-x-1' : 'space-x-2'}`}>
+                    {!profile && <div className="w-2 h-2 bg-[#4F7FFF] rounded-full"></div>}
+                    <span className="text-white text-sm">{text}</span>
+                    {icon && <i className={`${icon} text-white text-sm`}></i>}
+                    {profile && <img src="https://placehold.co/32x32" alt="Profile picture placeholder" className="rounded-full" />}
+                </div>
+            );
+        }
+
+        function TabsBar() {
+            return (
+                <div className="bg-[#13161D] px-4 py-2 mt-1 flex space-x-1">
+                    <Tab text="All" image="https://placehold.co/20x20" active />
+                    <Tab text="Following" image="https://placehold.co/20x20" />
+                    <Tab text="Popular" image="https://placehold.co/20x20" />
+                    <Tab text="New" image="https://placehold.co/20x20" />
+                    <Tab text="Your Posts" image="https://placehold.co/20x20" />
+                    <Tab text="Saved" image="https://placehold.co/20x20" />
+                </div>
+            );
+        }
+
+        function Tab({ text, image, active }) {
+            return (
+                <div className={`flex items-center space-x-2 px-4 py-2 tab ${active ? 'tab-active' : ''}`}>
+                    <img src={image} alt={`${text} icon placeholder`} className="rounded-full" />
+                    <span className={`text-sm ${active ? 'text-white' : 'text-[#6B7280]'}`}>{text}</span>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+</body>
+</html>
