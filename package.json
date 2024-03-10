@@ -19,7 +19,9 @@
     "firebase-auth": "^0.1.2",
     "firebase-functions": "^4.4.1",
     "isbot": "^3.6.8",
+    "node-id3": "^0.2.6",
     "patch-package": "^7.0.1",
+    "buffer-polyfill": "npm:buffer@^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1"

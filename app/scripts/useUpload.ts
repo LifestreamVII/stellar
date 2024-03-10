@@ -40,7 +40,6 @@ export async function uploadFile(usage: Usage, file: File, request: Request) {
     throw new Error(`Input file exceeds the maximum size (${maxFileSizePerUsage[usage] / 1024 / 1024}MB) for usage '${usage}'.`);
   }
   const storageRef = ref(storage, `${usage}/${file.name}`);
-  console.log(file);
   console.log(`Size: ${file.size}`);
   console.log(`Type: ${file.type}`);
   try {

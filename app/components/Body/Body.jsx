@@ -6,7 +6,7 @@ import { uploadFile } from '~/scripts/useUpload.ts';
 
 const Body = () => {
 
-  const [showRegister, setRegister] = useState(false);
+  const [showRegister, setRegister] = useState(true);
 
   const openRegister = () => {
     setRegister(true);
@@ -16,34 +16,6 @@ const Body = () => {
     setRegister(false);
   }
 
-  const fileInputRef = useRef(null);
-  const onButtonClick = () => {
-    if (fileInputRef.current) fileInputRef.current.click();
-  };
-  const handleFileUpload = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    try {
-      const response = await fetch('/upload', { // update this to your uploading endpoint
-        method: 'POST',
-        body: formData
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error);
-      }
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];  // assuming single file selection
-    if (file) {
-      handleFileUpload(file);
-    }
-  };
-
   return (
     <div className="">
       {showRegister && (
@@ -51,13 +23,6 @@ const Body = () => {
           <Register closeRegister={closeRegister}></Register>
         </div>
       )}
-             <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          style={{'display': 'none'}}
-          />
-        <button style={{'display': 'none'}} onClick={onButtonClick}>Upload Song</button>
       <div>
         <Activity />
       </div>
