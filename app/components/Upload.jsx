@@ -5,7 +5,23 @@ import {
 
 const Upload = () => {
 
-  const [songData, setSongData] = useState(null);
+  const [uploadData, setUploadData] = useState(null);
+  const [songData, setSongData] = useState({album: "", title: "", artist: ""})
+
+  const handleUploadChange = (event) => {
+    switch (event.target.name) {
+      case "artist":
+        songData.artist = event.target.value;
+        break;
+        case "album":
+        songData.album = event.target.value;
+        break;
+        case "title":
+        songData.title = event.target.value;
+        break;
+    }
+  }
+
   const fileInputRef = useRef(null);
   const onButtonClick = () => {
     if (fileInputRef.current) fileInputRef.current.click();
@@ -30,10 +46,9 @@ const Upload = () => {
       for (var i = 0; i < len; i++) {
           binary += String.fromCharCode( bytes[ i ] );
       }
-      console.log(image)
       result.img = window.btoa(binary);
       console.log(result.img)
-      setSongData(result);  
+      setUploadData(result);  
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +63,7 @@ const Upload = () => {
   return (
     <div>
     {
-      !songData ? (
+      !uploadData ? (
         <div>
             <input
               type="file"
@@ -66,8 +81,23 @@ const Upload = () => {
       ) : (
         <div>
             <div className="upload-container">
-                <img src={"data:image/png;base64, "+ songData.img} alt="" srcset="" />
-                <p className="upload-text">Click to upload a track or Drag and Drop</p>
+                <div className='cover'>
+                  <img src={"data:image/png;base64, "+ uploadData.img} alt="" srcset="" />
+                </div>
+                <div className='info'>
+                  <div>
+                    <label className="mb-es" htmlFor='artist'>Artist</label>
+                    <input name='artist' placeholder={uploadData.tags.artist} value={songData.artist} onChange={handleUploadChange}/>
+                  </div>
+                  <div>
+                    <label className="mb-es" htmlFor='album'>Album</label>
+                    <input name='album' placeholder={uploadData.tags.album} value={songData.album} onChange={handleUploadChange}/>
+                  </div>
+                  <div>
+                    <label className="mb-es" htmlFor='title'>Title</label>
+                    <input name='title' placeholder={uploadData.tags.title} value={songData.title} onChange={handleUploadChange}/>
+                  </div>
+                </div>
             </div>
         </div>
       )

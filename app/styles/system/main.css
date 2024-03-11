@@ -77,3 +77,38 @@
         transform: rotate(360deg);
     }
 }
+
+
+
+.upload-container .cover {
+    max-width: 250px;
+    flex: 1;
+    border: solid 2px var(--c-stellar);
+}
+
+.upload-container {
+    display: flex;
+    gap: 4%;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-container .info {
+    flex: 3;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-flow: row wrap;
+    text-align: left;
+    font-size: 0.9em;
+    justify-content: flex-start;
+}
+
+.upload-container .info input {
+    padding: 5px;
+    height: fit-content;
+    width: 210px;
+    margin: 0;
+    font-size: 0.8em;
+}
