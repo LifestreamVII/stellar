@@ -33,7 +33,7 @@ import SplashScreen from './splash'
 
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getSession, checkSessionCookie, commitSession } from "./guard/guard";
+import { getSession, checkSessionCookie, commitSession, userHasRole } from "./guard/guard";
 import { getCommunities } from "~/scripts/useUser";
 import { getCommunity } from "~/scripts/useCommunity";
 
@@ -48,16 +48,18 @@ export const loader: LoaderFunction = async ({ request }) => {
       console.log("fetching comms..............")
       const communityIds = await getCommunities(user);
       console.log(communityIds);
-      const communitiesData = await Promise.all(
-        communityIds.map((id) => getCommunity(id))
-      );
-      return communitiesData;
+      if (communityIds)
+        return await Promise.all(
+          communityIds.map((id) => getCommunity(id))
+        );
+      else return [];
     };
     const communities = await fetchCommunities();
+    const adminFeatures = await userHasRole(user.uid, 'songUploader');
     // return get user from db
-    return json({ user, communities });
+    return json({ user, communities, adminFeatures });
   }
-  return json({ user: {uid: null}, communities: [] });
+  return json({ user: {uid: null}, communities: [], adminFeatures: false });
 }
 
 export default function App() {
@@ -70,7 +72,7 @@ export default function App() {
     setIsExpanded(!isExpanded);
   }
   
-  const { user, communities } = useLoaderData<typeof loader>();
+  const { user, communities, adminFeatures } = useLoaderData<typeof loader>();
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500)
@@ -92,7 +94,7 @@ export default function App() {
         <body>
           <SplashScreen></SplashScreen>
           <div className="container">
-            <Header user={user.uid ? user : null} />
+            <Header user={user.uid ? user : null} adminFeatures={adminFeatures} />
             <div className={isExpanded ? 'sidebar expanded' : 'sidebar'} style={sidebarStyle}>
               <nav>
                 <Navigation user={user.uid ? true : false} isExpanded={isExpanded} expandNavbar={expandNavbar} />

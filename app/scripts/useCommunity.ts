@@ -17,6 +17,7 @@ async function getCommunity(communityId: string) {
 
   } else {
     console.error("No such document exists!");
+    return []
   }
 }
 

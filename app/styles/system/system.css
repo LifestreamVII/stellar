@@ -183,3 +183,42 @@ select {
     max-width: initial;
   }
 }
+
+.switch-checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.switch-label {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 70px;
+  height: 25px;
+  background: grey;
+  border-radius: 100px;
+  position: relative;
+  transition: background-color .2s;
+}
+.switch-label .switch-button {
+  content: "";
+  position: absolute;
+  /*! top: -16px; */
+  left: 2px;
+  width: 30px;
+  height: 20px;
+  border-radius: 45px;
+  transition: .2s;
+  background: #fff;
+  box-shadow: 0 0 2px #0a0a0a4a;
+  margin: 2px 0;
+}
+.switch-checkbox:checked + .switch-label .switch-button {
+  left: calc(100% - 2px);
+  transform: translate(-100%);
+}
+.switch-label:active .switch-button {
+  width: 70px;
+}
