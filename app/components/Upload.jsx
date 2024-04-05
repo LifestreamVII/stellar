@@ -2,12 +2,18 @@ import React, { useRef, useState } from 'react'
 import {
     FaCloudUploadAlt,
   } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useWebSocket from 'react-use-websocket';
 
 const Upload = () => {
 
+  const socket = new WebSocket("ws://localhost:5000");
   const [uploadData, setUploadData] = useState(null);
   const [songData, setSongData] = useState({album: "", title: "", artist: ""})
-
+  const [uploadStatus, setStatus] = useState("");
+  const notify = () => toast(uploadStatus);
+  
   const handleUploadChange = (event) => {
     switch (event.target.name) {
       case "artist":
@@ -57,6 +63,22 @@ const Upload = () => {
     const file = event.target.files[0];  // assuming single file selection
     if (file) {
       handleFileUpload(file);
+      const formData = new FormData();
+      formData.append('file', file);
+      socket.addEventListener("connect", (event) => {
+        console.log("Connected to server");
+      });
+      axios.post('upload_file', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then((response) => {
+        useWebSocket(WS_URL, {
+          connect: () => {
+            console.log('WebSocket connection established.');
+          }
+        });
+      })
     }
   };
 
@@ -87,15 +109,15 @@ const Upload = () => {
                 <div className='info'>
                   <div>
                     <label className="mb-es" htmlFor='artist'>Artist</label>
-                    <input name='artist' placeholder={uploadData.tags.artist} value={songData.artist} onChange={handleUploadChange}/>
+                    <input name='artist' placeholder={uploadData.tags.artist} onChange={handleUploadChange}/>
                   </div>
                   <div>
                     <label className="mb-es" htmlFor='album'>Album</label>
-                    <input name='album' placeholder={uploadData.tags.album} value={songData.album} onChange={handleUploadChange}/>
+                    <input name='album' placeholder={uploadData.tags.album} onChange={handleUploadChange}/>
                   </div>
                   <div>
                     <label className="mb-es" htmlFor='title'>Title</label>
-                    <input name='title' placeholder={uploadData.tags.title} value={songData.title} onChange={handleUploadChange}/>
+                    <input name='title' placeholder={uploadData.tags.title} onChange={handleUploadChange}/>
                   </div>
                 </div>
             </div>
