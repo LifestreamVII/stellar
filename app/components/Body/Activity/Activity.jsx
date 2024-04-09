@@ -122,7 +122,7 @@ const Activity = () => {
                           <div className='single-charas-content'>
                             <div className='community-icon'>
                               <div className='community-icon-circle'>
-                                <img src={el.comimg} alt="" srcset="" />
+                                <img src={el.comimg} alt="" srcSet="" />
                               </div>
                             </div>
                             <div className='single-artist u__fs__small u__c--gray'>
@@ -146,7 +146,7 @@ const Activity = () => {
                       <div className='typeof'>
                       </div>
                       <div className='album-cover bg-single-blue'>
-                        <img src={el.albumcover} alt="" srcset="" />
+                        <img src={el.albumcover} alt="" srcSet="" />
                       </div>
                     </div>
                   )
@@ -159,32 +159,32 @@ const Activity = () => {
       <hr />
       <div className="row mt-xl mb-m">
         <div className='u__align--left col-8'>
-          <div class="selectable-tags-group">
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+          <div className="selectable-tags-group">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Chill</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>New</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Moody</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Popular</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Dark</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Happy</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Future</span>
             </a>
-            <a class="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m mr-es" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Space</span>
             </a>
-            <a class="tag pl-m pr-m" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
+            <a className="tag pl-m pr-m" href="https://www.partir.com/ou-partir/janvier/soleil/voyage.html">
               <span>Dreamy</span>
             </a>
           </div>
@@ -205,7 +205,7 @@ const Activity = () => {
                           <div className='single-charas-content'>
                             <div className='community-icon'>
                               <div className='community-icon-circle'>
-                                <img src={el.comimg} alt="" srcset="" />
+                                <img src={el.comimg} alt="" srcSet="" />
                               </div>
                             </div>
                             <div className='single-artist u__fs__small u__c--gray'>
@@ -232,7 +232,7 @@ const Activity = () => {
                         </svg>
                       </div>
                       <div className='album-cover bg-single-blue'>
-                        <img src={el.albumcover} alt="" srcset="" />
+                        <img src={el.albumcover} alt="" srcSet="" />
                       </div>
                     </div>
                   )
@@ -258,7 +258,7 @@ const Activity = () => {
                           <div className='single-charas-content'>
                             <div className='community-icon'>
                               <div className='community-icon-circle'>
-                                <img src={el.comimg} alt="" srcset="" />
+                                <img src={el.comimg} alt="" srcSet="" />
                               </div>
                             </div>
                             <div className='single-artist u__fs__small u__c--gray'>
@@ -280,7 +280,7 @@ const Activity = () => {
                         </div>
                       </div>
                       <div className='album-cover'>
-                        <img src={el.albumcover} alt="" srcset="" />
+                        <img src={el.albumcover} alt="" srcSet="" />
                       </div>
                     </div>
                   )

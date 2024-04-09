@@ -1,27 +1,44 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Id, toast } from "react-toastify";
 import { io } from "socket.io-client";
+import ToastSpinner from "~/components/ToastSpinner";
 
-export const socket = io("http://localhost:5000/events");
+type status = {
+  current: number,
+  total: number, 
+  status: string,
+  userid: string
+}
 
-export default function useWebSocket() {
+export default function useWebSocket(uid: string = "", reportMethod: string = "toast") {
+  
 
   const [isConnected, setIsConnected] = useState(false);
-
-  const [status, setStatus] = useState<object | null>(null);
-  const [uid, setUID] = useState<string | null>(null);
+  
+  const [status, setStatus] = useState<status | null>(null);
+  const [sid, setSID] = useState<string | null>(null);
+  const notify = useRef<Id | null>(null);
+  const socket = io("http://localhost:5000/events", {query: {"userid": uid}, autoConnect: false, forceNew: true});
 
   function onData(data: any) {
     try {
       setStatus(data);
+      console.log(data);
+      if (notify.current && reportMethod) {
+        toast.update(notify.current, {render: data.current == 100 ? data.status : ToastSpinner(data.status), progress: data.current == 100 ? undefined : data.current / 100, autoClose: 3000});
+      } else {
+        notify.current = toast(ToastSpinner(data.status), {progress: 0, autoClose: false, theme: 'dark'});
+      }
     } catch (e: unknown) {
       console.error(e);
     }
   }
 
-  function onUID(data: { userid: string }) {
+  function onSession(data: { userid: string, sessionid: string } ) {
     try {
-      setUID(data.userid);
+      setSID(data.sessionid);
       console.log(data.userid);
+      console.log(data.sessionid);
     } catch (e: unknown) {
       console.error(e);
     }
@@ -37,22 +54,14 @@ function onDisconnect() {
     setIsConnected(false);
   }
 
-  useEffect(() => {
-    socket.on("connect", onConnect);
-    socket.on("disconnect", onDisconnect);
-    socket.on("userid", onUID);
-    socket.on("celerystatus", onData);
-    return () => {
-      socket.off("userid", onUID);
-      socket.off("celerystatus", onData);
-      socket.off("connect", onConnect);
-      socket.off("disconnect", onDisconnect);
-    };
-  }, []);
-
+  socket.on("connect", onConnect);
+  socket.on("disconnect", onDisconnect);
+  socket.on("session", onSession);
+  socket.on("celerystatus", onData);
+  
   return {
     status,
-    uid,
+    sid,
     socket,
     isConnected,
   };

@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import {
     FaCloudUploadAlt,
   } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useWebSocket from '~/scripts/useWebSocket';
 
@@ -12,21 +12,7 @@ const Upload = () => {
   const [uploadData, setUploadData] = useState(null);
   const [songData, setSongData] = useState({album: "", title: "", artist: ""})
   
-  const { socket, status:statusSocket, uid:socketUID } = useWebSocket();
-  
-  const notify = useRef(null);
-  
-  useEffect(() => {
-    if (statusSocket) {
-      console.log(statusSocket);
-      if (notify.current) {
-        toast.update(notify.current, {render: statusSocket.status, progress: statusSocket.current == 100 ? undefined : statusSocket.current / 100, autoClose: 3000});
-      } else {
-        notify.current = toast(statusSocket.status, {progress: 0, autoClose: false, theme: 'dark'});
-      }
-    }
-  }, [statusSocket])
-  
+  const { socket } = useWebSocket("3SWiGIUR4zdEvmzQzTEjcdotZ7z1", "toast");
 
   const handleUploadChange = (event) => {
     switch (event.target.name) {
@@ -78,8 +64,7 @@ const Upload = () => {
       handleFileUpload(file);
       socket.connect();
       const formData = new FormData();
-      formData.append('userid', socketUID);
-      console.log(socketUID);
+      formData.append('userid', "3SWiGIUR4zdEvmzQzTEjcdotZ7z1");
       formData.append('audio', file);
       axios.post('http://localhost:5000/process-audio', formData, {
         headers: {
@@ -93,7 +78,6 @@ const Upload = () => {
 
   return (
     <div>
-    <ToastContainer />
     {
       !uploadData ? (
         <div>
@@ -114,7 +98,7 @@ const Upload = () => {
         <div>
             <div className="upload-container">
                 <div className='cover'>
-                  <img src={"data:image/png;base64, "+ uploadData.img} alt="" srcset="" />
+                  <img src={"data:image/png;base64, "+ uploadData.img} alt="" srcSet="" />
                 </div>
                 <div className='info'>
                   <div>

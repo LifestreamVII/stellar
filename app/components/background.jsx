@@ -1,4 +1,4 @@
-<div class="backcomm" style="
+<div className="backcomm" style="
     position: fixed;
     width: 100vw;
     left: 0;

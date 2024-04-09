@@ -34,22 +34,22 @@ const LibraryCard = ({list, songs}) => {
   }
 
   return (
-    <div class="playlist-list library-card">
-        <div class="playlist-details">
-            <div class="playlist-details-main">
+    <div className="playlist-list library-card">
+        <div className="playlist-details">
+            <div className="playlist-details-main">
                 <img src={ListDetails().url}/>
                 <div className='u__sh--default--text'>
                 <h3 className="playlist-title mb-none">{ListDetails().title}</h3>
-                <p class="mt-none">202 results</p>
+                <p className="mt-none">202 results</p>
                 </div>
             </div>
         </div>
-        <div class="playlist-content-list">
+        <div className="playlist-content-list">
         {
             songs.map((item, index)=>{ return (
-                <div class="playlist-content-item">
-                    <div class="playlist-content-item-details">
-                    <img src={item.coverImageUrl} width={50} height={50} alt="" srcset="" />
+                <div className="playlist-content-item">
+                    <div className="playlist-content-item-details">
+                    <img src={item.coverImageUrl} width={50} height={50} alt="" srcSet="" />
                     <div className='playlist-content-item-title-artist'>
                         <span className='ml-es mb-none'>{item.title}</span>
                         <p className='ml-es mt-none mb-none'>{item.artists[0].displayName}</p>
@@ -61,7 +61,7 @@ const LibraryCard = ({list, songs}) => {
             })
         }
         </div>
-        <div class="playlist-expand">
+        <div className="playlist-expand">
         <a href="" className='u__fs__normal'>Show more...</a>
         </div>
     </div>

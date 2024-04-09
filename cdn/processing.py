@@ -91,11 +91,11 @@ def extract_percentage(string):
 def event():
     userid = request.json['userid']
     data = request.json
-    print(userid)
-    print(data)
+    sid = r.get(userid).decode('utf-8')
+    print ('SID : ' + sid)
     ns = app.clients.get(userid)
-    if ns and data:
-        socketio.emit(event='celerystatus', data=data, namespace=ns, to=userid)
+    if ns and data and sid:
+        socketio.emit(event='celerystatus', data=data, namespace=ns, to=sid)
         return 'ok'
     return 'error', 404
 
@@ -136,17 +136,35 @@ def clients():
 
 @socketio.on('connect', namespace='/events')
 def events_connect():
-    userid = request.sid
-    session['userid'] = userid
+    
+    # Grab the unique Session ID
+    sessionid = request.sid
+
+    # Initialize the User ID
+    userid = ""
+    
+    # Check if the User ID is passed from client
+    if (request.args.get('userid')) :
+        userid = request.args.get('userid')
+    else:
+        userid = str(uuid.uuid4())
+
+    # Assign the Session ID to the User ID in Redis
+    r.set(userid, sessionid)
+
+    print ('SID : ' + sessionid)
+
+    session["userid"] = userid
     current_app.clients[userid] = request.namespace
     print('Client %s connected' % userid)
-    emit('userid', {'userid': userid})
+    emit('session', {'userid': userid, 'sessionid': sessionid})
     emit('status', {'status': 'Connected user', 'userid': userid})
 
 
 @socketio.on('disconnect', namespace='/events')
 def events_disconnect():
     del current_app.clients[session['userid']]
+    r.delete(session['userid'])
     print('Client %s disconnected' % session['userid'])
 
 

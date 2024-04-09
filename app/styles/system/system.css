@@ -168,3 +168,9 @@ select {
     max-width: initial;
   }
 }
+button.Toastify__close-button{
+  background: initial;
+  width: initial;
+  cursor: initial;
+  min-width: initial;
+}

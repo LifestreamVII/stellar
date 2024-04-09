@@ -1,10 +1,10 @@
 export default function SplashScreen() {
   return (
         <div className='splash'>
-            <div class="splash-logo">
-                <img src="stellar.png" alt="Logo" class="logo"/>
+            <div className="splash-logo">
+                <img src="stellar.png" alt="Logo" className="logo"/>
             </div>
-            <div class="spinner"></div>
+            <div className="spinner"></div>
         </div>
   )
 }

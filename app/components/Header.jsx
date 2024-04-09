@@ -3,26 +3,26 @@ import React from 'react'
 export default function Navigation() {
   return (
     <header>
-        <div class="navbar">
-            <div class="navbar__left">
-                <a href="" class="navbar__logo--sm" title="Logo"></a>
+        <div className="navbar">
+            <div className="navbar__left">
+                <a href="" className="navbar__logo--sm" title="Logo"></a>
             </div>
-            <div class="navbar__middle">
-                <a href="" class="navbar__link">
+            <div className="navbar__middle">
+                <a href="" className="navbar__link">
                     Home
                 </a>
-                <a href="" class="navbar__link">
+                <a href="" className="navbar__link">
                     Explore
                 </a>
-                <a href="" class="navbar__link">
+                <a href="" className="navbar__link">
                     Features
                 </a>
-                <a href="" class="navbar__link">
+                <a href="" className="navbar__link">
                     Support
                 </a>
             </div>
-            <div class="navbar__right">
-                <a href="" class="btn">
+            <div className="navbar__right">
+                <a href="" className="btn">
                     <span>Open App</span>
                 </a>
             </div>

@@ -66,6 +66,8 @@
         --bor-radius-button: 26px;
 
         --tooltip-spacing: 8px;
+        --toastify-color-progress-dark: var(--c-stellar);
+        --toastify-toast-width: 360px;
 
         --z-index-navbar: 7;
         --nav-background-color: rgba(16, 24, 30, 0.8);
@@ -673,6 +675,7 @@
         width: fit-content;
         cursor: pointer;
     }
+
     a.btn, .select.btn{
         display: block;
         text-decoration: none;

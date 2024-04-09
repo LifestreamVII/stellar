@@ -32,7 +32,8 @@
     "react-icons": "^4.10.1",
     "react-toastify": "^10.0.5",
     "react-use-websocket": "^4.8.1",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "use-local-storage-state": "^19.2.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.18.1",

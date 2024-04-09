@@ -34,6 +34,7 @@ import { useLoaderData } from "@remix-run/react";
 import { getSession, checkSessionCookie, commitSession } from "./guard/guard";
 import { getCommunities } from "~/scripts/useUser";
 import { getCommunity } from "~/scripts/useCommunity";
+import { ToastContainer } from "react-toastify";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -97,6 +98,7 @@ export default function App() {
             </div>
             <div className="main-content">
               <div className="mainContent">
+                <ToastContainer />
                 <Outlet context={user.uid ? user : null} />
               </div>
               <ScrollRestoration />

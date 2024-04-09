@@ -3,8 +3,8 @@ import React from 'react'
 const QuickAccess = () => {
     return (
         <div className="gradient-cards mt-m">
-            <div class="card">
-                <div class="container-card bg-white-box u__disp--flex">
+            <div className="card">
+                <div className="container-card bg-white-box u__disp--flex">
                     <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="118" height="118" rx="24" fill="url(#paint0_linear_1366_4565)" fill-opacity="0.15" stroke="url(#paint1_radial_1366_4565)" stroke-width="2"></rect>
                         <ellipse className='strokesvg' rx="21.9462" ry="22.2891" transform="matrix(0.964749 0.263173 -0.254526 0.967066 60.1463 63.0804)" stroke="white" stroke-width="1.00101" stroke-linecap="round" stroke-dasharray="4 5.01"></ellipse>
@@ -24,8 +24,8 @@ const QuickAccess = () => {
                     <h4 className='u__align--left ml-s mt-none mb-none'>Favorites</h4>
                 </div>
             </div>
-            <div class="card">
-                <div class="container-card bg-white-box u__disp--flex">
+            <div className="card">
+                <div className="container-card bg-white-box u__disp--flex">
                     <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="118" height="118" rx="24" fill="url(#paint0_linear_1366_4565)" fill-opacity="0.15" stroke="url(#paint1_radial_1366_4565)" stroke-width="2"></rect>
                         <ellipse className='strokesvg' rx="21.9462" ry="22.2891" transform="matrix(0.964749 0.263173 -0.254526 0.967066 60.1463 63.0804)" stroke="white" stroke-width="1.00101" stroke-linecap="round" stroke-dasharray="4 5.01"></ellipse>
@@ -48,8 +48,8 @@ const QuickAccess = () => {
                     <h4 className='u__align--left ml-s mt-none mb-none'>Playlists</h4>
                 </div>
             </div>
-            <div class="card">
-                <div class="container-card bg-white-box u__disp--flex">
+            <div className="card">
+                <div className="container-card bg-white-box u__disp--flex">
                     <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="118" height="118" rx="24" fill="url(#paint0_linear_1366_4565)" fill-opacity="0.15" stroke="url(#paint1_radial_1366_4565)" stroke-width="2"></rect>
                         <ellipse className='strokesvg' rx="21.9462" ry="22.2891" transform="matrix(0.964749 0.263173 -0.254526 0.967066 60.1463 63.0804)" stroke="white" stroke-width="1.00101" stroke-linecap="round" stroke-dasharray="4 5.01"></ellipse>
@@ -72,21 +72,21 @@ const QuickAccess = () => {
                     <h4 className='u__align--left ml-s mt-none mb-none'>History</h4>
                 </div>
             </div>
-            <a href="/panel" class="card">
-                <div class="container-card bg-white-box u__disp--flex">
+            <a href="/panel" className="card">
+                <div className="container-card bg-white-box u__disp--flex">
                     <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="118" height="118" rx="24" fill="url(#paint0_linear_1366_4565)" fill-opacity="0.15" stroke="url(#paint1_radial_1366_4565)" stroke-width="2"></rect>
                         <ellipse className='strokesvg' rx="21.9462" ry="22.2891" transform="matrix(0.964749 0.263173 -0.254526 0.967066 60.1463 63.0804)" stroke="white" stroke-width="1.00101" stroke-linecap="round" stroke-dasharray="4 5.01"></ellipse>
                         <g className='fillsvg' xmlns="http://www.w3.org/2000/svg" transform="matrix(0.054521, 0, 0, 0.054521, 46.314934, 49.337556)" fill='white'>
-                            <rect x="424" y="24" class="st0" width="48" height="52"></rect>
-                            <rect x="424" y="188" class="st0" width="48" height="300"></rect>
-                            <path class="st0" d="M484.79,100h-73.578C396.188,100,384,112.188,384,127.211v9.578c0,15.023,12.188,27.21,27.211,27.21h73.578   c15.023,0,27.21-12.187,27.21-27.21v-9.578C512,112.188,499.813,100,484.79,100z"></path>
-                            <rect x="231.985" y="24" class="st0" width="48" height="276.641"></rect>
-                            <rect x="231.985" y="412.641" class="st0" width="48" height="75.359"></rect>
-                            <path class="st0" d="M292.774,324.641h-73.578c-15.023,0-27.21,12.187-27.21,27.211v9.578c0,15.024,12.187,27.211,27.21,27.211   h73.578c15.023,0,27.211-12.187,27.211-27.211v-9.578C319.985,336.828,307.797,324.641,292.774,324.641z"></path>
-                            <rect x="40" y="308" class="st0" width="48" height="180"></rect>
-                            <rect x="40" y="24" class="st0" width="48" height="172"></rect>
-                            <path class="st0" d="M100.79,220H27.211C12.188,220,0,232.188,0,247.211v9.578C0,271.813,12.188,284,27.211,284h73.578   c15.023,0,27.21-12.187,27.21-27.21v-9.578C128,232.188,115.813,220,100.79,220z"></path>
+                            <rect x="424" y="24" className="st0" width="48" height="52"></rect>
+                            <rect x="424" y="188" className="st0" width="48" height="300"></rect>
+                            <path className="st0" d="M484.79,100h-73.578C396.188,100,384,112.188,384,127.211v9.578c0,15.023,12.188,27.21,27.211,27.21h73.578   c15.023,0,27.21-12.187,27.21-27.21v-9.578C512,112.188,499.813,100,484.79,100z"></path>
+                            <rect x="231.985" y="24" className="st0" width="48" height="276.641"></rect>
+                            <rect x="231.985" y="412.641" className="st0" width="48" height="75.359"></rect>
+                            <path className="st0" d="M292.774,324.641h-73.578c-15.023,0-27.21,12.187-27.21,27.211v9.578c0,15.024,12.187,27.211,27.21,27.211   h73.578c15.023,0,27.211-12.187,27.211-27.211v-9.578C319.985,336.828,307.797,324.641,292.774,324.641z"></path>
+                            <rect x="40" y="308" className="st0" width="48" height="180"></rect>
+                            <rect x="40" y="24" className="st0" width="48" height="172"></rect>
+                            <path className="st0" d="M100.79,220H27.211C12.188,220,0,232.188,0,247.211v9.578C0,271.813,12.188,284,27.211,284h73.578   c15.023,0,27.21-12.187,27.21-27.21v-9.578C128,232.188,115.813,220,100.79,220z"></path>
                         </g>
                         <defs>
                             <linearGradient id="paint0_linear_1366_4565" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
