@@ -25,9 +25,14 @@ export default function useWebSocket(uid: string = "", reportMethod: string = "t
       setStatus(data);
       console.log(data);
       if (notify.current && reportMethod) {
-        toast.update(notify.current, {render: data.current == 100 ? data.status : ToastSpinner(data.status), progress: data.current == 100 ? undefined : data.current / 100, autoClose: 3000});
+        toast.update(notify.current,
+          data.current === 100 ? 
+              { render: data.status, progress: undefined, autoClose: 3000, closeOnClick: true, closeButton: true }
+          : 
+              { render: ToastSpinner(data.status), progress: data.current / 100 }
+        );
       } else {
-        notify.current = toast(ToastSpinner(data.status), {progress: 0, autoClose: false, theme: 'dark'});
+        notify.current = toast(ToastSpinner(data.status), {progress: 0, autoClose: false, closeOnClick: false, closeButton: false, theme: 'dark'});
       }
     } catch (e: unknown) {
       console.error(e);
