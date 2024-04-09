@@ -50,14 +50,18 @@ def process_audio_file(self, file_path, userid, url):
     try:
         line = ""
         meta = {}
-        proc = subprocess.run(args=['sh', f"{path}/fileToHLS.sh"], stdout=subprocess.PIPE, universal_newlines=True, check=False, timeout=20)
-        meta = {'current': 100, 'total': 100, 'status': proc.stdout,
-        'userid': userid}
-        post(url, json=meta)
-        print(meta)
+        perc = 0
+        proc = subprocess.Popen(args=['sh', f"{path}/fileToHLS.sh"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+        while True:
+            line = str(proc.stdout.read(100))
+            if not line or perc == 100:
+                break
+            perc = extract_percentage(line)
+            meta = {'current': perc, 'total': 100, 'status': f'Processing HLS : {perc} %', 'userid': userid}
+            post(url, json=meta)
         proc = None
-        meta['current'] = 100
-        print(meta)
+        perc = 100
+        meta["status"] = 'Finished processing'
         post(url, json=meta)
         return meta
     except Exception as e:
@@ -67,10 +71,28 @@ def process_audio_file(self, file_path, userid, url):
         return meta
 
 
+def extract_percentage(string):
+    # Regular expression pattern to find percentage values
+    pattern = r'(\d{1,3})%'
+
+    # Search for the pattern in the string
+    match = re.search(pattern, string)
+
+    if match:
+        # Extract the percentage value and convert it to an integer
+        percentage = int(match.group(1))
+        return percentage
+    else:
+        # If no percentage is found, return None or raise an error, based on your requirement
+        return None
+
+
 @app.route('/event/', methods=['POST'])
 def event():
     userid = request.json['userid']
     data = request.json
+    print(userid)
+    print(data)
     ns = app.clients.get(userid)
     if ns and data:
         socketio.emit(event='celerystatus', data=data, namespace=ns, to=userid)

@@ -1,19 +1,33 @@
-import React, { useRef, useState } from 'react'
+import axios from 'axios';
+import React, { useRef, useState, useEffect } from 'react'
 import {
     FaCloudUploadAlt,
   } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useWebSocket from 'react-use-websocket';
+import useWebSocket from '~/scripts/useWebSocket';
 
 const Upload = () => {
 
-  const socket = new WebSocket("ws://localhost:5000");
   const [uploadData, setUploadData] = useState(null);
   const [songData, setSongData] = useState({album: "", title: "", artist: ""})
-  const [uploadStatus, setStatus] = useState("");
-  const notify = () => toast(uploadStatus);
   
+  const { socket, status:statusSocket, uid:socketUID } = useWebSocket();
+  
+  const notify = useRef(null);
+  
+  useEffect(() => {
+    if (statusSocket) {
+      console.log(statusSocket);
+      if (notify.current) {
+        toast.update(notify.current, {render: statusSocket.status, progress: statusSocket.current == 100 ? undefined : statusSocket.current / 100, autoClose: 3000});
+      } else {
+        notify.current = toast(statusSocket.status, {progress: 0, autoClose: false, theme: 'dark'});
+      }
+    }
+  }, [statusSocket])
+  
+
   const handleUploadChange = (event) => {
     switch (event.target.name) {
       case "artist":
@@ -53,8 +67,7 @@ const Upload = () => {
           binary += String.fromCharCode( bytes[ i ] );
       }
       result.img = window.btoa(binary);
-      console.log(result.img)
-      setUploadData(result);  
+      setUploadData(result);
     } catch (err) {
       console.log(err);
     }
@@ -63,27 +76,24 @@ const Upload = () => {
     const file = event.target.files[0];  // assuming single file selection
     if (file) {
       handleFileUpload(file);
+      socket.connect();
       const formData = new FormData();
-      formData.append('file', file);
-      socket.addEventListener("connect", (event) => {
-        console.log("Connected to server");
-      });
-      axios.post('upload_file', formData, {
+      formData.append('userid', socketUID);
+      console.log(socketUID);
+      formData.append('audio', file);
+      axios.post('http://localhost:5000/process-audio', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       }).then((response) => {
-        useWebSocket(WS_URL, {
-          connect: () => {
-            console.log('WebSocket connection established.');
-          }
-        });
+
       })
     }
   };
 
   return (
     <div>
+    <ToastContainer />
     {
       !uploadData ? (
         <div>

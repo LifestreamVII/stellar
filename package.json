@@ -13,6 +13,7 @@
     "@remix-run/node": "^1.18.1",
     "@remix-run/react": "^1.18.1",
     "@remix-run/serve": "^1.18.1",
+    "axios": "^1.6.8",
     "buffer-polyfill": "npm:buffer@^6.0.3",
     "dotenv": "^16.3.1",
     "ffmpeg": "^0.0.4",
@@ -30,7 +31,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-toastify": "^10.0.5",
-    "react-use-websocket": "^4.8.1"
+    "react-use-websocket": "^4.8.1",
+    "socket.io-client": "^4.7.5"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.18.1",
