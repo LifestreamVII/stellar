@@ -1,5 +1,6 @@
 import os
 import uuid
+import json
 import subprocess
 import redis
 from flask import Flask, request, jsonify
@@ -19,13 +20,14 @@ from flask import (
 )
 import re
 from celery import Celery
+from celery.result import AsyncResult
 from flask_socketio import (
     SocketIO,
     emit,
     disconnect
 )
 from requests import post
-
+from collections import defaultdict
 
 app = Flask(__name__)
 app.debug = True
@@ -33,13 +35,59 @@ path = os.path.dirname(os.path.realpath(__file__))
 app.clients = {}
 CORS(app, resources={r"*": {"origins": "*"}}, supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
-celery = Celery(app.name, broker='redis://localhost:6379/0')
+app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
+app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'], backend=app.config['CELERY_RESULT_BACKEND'])
+celery.conf.update(app.config)
 r = redis.Redis(host='localhost', port=6379, db=0)
 
 # SocketIO
 socketio = SocketIO(app, cors_allowed_origins='*', message_queue='redis://localhost:6379/0')
 
-@celery.task(bind=True)
+class TaskManager:
+    def __init__(self):
+        self.tasks = defaultdict(dict)
+        
+    def get_tasks(self, user_id):
+        cached = r.get('tasks')
+        if cached :
+            print(json.loads(r.get('tasks')))
+            cached = json.loads(r.get('tasks'))
+            if user_id in cached:
+                return cached[user_id]
+            else:
+                cached[user_id] = []
+        else :
+            cached = {user_id: []}
+        r.set('tasks', json.dumps(cached))
+        return []
+
+    def update_status(self, user_id, task_id, status):
+        self.tasks[user_id][task_id]['status'] = status
+        self.write_to_redis(user_id, task_id)
+
+    def write_to_redis(self, user_id, task_id):
+        cached = r.get('tasks')
+        my_tasks = []
+        if cached:
+            cached = json.loads(r.get('tasks'))
+            print(self.get_tasks(user_id))
+            my_tasks = self.get_tasks(user_id)
+            if my_tasks and type(my_tasks) is list:
+                if task_id not in my_tasks:
+                    my_tasks.append(task_id)
+            else:
+                my_tasks = [task_id]
+            my_tasks = list(set(my_tasks))  # Remove duplicates
+        else:
+            cached = defaultdict(dict)
+        cached[user_id] = my_tasks
+        r.set('tasks', json.dumps(cached))
+
+# Instantiate TaskManager
+task_manager = TaskManager()
+
+@celery.task(bind=True) 
 def process_audio_file(self, file_path, userid, url):
     '''
         Process the audio file here.
@@ -49,19 +97,27 @@ def process_audio_file(self, file_path, userid, url):
     print('begin task')
     try:
         line = ""
-        meta = {}
-        perc = 0
+        meta = {'current': 0, 'total': 100, 'status': 'Initializing', 'userid': userid}
+        task_id = self.request.id
+        task_manager.tasks[userid][task_id] = {'id': task_id, 'status': meta}
         proc = subprocess.Popen(args=['sh', f"{path}/fileToHLS.sh"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+        task_manager.write_to_redis(userid, task_id)
+        # task_manager.update_status(userid, task_id, meta)
+        perc = 0
         while True:
             line = str(proc.stdout.read(100))
             if not line or perc == 100:
                 break
             perc = extract_percentage(line)
-            meta = {'current': perc, 'total': 100, 'status': f'Processing HLS : {perc} %', 'userid': userid}
+            meta['current'] = perc
+            meta['status'] = f'Processing HLS : {perc} %'
+            self.update_state(state='PROGRESS', meta=meta)
             post(url, json=meta)
         proc = None
         perc = 100
-        meta["status"] = 'Finished processing'
+        meta['current'] = perc
+        meta['status'] = 'Finished processing'
+        task_manager.update_status(userid, task_id, meta)
         post(url, json=meta)
         return meta
     except Exception as e:
@@ -100,17 +156,14 @@ def event():
     return 'error', 404
 
 
-@app.route('/download', methods=['POST'])
+@app.route('/download', methods=['GET'])
 def download_file():
-    if None :
-        url = request.json['url']
-        response = requests.get(url)
-        file_id = str(uuid.uuid4())
-        file_path = os.path.join('/tmp', file_id + '.mp3')
-        with open(file_path, 'wb') as f:
-            f.write(response.content)
-        r.set(file_id, file_path)
-        return jsonify({'id': file_id})
+    task_ids = task_manager.get_tasks(request.args.get('userid'))
+    results = {}
+    for task_id in task_ids:
+        result = celery.AsyncResult(task_id)
+        results[task_id] = result._get_task_meta()
+    return jsonify(results)
 
 @app.route('/process-audio', methods=['POST'])
 def process_audio():
@@ -118,7 +171,7 @@ def process_audio():
     userid = request.form.get('userid')
     file_path = f'/tmp/2020/original/file.mp3'
     file.save(file_path)
-    task = process_audio_file.delay(file_path, userid, url_for('event', _external=True))
+    task = process_audio_file.apply_async(args=[file_path, userid, url_for('event', _external=True)])
     return jsonify(f"Audio processing task started with task ID: {task.id}")
 
 @socketio.on('status', namespace='/events')
