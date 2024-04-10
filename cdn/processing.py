@@ -44,6 +44,12 @@ r = redis.Redis(host='localhost', port=6379, db=0)
 # SocketIO
 socketio = SocketIO(app, cors_allowed_origins='*', message_queue='redis://localhost:6379/0')
 
+# --------------------------------------
+
+# Implement JWT Authentication here to protect routes
+
+# --------------------------------------
+
 class TaskManager:
     def __init__(self):
         self.tasks = defaultdict(dict)
@@ -88,7 +94,7 @@ class TaskManager:
 task_manager = TaskManager()
 
 @celery.task(bind=True) 
-def process_audio_file(self, file_path, userid, url):
+def process_audio_file(self, file_path, userid, url, song, fbid):
     '''
         Process the audio file here.
 
@@ -97,7 +103,13 @@ def process_audio_file(self, file_path, userid, url):
     print('begin task')
     try:
         line = ""
-        meta = {'current': 0, 'total': 100, 'status': 'Initializing', 'userid': userid}
+        meta = {
+            'current': 0, 
+            'total': 100, 
+            'status': 'Initializing',
+            'userid': userid,
+            'song': song,
+            'fbid': fbid}
         task_id = self.request.id
         task_manager.tasks[userid][task_id] = {'id': task_id, 'status': meta}
         proc = subprocess.Popen(args=['sh', f"{path}/fileToHLS.sh"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
@@ -168,10 +180,17 @@ def download_file():
 @app.route('/process-audio', methods=['POST'])
 def process_audio():
     file = request.files['audio']
+    artist = request.form.get('artist')
+    track_name = request.form.get('title')
+    fb_id = request.form.get('fb_id')
     userid = request.form.get('userid')
-    file_path = f'/tmp/2020/original/file.mp3'
+    path = f'/tmp/{userid}/original/'
+    isExist = os.path.exists(path)
+    if not isExist:
+        os.makedirs(path)
+    file_path = path+file.filename
     file.save(file_path)
-    task = process_audio_file.apply_async(args=[file_path, userid, url_for('event', _external=True)])
+    task = process_audio_file.apply_async(args=[file_path, userid, url_for('event', _external=True), f'{artist} - {track_name}', fb_id])
     return jsonify(f"Audio processing task started with task ID: {task.id}")
 
 @socketio.on('status', namespace='/events')

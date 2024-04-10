@@ -2,6 +2,7 @@ import css from "~/styles/pl-list.css";
 import { LoaderFunction } from '@remix-run/node';
 import { requireAuth } from '~/guard/guard';
 import { useOutletContext } from '@remix-run/react';
+import useTasks from '~/scripts/useTasks';
 
 export const loader: LoaderFunction = async ({ request }) => {
     const user = await requireAuth(request);
@@ -33,20 +34,19 @@ const Playlists = () => {
               </div>
             </div>
             <div className="playlist-content-list">
-            {
-                songs.map((item, index)=>{ return (
-                    <div className="playlist-content-item">
-                        <div className="playlist-content-item-details">
-                        <img src={item.coverImageUrl} width={50} height={50} alt="" srcSet="" />
-                        <div className='playlist-content-item-title-artist'>
-                            <span className='ml-es mb-none'>{item.title}</span>
-                            <p className='ml-es mt-none mb-none'>{item.artists[0].displayName}</p>
+            {tasks.map((item, index) => {
+                return (
+                    <div className="playlist-content-item" key={index}>
+                        <div className="playlist-content-item-details" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+                            <p className='u__fs__normal u__bold mt-none mb-none'>{item.result.userid}</p>
+                            <p className='u__fs__normal mt-none mb-none'>{item.result.song}</p>
+                            <p className='u__fs__normal mt-none mb-none'>{item.result.fbid}</p>
+                            <p className='u__fs__normal mt-none mb-none'>{item.result.current} %</p>
+                            <p className='u__fs__normal mt-none mb-none'>{item.result.status}</p>
                         </div>
-                        </div>
-                        <div>{msToMinutesAndSeconds(item.duration)}</div>
                     </div>
-                )
-                })
+                );
+            })
             }
             </div>
             <div className="playlist-expand">

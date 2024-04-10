@@ -14,7 +14,7 @@ async function handleRequest(request: Request) {
   const file = formData.get('file');
   if (file instanceof File) {
     try {
-      await uploadFile(usage, file, request);
+      const downloadURL = await uploadFile(usage, file, request);
 
       const buffarr = new Uint8Array(await file.arrayBuffer());
 
@@ -22,7 +22,7 @@ async function handleRequest(request: Request) {
 
       const tags = NodeID3.read(buff);
 
-      return json({ status: 'File uploaded successfully', tags: tags }, { status: 200 });
+      return json({ status: 'File uploaded successfully', tags: tags,  dl_url:downloadURL}, { status: 200 });
     } catch (error) {
       console.log(error);
       return json({ error: error.message }, { status: 400 });

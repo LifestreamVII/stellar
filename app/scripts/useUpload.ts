@@ -23,7 +23,7 @@ export async function uploadFile(usage: Usage, file: File, request: Request) {
     "video": ["video/mp4"],
   };
   const maxFileSizePerUsage: Record<Usage, number> = {
-    "song": 5 * 1024 * 1024, // 5MB
+    "song": 15 * 1024 * 1024, // 5MB
     "image": 2 * 1024 * 1024, // 2MB
     "video": 50 * 1024 * 1024, // 50MB
   };
@@ -52,6 +52,7 @@ export async function uploadFile(usage: Usage, file: File, request: Request) {
     }, async () => {
       const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log('File available at', downloadURL);
+      return downloadURL;
     });
   } catch (err) {
     console.log(err);

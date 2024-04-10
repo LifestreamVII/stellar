@@ -8,15 +8,26 @@ const useTasks = (userId) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
+        const fetchData = async () => {
+          const response = await fetch(`http://localhost:5000/download?userid=${userId}`);
+          const tasks = await response.json();
+          setData(Object.values(tasks));
+        };
 
-        setData(playlists.filter(Boolean)); // Filter out any null values
+        fetchData();
+
+        const interval = setInterval(fetchData, 3000); // Fetch data every 3 seconds
+
+        return () => {
+          clearInterval(interval); // Clear the interval when the component unmounts
+        };
+
       } catch (err) {
         setError(err);
       } finally {
         setLoading(false);
       }
     };
-
     fetchTasks();
   }, [userId]);
 

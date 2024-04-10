@@ -11,7 +11,8 @@ const Upload = () => {
 
   const [uploadData, setUploadData] = useState(null);
   const [songData, setSongData] = useState({album: "", title: "", artist: ""})
-  
+  const [songFile, setFile] = useState(null);
+
   const { socket } = useWebSocket("3SWiGIUR4zdEvmzQzTEjcdotZ7z1", "toast");
 
   const handleUploadChange = (event) => {
@@ -61,19 +62,27 @@ const Upload = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];  // assuming single file selection
     if (file) {
+      setFile(file);
       handleFileUpload(file);
-      socket.connect();
-      const formData = new FormData();
-      formData.append('userid', "3SWiGIUR4zdEvmzQzTEjcdotZ7z1");
-      formData.append('audio', file);
-      axios.post('http://localhost:5000/process-audio', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then((response) => {
-
-      })
     }
+  };
+
+  const submitTrack = async () => {
+    const formData = new FormData();
+    formData.append('userid', "3SWiGIUR4zdEvmzQzTEjcdotZ7z1");
+    formData.append('audio', songFile);
+    formData.append('artist', songData.artist || uploadData.tags.artist);
+    formData.append('title', songData.title || uploadData.tags.title);
+    formData.append('fb_id', uploadData.dl_url || "");
+    socket.connect();
+    axios.post('http://localhost:5000/process-audio', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then((response) => {
+
+    })
+
   };
 
   return (
@@ -114,6 +123,7 @@ const Upload = () => {
                     <input name='title' placeholder={uploadData.tags.title} onChange={handleUploadChange}/>
                   </div>
                 </div>
+                <button onClick={submitTrack}>Confirm</button>
             </div>
         </div>
       )
