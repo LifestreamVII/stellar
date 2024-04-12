@@ -9,7 +9,7 @@ import {
 } from "@remix-run/react";
 import { redirect } from "@remix-run/node";
 import { Welcome } from "~/components/Body/Welcome";
-import { checkSessionCookie, getSession, commitSession, signInUser, signUpUser } from '~/guard/guard';
+import { checkSessionCookie, getSession, commitSession, signInUser, signUpUser } from '~/guard/guard.server';
 import { useState } from "react";
 import body from "~/styles/system/body.css";
 import background from "~/styles/system/backgrounds/login.css";

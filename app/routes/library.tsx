@@ -3,7 +3,7 @@ import css from "~/styles/pl-list.css";
 import useSongs from '~/scripts/useSongs';
 import LibraryCard from "~/components/Library/LibraryCard";
 import { LoaderFunction } from '@remix-run/node';
-import { requireAuth } from '~/guard/guard';
+import { requireAuth } from '~/guard/guard.server';
 import { useOutletContext } from '@remix-run/react';
 
 export const loader: LoaderFunction = async ({ request }) => {

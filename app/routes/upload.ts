@@ -1,5 +1,4 @@
 import { LoaderFunction, json, ActionFunction } from '@remix-run/node';
-import { uploadFile } from '~/scripts/useUpload';
 import NodeID3 from 'node-id3';
 import type { Request } from "express";
 export let loader: LoaderFunction = async ({ request }) => {

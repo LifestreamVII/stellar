@@ -35,6 +35,7 @@
     border: dotted 2px var(--c-stellar);
     background: var(--g-nav-hov);
     padding: 2rem;
+    position: relative;
     border-radius: 0.5rem;
     text-align: center;
 }
@@ -50,6 +51,16 @@
 .upload-text {
     color: #9CA3AF;
     margin-top: 0.5rem;
+}
+.upload-container .progress{
+    position: absolute;
+    bottom: 0px;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+    height: 6px;
+    background: var(--c-stellar);
+    left: 0;
+    border-radius: 15px;
 }
 
 @keyframes slideIn {
@@ -67,6 +78,15 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fade-out { 
+    0% {
+         opacity: 1; visibility: visible; 
+    } 
+    100% { 
+        opacity: 0; visibility: hidden;
     }
 }
 

@@ -4,7 +4,7 @@ import top from "~/styles/top/news.css";
 import activity from "~/styles/activity/activity.css";
 import { useOutletContext } from "@remix-run/react";
 import { LoaderFunction } from "@remix-run/node";
-import { requireAuth } from "~/guard/guard";
+import { requireAuth } from "~/guard/guard.server";
 import { redirect } from "@remix-run/node";
 
 export const loader: LoaderFunction = async ({ request }) => {

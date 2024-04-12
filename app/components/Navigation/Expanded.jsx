@@ -31,8 +31,8 @@ const Expanded = ({menu}) => {
                     title: "Upload history"
                     },
                     {
-                    link: "",
-                    title: "Something here"
+                    link: "/tasks",
+                    title: "Tasks"
                     },
                 ]
             case "library":

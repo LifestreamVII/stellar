@@ -1,6 +1,6 @@
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { requireAuth } from "~/guard/guard";
+import { requireAuth } from "~/guard/guard.server";
 import profile from "~/styles/user/profile.css";
 import { json } from "@remix-run/node"; // or cloudflare/deno
 

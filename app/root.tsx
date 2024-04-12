@@ -31,7 +31,7 @@ import SplashScreen from './splash'
 
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getSession, checkSessionCookie, commitSession } from "./guard/guard";
+import { getSession, checkSessionCookie, commitSession } from "./guard/guard.server";
 import { getCommunities } from "~/scripts/useUser";
 import { getCommunity } from "~/scripts/useCommunity";
 import { ToastContainer } from "react-toastify";

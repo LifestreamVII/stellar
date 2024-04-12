@@ -5,7 +5,7 @@ import StorageInfo from "~/components/StorageInfo";
 import Upload from "~/components/Upload";
 import { auth } from '~/utils/firebase.config';
 import { LoaderFunction } from '@remix-run/node';
-import { requireAuth } from '~/guard/guard';
+import { requireAuth } from '~/guard/guard.server';
 import { useOutletContext } from '@remix-run/react';
 import usePlaylists from '~/scripts/usePlaylists';
 

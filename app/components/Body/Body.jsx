@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import body from "~/styles/system/body.css";
 import Activity from "~/components/Body/Activity/Activity.jsx";
 import Register from "~/components/Modal/Register.tsx";
-import { uploadFile } from '~/scripts/useUpload.ts';
 
 const Body = () => {
 

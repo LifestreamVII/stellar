@@ -1,5 +1,5 @@
 import { db } from "~/utils/firebase.config";
-import { requireAuth } from "~/guard/guard";
+import { requireAuth } from "~/guard/guard.server";
 import { doc, getDoc } from "firebase/firestore";
 import { DecodedIdToken } from "firebase-admin/auth";
 

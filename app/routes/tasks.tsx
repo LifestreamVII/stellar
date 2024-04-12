@@ -1,8 +1,11 @@
 import css from "~/styles/pl-list.css";
 import { LoaderFunction } from '@remix-run/node';
-import { requireAuth } from '~/guard/guard';
+import { requireAuth } from '~/guard/guard.server';
 import { useOutletContext } from '@remix-run/react';
 import useTasks from '~/scripts/useTasks';
+import {
+    FaDownload,
+  } from "react-icons/fa";
 
 export const loader: LoaderFunction = async ({ request }) => {
     const user = await requireAuth(request);
@@ -34,19 +37,20 @@ const Playlists = () => {
               </div>
             </div>
             <div className="playlist-content-list">
-            {tasks.map((item, index) => {
-                return (
+            {tasks && tasks.length ?
+                tasks.map((item, index) => {
+                return item.result ? (
                     <div className="playlist-content-item" key={index}>
                         <div className="playlist-content-item-details" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                             <p className='u__fs__normal u__bold mt-none mb-none'>{item.result.userid}</p>
                             <p className='u__fs__normal mt-none mb-none'>{item.result.song}</p>
-                            <p className='u__fs__normal mt-none mb-none'>{item.result.fbid}</p>
+                            <a href={item.result.fbid} title="Download .MP3"><FaDownload/></a>
                             <p className='u__fs__normal mt-none mb-none'>{item.result.current} %</p>
                             <p className='u__fs__normal mt-none mb-none'>{item.result.status}</p>
                         </div>
                     </div>
-                );
-            })
+                ) : ("");
+            }) : ("")
             }
             </div>
             <div className="playlist-expand">
