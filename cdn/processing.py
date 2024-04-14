@@ -28,6 +28,19 @@ from flask_socketio import (
 )
 from requests import post
 from collections import defaultdict
+import firebase_admin
+from firebase_admin import firestore
+import io
+import soundfile as sf
+import numpy as np
+
+cred_obj = firebase_admin.credentials.Certificate('./serviceAccountKey.json')
+
+default_app = firebase_admin.initialize_app(cred_obj, {
+'databaseURL':'stellar-imagine.firebaseapp.com'
+})
+db = firestore.client()
+ref = db.collection("songs")
 
 app = Flask(__name__)
 app.debug = True
@@ -93,8 +106,15 @@ class TaskManager:
 # Instantiate TaskManager
 task_manager = TaskManager()
 
+def get_audio_duration(file):
+    f = open(file, 'rb')
+    content = f.read()
+    audio_io = io.BytesIO(content)
+    data, samplerate = sf.read(audio_io)
+    return len(data) / samplerate
+
 @celery.task(bind=True) 
-def process_audio_file(self, file_path, userid, url, song, fbid):
+def process_audio_file(self, file_path, userid, url, song):
     '''
         Process the audio file here.
 
@@ -108,12 +128,28 @@ def process_audio_file(self, file_path, userid, url, song, fbid):
             'total': 100, 
             'status': 'Initializing',
             'userid': userid,
-            'song': song,
-            'fbid': fbid}
+            'song': song
+            }
         task_id = self.request.id
         task_manager.tasks[userid][task_id] = {'id': task_id, 'status': meta}
-        proc = subprocess.Popen(args=['sh', f"{path}/fileToHLS.sh"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
         task_manager.write_to_redis(userid, task_id)
+        duration = get_audio_duration(file_path)
+        post(url, json=meta)
+        songref = ref.add(
+            {
+                'artists': [{'id': userid}],
+                'genre': [song["genre"]],
+                'visibility': song["visibility"], 
+                'coverUrl': song["img_url"],
+                'originalUrl': song["fb_id"],
+                'title': song["title"],
+                'duration': duration,
+                'isPlayable': 2,
+                'endpoint': song["endpoint"],
+                'createdAt': time.time(),
+            }
+        )
+        proc = subprocess.Popen(args=['sh', f"{path}/fileToHLS.sh", file_path], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
         # task_manager.update_status(userid, task_id, meta)
         perc = 0
         while True:
@@ -121,14 +157,32 @@ def process_audio_file(self, file_path, userid, url, song, fbid):
             if not line or perc == 100:
                 break
             perc = extract_percentage(line)
-            meta['current'] = perc
+            meta['current'] = perc-1 if perc > 0 else 0
             meta['status'] = f'Processing HLS : {perc} %'
             self.update_state(state='PROGRESS', meta=meta)
             post(url, json=meta)
         proc = None
+        perc = 99
+        meta['current'] = perc
+        meta['status'] = 'Updating Database...'
+        task_manager.update_status(userid, task_id, meta)
+        post(url, json=meta)
+        output_path = f"{os.path.dirname(file_path)}/output"
+        songref_id = songref[1].id
+        songref = ref.document(songref_id)
+        songref.set(
+            {
+                "path": 
+                    {"master": f"{output_path}/master.m3u8",
+                     "128": f"{output_path}/0.m3u8",
+                     "256": f"{output_path}/1.m3u8",
+                     "320": f"{output_path}/2.m3u8"
+                    },
+                "isPlayable": 1
+        }, merge=True)
         perc = 100
         meta['current'] = perc
-        meta['status'] = 'Finished processing'
+        meta['status'] = 'Done.'
         task_manager.update_status(userid, task_id, meta)
         post(url, json=meta)
         return meta
@@ -180,17 +234,20 @@ def download_file():
 @app.route('/process-audio', methods=['POST'])
 def process_audio():
     file = request.files['audio']
-    artist = request.form.get('artist')
     track_name = request.form.get('title')
     fb_id = request.form.get('fb_id')
+    img_url = request.form.get('img_url')
     userid = request.form.get('userid')
-    path = f'/tmp/{userid}/original/'
-    isExist = os.path.exists(path)
+    endpoint = request.form.get('endpoint')
+    genre = request.form.get('genre')
+    visibility = request.form.get('visibility')
+    upath = f'/tmp/{userid}/{endpoint}/original/'
+    isExist = os.path.exists(upath)
     if not isExist:
-        os.makedirs(path)
-    file_path = path+file.filename
+        os.makedirs(upath)
+    file_path = upath+file.filename
     file.save(file_path)
-    task = process_audio_file.apply_async(args=[file_path, userid, url_for('event', _external=True), f'{artist} - {track_name}', fb_id])
+    task = process_audio_file.apply_async(args=[file_path, userid, url_for('event', _external=True), {'title': track_name, 'fb_id': fb_id, 'img_url': img_url, 'endpoint': endpoint, 'genre': genre, 'visibility': visibility}])
     return jsonify(f"Audio processing task started with task ID: {task.id}")
 
 @socketio.on('status', namespace='/events')

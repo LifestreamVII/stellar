@@ -17,6 +17,10 @@ const useUpload = () => {
 
   const uploadFile = async (usage: Usage, file: File, uid: string) => {
     
+    console.log(file)
+
+    console.log(file.type)
+
     if (!file) {
       throw new Error("No file found");
     }
@@ -80,9 +84,10 @@ const useUpload = () => {
 
         const tags = NodeID3.read(buff);
 
-        setTags(tags);
+        setTags({...tags, done: true});
 
         if (tags && tags.image) {
+          console.log(tags.image)
           const image = tags.image.imageBuffer;
           const base64Image = Buffer.from(image).toString('base64');
           setImage(base64Image);
@@ -94,7 +99,7 @@ const useUpload = () => {
   }
 }
 
-  return {uploadFile, tags, progress, downloadURL, image};
+  return {uploadFile, tags, progress, downloadURL, image, setImage};
 
 }
 

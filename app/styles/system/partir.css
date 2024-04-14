@@ -182,6 +182,10 @@
         font-weight: 600;
     }
 
+    .u__semibold{
+        font-weight: 500;
+    }
+
     .u__fs__small{
         font-size: 14px!important;
     }
@@ -230,6 +234,10 @@
     
     .u__disp--hidden{
         display: none!important;
+    }
+
+    .u__width--full{
+        width: 100%;
     }
 
     .u__align--left {

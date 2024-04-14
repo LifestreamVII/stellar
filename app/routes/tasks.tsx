@@ -15,7 +15,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 const Playlists = () => {
     const user = useOutletContext();
     const { data:tasks, loading, error } = useTasks(user?.uid);
-
     return (
         <div className='mainContent'>
             <div className="row">
@@ -43,7 +42,6 @@ const Playlists = () => {
                     <div className="playlist-content-item" key={index}>
                         <div className="playlist-content-item-details" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                             <p className='u__fs__normal u__bold mt-none mb-none'>{item.result.userid}</p>
-                            <p className='u__fs__normal mt-none mb-none'>{item.result.song}</p>
                             <a href={item.result.fbid} title="Download .MP3"><FaDownload/></a>
                             <p className='u__fs__normal mt-none mb-none'>{item.result.current} %</p>
                             <p className='u__fs__normal mt-none mb-none'>{item.result.status}</p>
