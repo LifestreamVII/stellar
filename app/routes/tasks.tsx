@@ -4,7 +4,11 @@ import { requireAuth } from '~/guard/guard.server';
 import { useOutletContext } from '@remix-run/react';
 import useTasks from '~/scripts/useTasks';
 import {
+  FaCheckCircle,
+  FaCross,
     FaDownload,
+    FaEllipsisH,
+    FaExclamationTriangle,
   } from "react-icons/fa";
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -42,7 +46,7 @@ const Playlists = () => {
                     <div className="playlist-content-item" key={index}>
                         <div className="playlist-content-item-details" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                             <p className='u__fs__normal u__bold mt-none mb-none'>{item.result.userid}</p>
-                            <a href={item.result.fbid} title="Download .MP3"><FaDownload/></a>
+                            { item.status === "PENDING"  || item.status === "PROGRESS" ? (<FaEllipsisH/>) : (item.status === "SUCCESS" ? (<FaCheckCircle/>) : (<FaExclamationTriangle />))  }
                             <p className='u__fs__normal mt-none mb-none'>{item.result.current} %</p>
                             <p className='u__fs__normal mt-none mb-none'>{item.result.status}</p>
                         </div>

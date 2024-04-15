@@ -23,6 +23,7 @@
     "firebase-admin": "^11.11.0",
     "firebase-auth": "^0.1.2",
     "firebase-functions": "^4.4.1",
+    "hls.js": "^1.5.8",
     "http-server": "^14.1.1",
     "isbot": "^3.6.8",
     "node-id3": "^0.2.6",
