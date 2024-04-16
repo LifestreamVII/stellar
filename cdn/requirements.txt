@@ -1,0 +1,11 @@
+uuid
+redis
+flask
+flask_cors
+celery
+flask_socketio
+requests
+firebase_admin
+soundfile
+numpy
+ffpb
